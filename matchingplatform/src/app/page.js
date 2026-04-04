@@ -3,7 +3,11 @@ import Image from "next/image";
 import styles from "./page.module.css";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import App from "./admin/page";
+=======
+import TodoList from "@/components/todo section/page";
+>>>>>>> 5549557 (todo done)
 
 export default function Home() {
   return (
@@ -14,6 +18,7 @@ export default function Home() {
 
 =======
     <p>
+<<<<<<< HEAD
 =======
 import TodoList from "@/components/TodoList/page";
 import RecentActivity from "@/components/RecentActivity/page";
@@ -35,5 +40,10 @@ export default function Home() {
     </div>
     
 >>>>>>> e86dfc5 (redo duedate)
+=======
+      <TodoList />
+    </p>
+    
+>>>>>>> 5549557 (todo done)
   );
 }
