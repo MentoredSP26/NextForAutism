@@ -2,11 +2,12 @@ import NavButton from '../NavButton/page';
 
 function NavBar(props) {
     const buttons = props.buttons;
+    const profile = props.profile;
     return (
         <div className="navBar">
             <div className="navBar-image">
                 {/* <Image alt="Next for Autism Logo"></Image> */}
-                <h1>Aspiring Professional Portal</h1>
+                <h1>{profile} Portal</h1>
             </div>
             {/* props for number of buttons */}
             <nav className="navBar-buttons">
