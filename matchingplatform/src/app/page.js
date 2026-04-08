@@ -4,8 +4,7 @@ import Assignment from "../components/Assignment";
 
 export default function Home() {
   return (
-    <p>
-      <Assignment/>
-    </p>
+    <>
+    </>
   );
 }
