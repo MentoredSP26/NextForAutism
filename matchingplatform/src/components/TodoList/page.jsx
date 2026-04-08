@@ -14,6 +14,7 @@ export default function TodoList() {
 
 
   return (
+<<<<<<< HEAD:matchingplatform/src/components/todo section/page.jsx
     <>
     <div className='todo bar'>
       <h1>
@@ -38,9 +39,30 @@ export default function TodoList() {
           </li>
         ))}
       </ul>
+=======
+    <div>
+      <h1>To do</h1>
+      <h2>
+        <ul>
+          {todos.map(todo => (
+            <li key={todo.id}>
+              <div>
+                <input
+                  type="checkbox"
+                  checked={todo.completed}
+                  onChange={() => toggle(todo.id)}
+                />
+                {' '}
+                {todo.completed ? <s>{todo.text}</s> : todo.text}
+              </div>
+              <p>{todo.decription}</p>
+              <p>{todo.duedate}</p>
+            </li>
+          ))}
+        </ul>
+>>>>>>> 4242a79 (fixed formatting + file names):matchingplatform/src/components/TodoList/page.jsx
       </h2>
     </div>
-    </>
   );
 }
 

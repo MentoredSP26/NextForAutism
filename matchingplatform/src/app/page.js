@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import App from "./admin/page";
 =======
 import TodoList from "@/components/todo section/page";
@@ -12,6 +13,9 @@ import TodoList from "@/components/todo section/page";
 =======
 import RecentActivity from "@/components/Admin Recent Activities/page";
 >>>>>>> c6afcf7 (recent activity)
+=======
+import TodoList from "@/components/TodoList/page";
+>>>>>>> 4242a79 (fixed formatting + file names)
 
 export default function Home() {
   return (
