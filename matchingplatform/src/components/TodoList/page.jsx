@@ -14,33 +14,28 @@ export default function TodoList() {
 
 
   return (
-    <>
     <div>
-      <h1>
-        To do
-      </h1>
+      <h1>To do</h1>
       <h2>
-
-      <ul>
-        {todos.map(todo => (
-          <li key={todo.id}>
-            <div>
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={() => toggle(todo.id)}
-              />
-              {' '}
-              {todo.completed ? <s>{todo.text}</s> : todo.text}
-            </div>
-            <p>{todo.decription}</p>
-            <p>{todo.duedate}</p>
-          </li>
-        ))}
-      </ul>
+        <ul>
+          {todos.map(todo => (
+            <li key={todo.id}>
+              <div>
+                <input
+                  type="checkbox"
+                  checked={todo.completed}
+                  onChange={() => toggle(todo.id)}
+                />
+                {' '}
+                {todo.completed ? <s>{todo.text}</s> : todo.text}
+              </div>
+              <p>{todo.decription}</p>
+              <p>{todo.duedate}</p>
+            </li>
+          ))}
+        </ul>
       </h2>
     </div>
-    </>
   );
 }
 
