@@ -1,6 +1,6 @@
-import StatsCard from '/components/StatsCard/StatsCard';
-import ActivityFeed from './components/ActivityFeed/ActivityFeed';
-import PersonRow from './components/PersonRow/PersonRow';
+import StatsCard from './StatsCard/StatsCard';
+import ActivityFeed from './ActivityFeed/ActivityFeed';
+import PersonRow from './PersonRow/PersonRow';
 
 
 const stats = [
@@ -54,7 +54,7 @@ function AdminPage() {
                     {/* Aspiring Professionals */}
                     <div className = "roster-column">
                         <h3>Aspiring Professionals</h3>
-                        {aspiringProfessionals.map((person, index) => {
+                        {aspiringProfessionals.map((person, index) => (
                             <PersonRow
                             key={index}
                             name={person.name}
@@ -62,13 +62,13 @@ function AdminPage() {
                             university={person.university}
                             isMatched = {person.isMatched}
                             />
-                        })}
+                        ))}
                     </div>
 
                     {/* Established Professionals */}
                     <div className = "roster-column">
                         <h3>Established Professionals</h3>
-                        {establishedProfessionals.map((person, index) => {
+                        {establishedProfessionals.map((person, index) => (
                             <PersonRow
                             key={index}
                             name={person.name}
@@ -76,7 +76,7 @@ function AdminPage() {
                             university = {person.university}
                             isMatched = {person.isMatched}
                             />
-                        })}
+                        ))}
                     </div>
                 </div>
             </main>
