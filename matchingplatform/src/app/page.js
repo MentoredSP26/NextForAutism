@@ -1,5 +1,5 @@
-import WeeklyMaterials from "@/components/WeeklyMaterials/WeeklyMaterials";
 import EstablishedDashboard from "./established/page";
+import styles from "./page.module.css";
 
 export default function Home() {
   return (
