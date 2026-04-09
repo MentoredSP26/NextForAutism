@@ -1,3 +1,5 @@
+import "./styles.css";
+
 function PersonRow({name, major, university, isMatched}) {
     const initials = name
         .split(" ")
