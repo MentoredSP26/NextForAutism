@@ -7,7 +7,7 @@ function NavBar(props) {
     return (
         <div className="navBar">
             <div className="nav-top">
-                <img className="nav-logo" alt="Next for Autism Logo" src="matchingplatform/public/next-for-autism-logo.svg"></img>
+                <img className="nav-logo" alt="Next for Autism Logo" src="matchingplatform/public/next-for-autism-logo.svg"/>
                 <h1 className="nav-profile">{profile} Portal</h1>
             </div>
             <nav className="navBar-buttons">
