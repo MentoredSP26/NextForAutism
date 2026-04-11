@@ -1,0 +1,57 @@
+.materials-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 2%;
+    gap: 1%;
+
+}
+
+.material-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: solid lightgray;
+    border-radius: 20px;
+    padding: 4%;   
+}
+
+.material-box-w-meeting {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: solid lightgray;
+    border-radius: 20px;
+    padding: 4%;   
+}
+
+.material-description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.description-logo {
+    display: flex;
+    gap: 2%;
+    align-items: center;
+    border: solid lightgray;
+    border-radius: 20px;
+    padding: 3%;
+}
+
+.week-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.week-bar-w-meeting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-sizing {
+    width: 20px;
+    height: 20px;
+}

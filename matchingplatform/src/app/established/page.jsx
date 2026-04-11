@@ -7,9 +7,8 @@ export default function EstablishedDashboard() {
             <div>
                 <div className='materials-header'>
                     <h1>Weekly Learning Materials</h1>
-                    <button>View Past Materials</button>
                 </div>
-                <p>Your curated learning path organized by week</p>
+                <p><b>Your curated learning path organized by week</b></p>
             </div>
 
             <br></br>    
