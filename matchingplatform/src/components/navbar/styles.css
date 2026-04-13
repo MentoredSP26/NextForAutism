@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+body {
+    font-family: 'DM Sans', sans-serif;
+}
+/* 
+.navBar {
+    background-color: #041E42;
+    position: fixed;
+    margin-top: 0;
+    margin-left: 0;
+    margin-bottom: 0;
+    height: 100%;
+    width: 15%;
+}
+
+.navBar-buttons {
+    display: flex;
+    background-color: #041E42;
+    padding-top: 12px;
+    border-top: solid thin;
+    border-color: #9CA3AF;
+    gap: 3px;
+}
+
+.nav-top {
+    display: grid;
+    background-color: #041E42;
+    gap: 3px;
+    justify-content: center;
+}
+
+.nav-profile {
+    display: flex;
+    background-color: #041E42;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    width: 192px;
+}
+
+.navBar-bottom {
+    display: flex;
+    margin-bottom: 0px;
+    align-items: end;
+} */
+
+/* SimpleSidebar */
+
+/* Auto layout */
+.navBar {
+        /* SimpleSidebar */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 0px 3.8147e-05px;
+    position: fixed;
+    width: 192px;
+    height: 100vh;
+
+    background: #041E42;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.nav-top {
+    box-sizing: border-box;
+
+    width: 192px;
+    height: 150.75px;
+
+    border-bottom: 1.33333px solid rgba(255, 255, 255, 0.1);
+    background: #041E42;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.logo {
+        /* NextForAutismLogo */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: absolute;
+    width: 128px;
+    height: 89.42px;
+    left: 16px;
+    top: 16px;
+}
+
+.nav-profile {
+        /* Paragraph */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: absolute;
+    width: 160px;
+    height: 16px;
+    left: 16px;
+    top: 117.42px;
+    /* Aspiring Prof Portal */
+
+    width: 160px;
+    height: 16px;
+
+    /* font-family: 'DM Sans';
+    font-style: normal; */
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    /* identical to box height, or 133% */
+
+    color: rgba(255, 255, 255, 0.7);
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+
+}
+
+.navBar-buttons {
+        /* Navigation */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 0px 0px;
+
+    width: 192px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.navBar-bottom {
+        /* Container */
+
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 13.3334px 12px 0px;
+
+    width: 192px;
+    height: 57.33px;
+
+    border-top: 1.33333px solid rgba(255, 255, 255, 0.1);
+
+    /* Inside auto layout */
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    margin-top: auto;
+}
+
+.bottom-content {
+        /* Container */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+
+    width: 168px;
+    height: 32px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.nav-profile-circle {
+        /* Container */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+    width: 32px;
+    height: 32px;
+
+    background: #CB333B;
+    border-radius: 4.47392e+07px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.user-text {
+        /* Container */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    width: 91.29px;
+    height: 32px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.user-name {
+        /* Paragraph */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+
+    width: 91.29px;
+    height: 16px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.user-email {
+        /* Paragraph */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+
+    width: 91.29px;
+    height: 16px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+
+}
