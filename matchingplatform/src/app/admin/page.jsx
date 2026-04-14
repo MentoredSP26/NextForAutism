@@ -1,7 +1,14 @@
-import ActivityFeed from './components/ActivityFeed/ActivityFeed';
-import PersonRow from './components/PersonRow/PersonRow';
-import StatsCard from './components/StatsCard/StatsCard';
+import ActivityFeed from '../../components/ActivityFeed/ActivityFeed';
+import PersonRow from '../../components/PersonRow/PersonRow';
+import StatsCard from '../../components/StatsCard/StatsCard';
+import NavBar from '../../components/navbar/page';
 import './styles.css';
+
+const navButtons = [
+    { page: "Dashboard", path: "/admin", icon: "📊" },
+    { page: "Matching", path: "/matching", icon: "🤝" },
+    { page: "Admin Profile", path: "/admin-profile", icon: "👤" },
+];
 
 const stats = [
     { icon: "👥", label: "Total Aspiring", value: "9" },
@@ -24,57 +31,63 @@ const establishedProfessionals = [
     { name: "Bob Smith", major: "Software Engineering", university: "Tech Company X", isMatched: true },
     { name: "Frank Miller", major: "Marketing", university: "Company Y", isMatched: false },
 ];
+
 function AdminPage() {
     return (
-        <div className = "admin-page">
-            <main className = "admin-main-content">
-                {/* Page */}
-                <div className = "admin-page-header">
+        <div className="admin-page">
+            <NavBar
+                buttons={navButtons}
+                profile="Admin"
+                user="Admin User"
+                email="admin@next.org"
+            />
+            <main className="admin-main-content">
+                <div className="admin-page-header">
                     <h1>Dashboard Overview</h1>
-                    <p>{new Date().toLocaleDateString()}</p>
+                    <p>{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
                 </div>
-                {/* Stats row */}
-                <div className = "stats-row">
+                <div className="stats-row">
                     {stats.map((stat, index) => (
-                        <StatsCard 
-                        key={index}
-                        icon={stat.icon}
-                        label={stat.label}
-                        value={stat.value}
+                        <StatsCard
+                            key={index}
+                            icon={stat.icon}
+                            label={stat.label}
+                            value={stat.value}
                         />
                     ))}
                 </div>
-                {/* Recent Activity */}
-                <div className = "roster-section">
-                    {/* Aspiring Professionals */}
-                    <div className = "roster-column">
+                <div className="roster-section">
+                    <div className="roster-column">
                         <h3>Aspiring Professionals</h3>
                         {aspiringProfessionals.map((person, index) => (
                             <PersonRow
-                            key={index}
-                            name={person.name}
-                            major = {person.major}
-                            university={person.university}
-                            isMatched = {person.isMatched}
+                                key={index}
+                                name={person.name}
+                                major={person.major}
+                                university={person.university}
+                                isMatched={person.isMatched}
                             />
                         ))}
                     </div>
-                    {/* Established Professionals */}
-                    <div className = "roster-column">
+                    <div className="roster-column">
                         <h3>Established Professionals</h3>
                         {establishedProfessionals.map((person, index) => (
                             <PersonRow
-                            key={index}
-                            name={person.name}
-                            major = {person.major}
-                            university = {person.university}
-                            isMatched = {person.isMatched}
+                                key={index}
+                                name={person.name}
+                                major={person.major}
+                                university={person.university}
+                                isMatched={person.isMatched}
                             />
                         ))}
                     </div>
                 </div>
+                <div className="activity-feed-wrapper">
+                    <ActivityFeed activities={recentActivity} />
+                </div>
             </main>
-            </div>
+        </div>
     );
 }
+
 export default AdminPage;
