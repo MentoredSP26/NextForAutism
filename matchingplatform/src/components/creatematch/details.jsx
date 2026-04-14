@@ -1,15 +1,16 @@
+"use client";
 import React from "react";
+import './style.css';
 
-
-function Dropdown({ label, instruction, options }) {
+function Dropdown({label, instruction, options}) {
   return (
     <div>
       <div>
         <p>{instruction}</p>
       </div>
       <div>
-        <label htmlFor="dropdown">Choose {label} </label>
-        <select id="dropdown">
+        <select id="dropdown" defaultValue="">
+          <option value="" disabled hidden>{label}</option>
           {options.map((item) => (
             <option key={item} value={item}>
               {item}
@@ -21,9 +22,10 @@ function Dropdown({ label, instruction, options }) {
   );
 }
 
-function CreateMatch(){
+export default Dropdown;
+//function CreateMatch(){
     //<button onClick={() => RUN FUNCTION TO ACTUALLY MATCH)}>Create Match</button>
-}
+//}
 
 
 
