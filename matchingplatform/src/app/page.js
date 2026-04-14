@@ -7,7 +7,11 @@ import styles from "./page.module.css";
 import App from "./admin/page";
 =======
 import TodoList from "@/components/todo section/page";
+<<<<<<< HEAD
 >>>>>>> 5549557 (todo done)
+=======
+import RecentActivity from "@/components/Admin Recent Activities/page";
+>>>>>>> c6afcf7 (recent activity)
 
 export default function Home() {
   return (
@@ -18,6 +22,7 @@ export default function Home() {
 
 =======
     <p>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 import TodoList from "@/components/TodoList/page";
@@ -42,6 +47,9 @@ export default function Home() {
 >>>>>>> e86dfc5 (redo duedate)
 =======
       <TodoList />
+=======
+      <RecentActivity />
+>>>>>>> c6afcf7 (recent activity)
     </p>
     
 >>>>>>> 5549557 (todo done)
