@@ -4,14 +4,13 @@ export default function EstablishedDashboard() {
 
     return (
         <div className='materials-page'>
-            <div>
+            <div className="established-dashboard-header">
                 <div className='materials-header'>
                     <h1>Weekly Learning Materials</h1>
                 </div>
-                <p><b>Your curated learning path organized by week</b></p>
+                <p className='low-opacity-text'>Your curated learning path organized by week</p>
             </div>
 
-            <br></br>    
             <WeeklyMaterials/>
         </div>
     );

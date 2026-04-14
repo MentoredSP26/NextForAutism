@@ -9,17 +9,17 @@
 .material-box {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    border: solid lightgray;
+    gap: 1%;
+    border: 1px solid #ECECF0;
     border-radius: 20px;
-    padding: 4%;   
+    padding: 4%;
 }
 
 .material-box-w-meeting {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    border: solid lightgray;
+    gap: 1%;
+    border: 1px solid #ECECF0;
     border-radius: 20px;
     padding: 4%;   
 }
@@ -30,11 +30,15 @@
     gap: 10px;
 }
 
+.low-opacity-text {
+    opacity: 0.65;
+}
+
 .description-logo {
     display: flex;
     gap: 2%;
     align-items: center;
-    border: solid lightgray;
+    border: 1px solid #ECECF0;
     border-radius: 20px;
     padding: 3%;
 }
@@ -54,4 +58,24 @@
 .logo-sizing {
     width: 20px;
     height: 20px;
+}
+
+.established-dashboard-header {
+    padding: 1%;
+}
+
+h1 {
+    font-family: Inter, sans-serif;
+}
+
+h2 {
+    font-family: Inter, sans-serif;
+}
+
+p {
+    font-family: Inter, sans-serif;
+}
+
+a {
+    font-family: Inter, sans-serif;
 }

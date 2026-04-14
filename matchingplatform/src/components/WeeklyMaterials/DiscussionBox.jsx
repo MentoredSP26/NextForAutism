@@ -6,14 +6,14 @@ const DiscussionBox = ({week}) => {
     <div className='material-box-w-meeting'>
       
       <div className='week-bar-w-meeting'>
-        <p><b>Week {week.week}</b></p>
-        <a>Meeting Link</a>
-        <a href="mailto:example@domain.com">Reminder</a>
+        <h2><b>Week {week.week}</b></h2>
+        <a><img src="/video.png" alt = "bell icon" className='logo-sizing'></img></a>
+        <a href="mailto:example@domain.com"><img src="/belll.png" alt = "bell icon" className='logo-sizing'></img></a>
       </div>
 
       <div>
         <p><b>Subject: </b> {week.subject}</p>
-        <p>{week.description}</p>
+        <p className='low-opacity-text'>{week.description}</p>
       </div>
       
       <div className='material-description'>
