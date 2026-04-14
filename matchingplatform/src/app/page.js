@@ -12,11 +12,12 @@ export default function Home() {
 
 =======
 import TodoList from "@/components/todo section/page";
+import RecentActivity from "@/components/Admin Recent Activities/page";
 
 export default function Home() {
   return (
     <p>
-      <TodoList />
+      <RecentActivity />
     </p>
     
 >>>>>>> 1d27642 (todo done)
