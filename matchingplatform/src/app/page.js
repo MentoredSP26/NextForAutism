@@ -1,27 +1,13 @@
-import Dropdown from "../components/creatematch/details";
+
+import Image from "next/image";
+import styles from "./page.module.css";
+import App from "./admin/page";
 
 export default function Home() {
   return (
     <div>
-  <div className="top-container">
-    <Dropdown 
-      label="All Universities"
-      instruction="Filter by University"
-      options={["UC Berkeley", "Trees"]}
-    />
-  </div>
-  <div className="dropdown-container">
-    <Dropdown 
-      label="Choose aspiring professional"
-      instruction="Aspiring Professional"
-      options={["John William", "Pork Pig", "Ada Lovelace"]}
-    />
-    <Dropdown 
-      label="Choose established professional"
-      instruction="Established Professional"
-      options={["Jane Doe", "Bob Smith"]}
-    />
-  </div>
-</div>
+      <p>This is the home page (Next 4 Autism).</p>
+      <App />
+    </div>
   );
 }
