@@ -2,54 +2,6 @@
 body {
     font-family: 'DM Sans', sans-serif;
 }
-/* 
-.navBar {
-    background-color: #041E42;
-    position: fixed;
-    margin-top: 0;
-    margin-left: 0;
-    margin-bottom: 0;
-    height: 100%;
-    width: 15%;
-}
-
-.navBar-buttons {
-    display: flex;
-    background-color: #041E42;
-    padding-top: 12px;
-    border-top: solid thin;
-    border-color: #9CA3AF;
-    gap: 3px;
-}
-
-.nav-top {
-    display: grid;
-    background-color: #041E42;
-    gap: 3px;
-    justify-content: center;
-}
-
-.nav-profile {
-    display: flex;
-    background-color: #041E42;
-}
-
-.logo {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-    width: 192px;
-}
-
-.navBar-bottom {
-    display: flex;
-    margin-bottom: 0px;
-    align-items: end;
-} */
-
-/* SimpleSidebar */
-
-/* Auto layout */
 .navBar {
         /* SimpleSidebar */
 
