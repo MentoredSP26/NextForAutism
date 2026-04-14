@@ -6,7 +6,7 @@ import TodoList from "@/components/TodoList/page";
 export default function Home() {
   return (
     <p>
-      <RecentActivity />
+      <TodoList />
     </p>
     
   );
