@@ -40,7 +40,6 @@ export default function TodoList() {
       </ul>
       </h2>
     </div>
-    </>
   );
 }
 
