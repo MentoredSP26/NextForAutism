@@ -15,7 +15,7 @@ export default function TodoList() {
 
   return (
     <>
-    <div>
+    <div className='todo bar'>
       <h1>
         To do
       </h1>
@@ -34,7 +34,7 @@ export default function TodoList() {
               {todo.completed ? <s>{todo.text}</s> : todo.text}
             </div>
             <p>{todo.decription}</p>
-            <p>{todo.duedate}</p>
+            <p>Due {new Date().toLocaleDateString()}</p>
           </li>
         ))}
       </ul>
