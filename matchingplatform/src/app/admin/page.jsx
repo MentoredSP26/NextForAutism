@@ -5,9 +5,9 @@ import NavBar from '../../components/navbar/page';
 import './styles.css';
 
 const navButtons = [
-    { page: "Dashboard", path: "/admin", icon: "📊" },
-    { page: "Matching", path: "/matching", icon: "🤝" },
-    { page: "Admin Profile", path: "/admin-profile", icon: "👤" },
+    { page: "Dashboard", path: "/admin", icon: "/home.png" },
+    { page: "Matching", path: "/matching", icon: "/globe.svg" },
+    { page: "Admin Profile", path: "/admin-profile", icon: "/profile.png" },
 ];
 
 const stats = [
