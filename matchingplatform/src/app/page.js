@@ -9,6 +9,7 @@ import App from "./admin/page";
 =======
 import TodoList from "@/components/todo section/page";
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 5549557 (todo done)
 =======
 import RecentActivity from "@/components/Admin Recent Activities/page";
@@ -16,6 +17,9 @@ import RecentActivity from "@/components/Admin Recent Activities/page";
 =======
 import TodoList from "@/components/TodoList/page";
 >>>>>>> 4242a79 (fixed formatting + file names)
+=======
+import RecentActivity from "@/components/RecentActivity/page";
+>>>>>>> 8eadf2e (redo duedate)
 
 export default function Home() {
   return (
