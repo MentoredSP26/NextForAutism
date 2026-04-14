@@ -3,6 +3,10 @@ import './styles.css'
 import LearningBox from './LearningBox'
 import DiscussionBox from './DiscussionBox'
 
+// change font based on figma
+    //use google fonts, NFA styling doc, and color drop if neccesary
+    //some bolder,git  some lighter, sizing
+
 const weeks = [
     {   
         week: 1,
