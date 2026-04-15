@@ -1,33 +1,41 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function ProfilePic() {
-    const [selectedFile, setSelectedFile] = useState(null);
     const [preview, setPreview] = useState(null);
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file) {
-            setSelectedFile(file);
             setPreview(URL.createObjectURL(file));
         }
     };
 
     return (
-        <div>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
             {preview && (
                 <img
                     src={preview}
                     alt="Profile Preview"
-                    style={{ width: '150px', borderRadius: '50%' }}
+                    style={{
+                        width: "100px",
+                        height: "100px",
+                        borderRadius: "50%",
+                        objectFit: "cover"
+                    }}
                 />
             )}
-            <input
-                type="file"
-                accept="image/png, image/jpeg"
-                onChange={handleFileChange}
-            />
+
+            <label style={{ cursor: "pointer", color: "black" }}>
+                Upload Photo
+                <input
+                    type="file"
+                    accept="image/png, image/jpeg"
+                    onChange={handleFileChange}
+                    style={{ display: "none" }}
+                />
+            </label>
         </div>
     );
 }

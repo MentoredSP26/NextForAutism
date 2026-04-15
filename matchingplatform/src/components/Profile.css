@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Montserrat:wght@400;600&display=swap');
+
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: solid lightgray;
+    border-radius: 20px;
+    padding: 1%;  
+    background-color: #ffffff; 
+}
+
+.side {
+    display: flex;
+}
+
+.greySide {
+  display: flex;
+  gap: 5px;
+}
+
+.grey {
+  display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: solid lightgray;
+    border-radius: 20px;
+    padding: 1%;  
+    background-color: gray; 
+}
+
+.profile {
+  font-family: 'Montserrat', sans-serif;
+  color: black;
+}
+
+.profile h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.profile h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.profile h3,
+.profile h4,
+.profile h5,
+.profile p {
+  font-size: 1rem;
+  margin: 0.3rem 0;
+}
+
+.Row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+}
