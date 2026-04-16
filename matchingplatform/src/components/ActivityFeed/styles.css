@@ -1,0 +1,62 @@
+.activity-feed {
+    background-color: #ffffff; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 16px; 
+    overflow: hidden; 
+}
+
+.activity-feed-item {
+    display: flex; 
+    align-items: flex-start; 
+    justify-content: space-between; 
+    gap: 16px; 
+    padding: 12px 0; 
+    border-bottom: 1px solid #f0f0f0; 
+}
+
+.activity-item {
+    padding-bottom: 4px;
+}
+
+.activity-feed-title {
+   font-family: 'Montserrat', sans-serif; 
+    font-size: 15px; 
+    font-weight: 700; 
+    color: #ffffff; 
+    background-color: #041e42;
+    padding: 14px 20px; 
+    margin: 0; 
+    border-left: 4px solid #cb333b;  
+}
+
+.activity-feed-action {
+    font-family: 'DM Sans', sans-serif; 
+    font-size: 13px; 
+    font-weight: 600; 
+    color: #041e42; 
+    margin: 0;
+    padding-left: 8px;
+    padding-top: 8px;
+}
+
+.activity-feed-time {
+    font-family: 'DM Sans', sans-serif; 
+    font-size: 12px; 
+    font-weight: 400; 
+    color: #9099a6; 
+    margin: 0; 
+    white-space: nowrap; 
+    padding-left: 16px;
+
+
+}
+.activity-feed-user {
+    font-family: 'DM Sans', sans-serif; 
+    font-size: 12px; 
+    font-weight: 400; 
+    color: #536077; 
+    margin: 0; 
+    padding-left: 16px;
+    padding-top: 4px;
+
+}
