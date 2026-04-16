@@ -1,0 +1,36 @@
+/* TODO: import font, make it so that text wraps towards next line */
+
+/* @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+* {
+    font-family: 'DM Sans', sans-serif;
+} */
+.wholeentirefullboxmegabooleanintfloatstrdoublelongsubwaychickenbaconranchmeltwithextraolives{
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    overflow: hidden;
+    width: fit-content;
+    border: 1.5px solid gray;
+    
+    font-family:'Times New Roman', Times, serif;
+    font-style: normal;
+    
+}
+
+.bluebackground{
+    background-color: #041e42;
+    color: white;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 500;
+
+}
+
+.whitebackground{
+    background-color: whitesmoke;
+    color: black;
+    padding: 10px;
+    font-size: 7px;
+    font-weight: 200;
+}
+
