@@ -19,8 +19,8 @@ function ProfilePic() {
                     src={preview}
                     alt="Profile Preview"
                     style={{
-                        width: "100px",
-                        height: "100px",
+                        width: "80px",
+                        height: "80px",
                         borderRadius: "50%",
                         objectFit: "cover"
                     }}
