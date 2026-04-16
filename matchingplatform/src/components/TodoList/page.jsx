@@ -1,4 +1,5 @@
 "use client";
+import styles from './style.css';
 import { useState } from 'react';
 import { initialTodos } from './todos.js';
 
@@ -24,30 +25,28 @@ export default function TodoList() {
 
 
   return (
-    <div className='todo bar'>
-      <h1>
+    <div className='todobar'>
+      <h1 className='header'>
         To do
       </h1>
-      <h2>
 
-      <ul>
+      <ul className='dashboard'>
         {todos.map(todo => (
-          <li key={todo.id}>
-            <div>
+          <ul key={todo.id}>
+            <div className='intro p'>
               <input
                 type="checkbox"
                 checked={todo.completed}
                 onChange={() => toggle(todo.id)}
               />
-              {' '}
               {todo.completed ? <s>{todo.text}</s> : todo.text}
             </div>
-            <p>{todo.decription}</p>
-            <p>Due in {getDaysUntil(todo.duedate)} day</p>
-          </li>
+            <div className='description'>{todo.decription}</div>
+            <div className='due style'>Due in {getDaysUntil(todo.duedate)} day</div>
+            
+          </ul>
         ))}
       </ul>
-      </h2>
     </div>
   );
 }
