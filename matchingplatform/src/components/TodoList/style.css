@@ -2,7 +2,10 @@
 .todobar {
     font-family: 'DM Sans', sans-serif;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9376915 (fix styling)
 .header{
   /* CardHeader */
 
@@ -48,6 +51,62 @@
   padding: 120px 60px;
 }
 
+<<<<<<< HEAD
+=======
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 24px;
+}
+
+.intro h1 {
+  max-width: 320px;
+  font-size: 40px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  line-height: 48px;
+  letter-spacing: -2.4px;
+  text-wrap: balance;
+  color: var(--text-primary);
+}
+
+.intro p {
+/* Assignment Week 5 */
+
+font-family: 'DM Sans';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 20px;
+/* identical to box height, or 143% */
+
+color: #00263E;
+}
+.description{
+  /* Assignment Description */
+
+width: 232px;
+height: 16px;
+
+font-family: 'DM Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 16px;
+/* identical to box height, or 133% */
+
+color: #6A7282;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+}
+>>>>>>> 9376915 (fix styling)
 .dashboard{
   /* SimpleDashboard */
 
@@ -59,6 +118,7 @@ top: 95.33px;
 
 
 }
+<<<<<<< HEAD
 
 .todobar {
   max-width: 700px;
@@ -121,4 +181,119 @@ top: 95.33px;
 
 input[type="checkbox"] {
   transform: scale(1.25);
+=======
+.intro a {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.due style {
+  /* max-width: 440px;
+  font-size: 18px;
+  line-height: 32px;
+  text-wrap: balance;
+  text-align: right;
+  color: var(--text-secondary); */
+  /* Due in 16 days */
+
+  width: 82px;
+  height: 16px;
+
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 12px;
+  /* identical to box height, or 133% */
+
+  color: #99A1AF;
+
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+
+  
+}
+
+.ctas {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 440px;
+  gap: 16px;
+  font-size: 14px;
+}
+
+.ctas a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 128px;
+  border: 1px solid transparent;
+  transition: 0.2s;
+  cursor: pointer;
+  width: fit-content;
+  font-weight: 500;
+}
+
+a.primary {
+  background: var(--text-primary);
+  color: var(--background);
+  gap: 8px;
+}
+
+a.secondary {
+  border-color: var(--button-secondary-border);
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  a.primary:hover {
+    background: var(--button-primary-hover);
+    border-color: transparent;
+  }
+
+  a.secondary:hover {
+    background: var(--button-secondary-hover);
+    border-color: transparent;
+  }
+}
+
+@media (max-width: 600px) {
+  .main {
+    padding: 48px 24px;
+  }
+
+  .intro {
+    gap: 16px;
+  }
+
+  .intro h1 {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -1.92px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo {
+    filter: invert();
+  }
+
+  .page {
+    --background: #000;
+    --foreground: #000;
+
+    --text-primary: #ededed;
+    --text-secondary: #999;
+
+    --button-primary-hover: #ccc;
+    --button-secondary-hover: #1a1a1a;
+    --button-secondary-border: #1a1a1a;
+  }
+>>>>>>> 9376915 (fix styling)
 }

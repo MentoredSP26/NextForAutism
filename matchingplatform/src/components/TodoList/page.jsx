@@ -1,4 +1,5 @@
 "use client";
+import styles from './style.css';
 import { useState } from 'react';
 import { initialTodos } from './todos.js';
 
@@ -25,33 +26,38 @@ export default function TodoList() {
 
   return (
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:matchingplatform/src/components/todo section/page.jsx
     <>
 =======
 >>>>>>> 8eadf2e (redo duedate)
     <div className='todo bar'>
       <h1>
+=======
+    <div className='todobar'>
+      <h1 className='header'>
+>>>>>>> 9376915 (fix styling)
         To do
       </h1>
-      <h2>
 
-      <ul>
+      <ul className='dashboard'>
         {todos.map(todo => (
-          <li key={todo.id}>
-            <div>
+          <ul key={todo.id}>
+            <div className='intro p'>
               <input
                 type="checkbox"
                 checked={todo.completed}
                 onChange={() => toggle(todo.id)}
               />
-              {' '}
               {todo.completed ? <s>{todo.text}</s> : todo.text}
             </div>
-            <p>{todo.decription}</p>
-            <p>Due in {getDaysUntil(todo.duedate)} day</p>
-          </li>
+            <div className='description'>{todo.decription}</div>
+            <div className='due style'>Due in {getDaysUntil(todo.duedate)} day</div>
+            
+          </ul>
         ))}
       </ul>
+<<<<<<< HEAD
 =======
     <div>
       <h1>To do</h1>
@@ -75,6 +81,8 @@ export default function TodoList() {
         </ul>
 >>>>>>> 4242a79 (fixed formatting + file names):matchingplatform/src/components/TodoList/page.jsx
       </h2>
+=======
+>>>>>>> 9376915 (fix styling)
     </div>
   );
 }

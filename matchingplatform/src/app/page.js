@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import App from "./admin/page";
 =======
 import TodoList from "@/components/todo section/page";
@@ -18,11 +19,15 @@ import RecentActivity from "@/components/Admin Recent Activities/page";
 import TodoList from "@/components/TodoList/page";
 >>>>>>> 4242a79 (fixed formatting + file names)
 =======
+=======
+import TodoList from "@/components/TodoList/page";
+>>>>>>> 9376915 (fix styling)
 import RecentActivity from "@/components/RecentActivity/page";
 >>>>>>> 8eadf2e (redo duedate)
 
 export default function Home() {
   return (
+<<<<<<< HEAD
 <<<<<<< HEAD
     <div>
       <App />
@@ -59,6 +64,11 @@ export default function Home() {
       <RecentActivity />
 >>>>>>> c6afcf7 (recent activity)
     </p>
+=======
+    <div>
+      <TodoList />
+    </div>
+>>>>>>> 9376915 (fix styling)
     
 >>>>>>> 5549557 (todo done)
   );
