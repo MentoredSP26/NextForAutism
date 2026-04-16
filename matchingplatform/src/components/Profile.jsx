@@ -3,10 +3,7 @@
 import React, { useState } from 'react';
 import ProfilePic from "@/components/ProfilePic";
 import './Profile.css';
-import email from "../assets/emailIcon.png";
-import Loc from "../assets/LocIcon.png";
-import Cal from "../assets/CalIcon.png";
-import Car from "../assets/CarIcon.png";
+// 
 
 
 function Profile() {
@@ -27,20 +24,20 @@ function Profile() {
                 </div>
                 <h4>
                     <div className="Row">
-                        <img src={email} alt="email icon" className="icon" />
+                        <img src="/EmailIcon.png"alt="email icon" className="icon" />
                         <div>sarah.johnson@email.com</div>
                     </div>
                     <div className="Row">
-                        <img src={Loc} alt="Loc icon" className="icon" />
+                        <img src="/LocIcon.png" alt="Loc icon" className="icon" />
                         <div>New York, NY</div>
                     </div>
                     <div className="Row">
-                        <img src={Cal} alt="Cal icon" className="icon" />
+                        <img src="/CalIcon.png"alt="Cal icon" className="icon" />
                         <div>Joined January 2026</div>
                     </div>
                 </h4>
                 <h5 className="Row">
-                    <img src={Car} alt="Car icon" className="icon" />
+                    <img src="/CarIcon.png" alt="Car icon" className="icon" />
                     <div>Career Goals</div>
                 </h5>
                 <h6>Seeking to build a career in accessible technology design and development</h6>
