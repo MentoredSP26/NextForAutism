@@ -14,6 +14,10 @@
     border-bottom: 1px solid #f0f0f0; 
 }
 
+.activity-item {
+    padding-bottom: 4px;
+}
+
 .activity-feed-title {
    font-family: 'Montserrat', sans-serif; 
     font-size: 15px; 
@@ -30,7 +34,9 @@
     font-size: 13px; 
     font-weight: 600; 
     color: #041e42; 
-    margin: 0; 
+    margin: 0;
+    padding-left: 8px;
+    padding-top: 8px;
 }
 
 .activity-feed-time {
@@ -40,6 +46,8 @@
     color: #9099a6; 
     margin: 0; 
     white-space: nowrap; 
+    padding-left: 16px;
+
 
 }
 .activity-feed-user {
@@ -48,4 +56,7 @@
     font-weight: 400; 
     color: #536077; 
     margin: 0; 
+    padding-left: 16px;
+    padding-top: 4px;
+
 }
