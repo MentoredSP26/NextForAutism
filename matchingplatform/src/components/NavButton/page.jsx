@@ -35,4 +35,4 @@ function NavButton({ page, path, icon }) {
     )
 }
 
-export default NavButton
+export default NavButton;

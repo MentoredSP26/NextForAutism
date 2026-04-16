@@ -1,13 +1,14 @@
+'use client';
 import NavButton from '../NavButton/page';
 import './styles.css';
 
 function NavBar(props) {
     const buttons = props.buttons;
     const profile = props.profile;
-    
+
     return (
         <div className="navBar">
-            
+
             <div className="nav-top">
                 <img className="logo" alt="Next for Autism Logo" src="logo.png"/>
                 <span className="nav-profile">{profile} Portal</span>
@@ -31,7 +32,7 @@ function NavBar(props) {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default NavBar
+export default NavBar;
