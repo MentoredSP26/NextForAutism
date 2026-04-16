@@ -1,4 +1,4 @@
-import WeeklyMaterials from "@/components/WeeklyMaterials/WeeklyMaterials";
+import WeeklyMaterials from "../../components/WeeklyMaterials/WeeklyMaterials";
 
 export default function EstablishedDashboard() {
 
@@ -11,7 +11,7 @@ export default function EstablishedDashboard() {
                 <p className='low-opacity-text'>Your curated learning path organized by week</p>
             </div>
 
-            <WeeklyMaterials/>
+            <WeeklyMaterials />
         </div>
     );
 }
