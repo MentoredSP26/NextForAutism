@@ -1,9 +1,7 @@
 /* TODO: import font, make it so that text wraps towards next line */
 
-/* @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-* {
-    font-family: 'DM Sans', sans-serif;
-} */
+@import url("https://use.typekit.net/tub4ocm.css");
+
 .wholeentirefullboxmegabooleanintfloatstrdoublelongsubwaychickenbaconranchmeltwithextraolives{
     display: flex;
     flex-direction: column;
@@ -12,7 +10,7 @@
     width: fit-content;
     border: 1.5px solid gray;
     
-    font-family:'Times New Roman', Times, serif;
+    font-family: proxima-nova, sans-serif;
     font-style: normal;
     
 }
