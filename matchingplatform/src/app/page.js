@@ -7,8 +7,10 @@ import TodoList from "../components/TodoList/TodoList.jsx"
 export default function Home() {
   return (
     <div>
+      <p>This is the home page (Next 4 Autism).</p>
+      {/* <App /> */}
       <TodoList />
     </div>
-
+    
   );
 }
