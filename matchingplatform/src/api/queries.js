@@ -1,4 +1,6 @@
-import { supabase } from './supabase';
+import { createClient } from "./createClient";
+
+const supabase = createClient();
 
 // a) Get users by role type
 export async function getUsersByRole(role) {
