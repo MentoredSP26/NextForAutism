@@ -2,6 +2,7 @@
 import './style.css';
 import { useState } from 'react';
 import { initialTodos } from './todos.js';
+import ContainerBox from '../ContainerBox/page';
 
 export default function TodoList() {
   const [todos, setTodos] = useState(initialTodos);
@@ -25,34 +26,34 @@ export default function TodoList() {
 
 
   return (
-    <div className='todobar'>
-      <h1 className='header'>To do</h1>
+    <div>
+      <ContainerBox header={<h1>To-do</h1>} body={
+        <ul>
+          {todos.map(todo => (
+            <li key={todo.id} className="todo-row">  
+              
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => toggle(todo.id)}
+              />
 
-      <ul className='dashboard'>
-        {todos.map(todo => (
-          <li key={todo.id} className="todo-row">  
-             
-             <input
-              type="checkbox"
-              checked={todo.completed}
-               onChange={() => toggle(todo.id)}
-            />
-
-            <div className="text-block">
-              <div className="title">
-                {todo.completed ? <s>{todo.text}</s> : todo.text}
+              <div className="text-block">
+                <div className="title">
+                  {todo.completed ? <s>{todo.text}</s> : todo.text}
+                </div>
+                <div className="description">{todo.decription}</div>
+              
               </div>
-              <div className="description">{todo.decription}</div>
-            
-            </div>
 
-            <div className="due">
-              Due in {getDaysUntil(todo.duedate)} days
-            </div>
-            
-           </li>
-         ))}
-       </ul>
+              <div className="due">
+                Due in {getDaysUntil(todo.duedate)} days
+              </div>
+              
+            </li>
+          ))}
+        </ul>
+      } width='40vw'/>
     </div>
   );
 }

@@ -1,82 +1,14 @@
 "use client"
 import Image from "next/image";
 import styles from "./page.module.css";
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import App from "./admin/page";
-<<<<<<< HEAD
-=======
-import TodoList from "@/components/todo section/page";
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 5549557 (todo done)
-=======
-import RecentActivity from "@/components/Admin Recent Activities/page";
->>>>>>> c6afcf7 (recent activity)
-=======
-import TodoList from "@/components/TodoList/page";
->>>>>>> 4242a79 (fixed formatting + file names)
-=======
-=======
-import TodoList from "@/components/TodoList/page";
->>>>>>> 9376915 (fix styling)
-import RecentActivity from "@/components/RecentActivity/page";
->>>>>>> 8eadf2e (redo duedate)
-
-export default function Home() {
-  return (
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <div>
-      <App />
-    </div>
-
-=======
-    <p>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import TodoList from "@/components/TodoList/page";
-import RecentActivity from "@/components/RecentActivity/page";
-=======
-import App from "./admin/page";
-import TodoList from "../components/TodoList/TodoList";
->>>>>>> 4e3a922 (wip, styling todo)
-=======
-import TodoList from "../components/TodoList/TodoList";
->>>>>>> e7f8473 (wip, styling todo)
+import TodoList from "../components/TodoList/TodoList.jsx"
 
 export default function Home() {
   return (
     <div>
-<<<<<<< HEAD
->>>>>>> 78783ec (fix styling)
-=======
-      <p>This is the home page (Next 4 Autism).</p>
-      {/* <App /> */}
-<<<<<<< HEAD
->>>>>>> 4e3a922 (wip, styling todo)
-=======
->>>>>>> e7f8473 (wip, styling todo)
       <TodoList />
     </div>
-    
->>>>>>> e86dfc5 (redo duedate)
-=======
-      <TodoList />
-=======
-      <RecentActivity />
->>>>>>> c6afcf7 (recent activity)
-    </p>
-=======
-    <div>
-      <TodoList />
-    </div>
->>>>>>> 9376915 (fix styling)
-    
->>>>>>> 5549557 (todo done)
+
   );
 }

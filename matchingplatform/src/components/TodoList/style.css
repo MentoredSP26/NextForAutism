@@ -2,14 +2,6 @@
 .todobar {
     font-family: 'DM Sans', sans-serif;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 9376915 (fix styling)
-=======
-
->>>>>>> e7f8473 (wip, styling todo)
 .header{
   /* CardHeader */
 
@@ -55,86 +47,12 @@
   padding: 120px 60px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
-}
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
-}
-
-.intro p {
-/* Assignment Week 5 */
-
-font-family: 'DM Sans';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 20px;
-/* identical to box height, or 143% */
-
-color: #00263E;
-}
-.description{
-  /* Assignment Description */
-
-width: 232px;
-height: 16px;
-
-font-family: 'DM Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 16px;
-/* identical to box height, or 133% */
-
-color: #6A7282;
-
-
-/* Inside auto layout */
-flex: none;
-order: 0;
-flex-grow: 1;
-
-}
->>>>>>> 9376915 (fix styling)
-=======
->>>>>>> e7f8473 (wip, styling todo)
-.dashboard{
-  /* SimpleDashboard */
-
-position: absolute;
-width: 714.67px;
-height: 178px;
-left: 17.33px;
-top: 95.33px;
-
-
-}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> e7f8473 (wip, styling todo)
 
 .todobar {
   max-width: 700px;
   margin: 40px auto;
   font-family: 'DM Sans', sans-serif;
-<<<<<<< HEAD
 }
 
 .header {
@@ -192,87 +110,4 @@ top: 95.33px;
 
 input[type="checkbox"] {
   transform: scale(1.25);
-=======
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-=======
->>>>>>> e7f8473 (wip, styling todo)
-}
-
-.header {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #0f172a;
-  margin-left: 10px;
-}
-
-.dashboard {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.todo-row {
-  display: flex;
-  align-items: center;
-  padding: 16px 0;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.checkbox {
-  width: 18px;
-  height: 18px;
-  margin-right: 16px;
-  cursor: pointer;
-}
-
-.text-block {
-  display: flex;
-  flex-direction: column;
-  margin-left: 50px;
-}
-
-.title {
-  font-size: 18px;
-  font-weight: 600;
-  color: #0f2a44;
-}
-
-.description {
-  font-size: 14px;
-  color: #6b7280;
-  margin-top: 4px;
-  font-family: 'DM Sans', sans-serif;
-}
-
-.due {
-  margin-left: auto;
-  font-size: 14px;
-  color: #9ca3af;
-}
-
-<<<<<<< HEAD
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
->>>>>>> 9376915 (fix styling)
-=======
-input[type="checkbox"] {
-  transform: scale(1.25);
->>>>>>> e7f8473 (wip, styling todo)
 }
