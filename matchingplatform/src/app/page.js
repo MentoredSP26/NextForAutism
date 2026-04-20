@@ -2,6 +2,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import App from "./admin/page";
+import Profile from "../components/Profile/Profile";
 
 export default function Home() {
   return (

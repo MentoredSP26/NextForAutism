@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import ProfilePic from "@/components/ProfilePic";
+import ProfilePic from '../ProfilePic/ProfilePic';
 import './Profile.css';
 // 
 
