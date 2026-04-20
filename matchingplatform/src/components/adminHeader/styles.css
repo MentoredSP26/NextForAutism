@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+* {
+    font-family: 'DM Sans', sans-serif;
+}
+
+.admin-header-card {
+        /* Card */
+
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 0px 0px 24px;
+
+    width: 749.33px;
+    height: 161.33px;
+
+    background: #F2F2F2;
+    border: 1.33333px solid #E0E0E0;
+    border-radius: 16px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+
+}
+
+.inner-card {
+    /* AdminProfile */
+
+    width: 698.67px;
+    height: 110.67px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+
+}
+
+.admin-edit-profile {
+        /* Container */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: absolute;
+    width: 119.65px;
+    height: 32px;
+    left: 579.02px;
+    top: 0px;
+
+
+}
+
+.admin-edit-button {
+        /* Button */
+
+    box-sizing: border-box;
+
+    width: 119.65px;
+    height: 32px;
+
+    background: #FFFFFF;
+    border: 1.33333px solid #00263E;
+    border-radius: 14px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+    /* Edit Profile */
+
+    position: absolute;
+    width: 71px;
+    height: 20px;
+    left: 37.33px;
+    top: 6.33px;
+
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+    text-align: center;
+
+    color: #00263E;
+
+
+}
+
+.admin-content {
+    /* Container */
+
+position: absolute;
+width: 579.02px;
+height: 110.67px;
+left: 0px;
+top: 0px;
+
+
+}
+
+.admin-text-content {
+        /* Container */
+
+    position: absolute;
+    width: 887.35px;
+    height: 200.09px;
+    left: 175.23px;
+    top: 0px;
+}
+
+.admin-bio {
+        /* Paragraph */
+
+    position: absolute;
+    width: 887.35px;
+    height: 72.97px;
+    left: 0px;
+    top: 127.12px;
+}
+
+.admin-badge {
+        /* Container */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 14.59px;
+
+    position: absolute;
+    width: 887.35px;
+    height: 39.53px;
+    left: 0px;
+    top: 65.7px;
+}
+
+.admin-position {
+        /* Badge */
+
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 3.65103px 14.6041px;
+    gap: 7.3px;
+
+    width: 181.29px;
+    height: 39.53px;
+
+    background: #00263E;
+    border-radius: 14.6041px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    color: #4A5565;
+}
+
+.admin-name {
+
+    position: absolute;
+    width: 887.35px;
+    height: 58.4px;
+    left: 0px;
+    top: 0px;
+    /* Bob Chen */
+
+    position: absolute;
+    width: 226px;
+    height: 59px;
+    left: 0px;
+    top: -2.13px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 43.8123px;
+    line-height: 58px;
+    /* identical to box height, or 133% */
+
+    color: #00263E;
+
+
+
+}
