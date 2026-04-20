@@ -1,12 +1,12 @@
-import EstablishedDashboard from "./established/page";
+"use client"
+import Image from "next/image";
 import styles from "./page.module.css";
-import NavBar from '../components/NavBar/page';
-import ContainerBox from '../components/ContainerBox/page'
+import App from "./admin/page";
 
 export default function Home() {
   return (
     <div>
-      <EstablishedDashboard />
+      <App />
     </div>
 
   );

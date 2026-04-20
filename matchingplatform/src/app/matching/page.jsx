@@ -1,87 +1,109 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NavBar from '../../components/navbar/page';
+import { getSuggestedMatches, getActiveMatches, getAspiringProfessionals, getEstablishedProfessionals, approveMatch, rejectMatch, createManualMatch } from '../../lib/queries';
 import './styles.css';
 
 const navButtons = [
-    { page: "Dashboard", path: "/admin", icon: "/home.png"},
-    { page: "Matching", path: "/matching", icon: "/globe.svg"},
-    { page: "Admin Profile", path: "/admin-profile", icon: "/profile.png"},
+    { page: "Dashboard", path: "/admin", icon: "/home.png" },
+    { page: "Matching", path: "/matching", icon: "/globe.svg" },
+    { page: "Admin Profile", path: "/admin-profile", icon: "/profile.png" },
 ];
 
-const suggestedMatchesData = [
-    {
-        id: 1,
-        aspiring: { name: "Jordan Smith", field: "Business", university: "Graduate" },
-        established: { name: "Avery Davis", field: "Strategy", company: "JPM" },
-        compatibility: 90,
-        attributes: ["University", "Field", "Interests"],
-    },
-    {
-        id: 2,
-        aspiring: { name: "Riley Chen", field: "Engineering", university: "Caltech" },
-        established: { name: "Parker Johnson", field: "Engineering", company: "Apple" },
-        compatibility: 85,
-        attributes: ["University", "Field"],
-    },
-    {
-        id: 3,
-        aspiring: { name: "Casey Park", field: "Computer Science", university: "Stanford" },
-        established: { name: "Blair Brooks", field: "Computer Science", company: "Meta" },
-        compatibility: 80,
-        attributes: ["Field", "Interests"],
-    },
-    {
-        id: 4,
-        aspiring: { name: "Morgan Lee", field: "Psychology", university: "Cornell" },
-        established: { name: "Adrian Taylor", field: "Mentoring", company: "Deloitte" },
-        compatibility: 78,
-        attributes: ["Interests", "Goals", "Career Focus"],
-    },
-];
-
-const activeMatchesData = [
-    {
-        id: 1,
-        aspiring: { name: "Alex Thompson", field: "Aspiring Professional" },
-        established: { name: "Jordan Lee", field: "Established Professional" },
-        week: 3,
-        totalWeeks: 10,
-        progress: 37,
-        status: "New",
-    },
-    {
-        id: 2,
-        aspiring: { name: "Sam Rivera", field: "Aspiring Professional" },
-        established: { name: "Casey Martinez", field: "Established Professional" },
-        week: 5,
-        totalWeeks: 10,
-        progress: 56,
-        status: "On track",
-    },
-    {
-        id: 3,
-        aspiring: { name: "Taylor Kim", field: "Aspiring Professional" },
-        established: { name: "Morgan Chen", field: "Established Professional" },
-        week: 8,
-        totalWeeks: 10,
-        progress: 89,
-        status: "Excellent",
-    },
-];
-
-const universities = ["All Universities", "Stanford", "Caltech", "Cornell", "MIT", "Berkeley"];
+const ADMIN_ID = 'ad000000-0000-0000-0000-000000000001';
 
 function MatchingPage() {
-    const [selectedUniversity, setSelectedUniversity] = useState("All Universities");
-    const [suggestedMatches, setSuggestedMatches] = useState(suggestedMatchesData);
+    const [suggestedMatches, setSuggestedMatches] = useState([]);
+    const [activeMatchesData, setActiveMatchesData] = useState([]);
+    const [aspiringList, setAspiringList] = useState([]);
+    const [establishedList, setEstablishedList] = useState([]);
+    const [selectedAspiring, setSelectedAspiring] = useState('');
+    const [selectedEstablished, setSelectedEstablished] = useState('');
+    const [selectedUniversity, setSelectedUniversity] = useState('All Universities');
+    const [loading, setLoading] = useState(true);
 
-    const handleApprove = (id) => {
-        setSuggestedMatches(prev => prev.filter(m => m.id !== id));
+    async function fetchData() {
+        try {
+            const [suggested, active, aspiring, established] = await Promise.all([
+                getSuggestedMatches(),
+                getActiveMatches(),
+                getAspiringProfessionals(),
+                getEstablishedProfessionals(),
+            ]);
+
+            setSuggestedMatches(suggested.map((m, i) => ({
+                id: m.id,
+                number: i + 1,
+                aspiring: {
+                    name: m.aspiring?.full_name || '',
+                    field: m.aspiring?.aspiring_professionals?.[0]?.major || '',
+                    university: m.aspiring?.aspiring_professionals?.[0]?.university || '',
+                },
+                established: {
+                    name: m.established?.full_name || '',
+                    field: m.established?.established_professionals?.[0]?.field || '',
+                    company: m.established?.established_professionals?.[0]?.company || '',
+                },
+                compatibility: m.compatibility_score,
+                attributes: m.compatibility_attributes || [],
+            })));
+
+            setActiveMatchesData(active.map(m => {
+                const progress = m.total_weeks > 0 ? Math.round((m.current_week / m.total_weeks) * 100) : 0;
+                let status = 'New';
+                if (progress >= 70) status = 'Excellent';
+                else if (progress >= 40) status = 'On track';
+                return {
+                    id: m.id,
+                    aspiring: { name: m.aspiring?.full_name || '', field: 'Aspiring Professional' },
+                    established: { name: m.established?.full_name || '', field: 'Established Professional' },
+                    week: m.current_week,
+                    totalWeeks: m.total_weeks,
+                    progress,
+                    status,
+                };
+            }));
+
+            setAspiringList(aspiring.map(p => ({ id: p.id, name: p.full_name, university: p.aspiring_professionals?.[0]?.university || '' })));
+            setEstablishedList(established.map(p => ({ id: p.id, name: p.full_name })));
+        } catch (err) {
+            console.error('Failed to fetch matching data:', err);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    useEffect(() => { fetchData(); }, []);
+
+    const handleApprove = async (id) => {
+        try {
+            await approveMatch(id, ADMIN_ID);
+            setSuggestedMatches(prev => prev.filter(m => m.id !== id));
+            fetchData();
+        } catch (err) {
+            console.error('Failed to approve match:', err);
+        }
     };
 
-    const handleReject = (id) => {
-        setSuggestedMatches(prev => prev.filter(m => m.id !== id));
+    const handleReject = async (id) => {
+        try {
+            await rejectMatch(id);
+            setSuggestedMatches(prev => prev.filter(m => m.id !== id));
+        } catch (err) {
+            console.error('Failed to reject match:', err);
+        }
+    };
+
+    const handleCreateMatch = async () => {
+        if (!selectedAspiring || !selectedEstablished) return;
+        try {
+            await createManualMatch(selectedAspiring, selectedEstablished, ADMIN_ID);
+            setSelectedAspiring('');
+            setSelectedEstablished('');
+            fetchData();
+        } catch (err) {
+            console.error('Failed to create match:', err);
+        }
     };
 
     const getStatusClass = (status) => {
@@ -93,7 +115,13 @@ function MatchingPage() {
         }
     };
 
-    const getInitials = (name) => name.split(' ').map(w => w[0]).join('');
+    const getInitials = (name) => name ? name.split(' ').map(w => w[0]).join('') : '?';
+
+    const universities = ['All Universities', ...new Set(aspiringList.map(a => a.university).filter(Boolean))];
+
+    const filteredAspiring = selectedUniversity === 'All Universities'
+        ? aspiringList
+        : aspiringList.filter(a => a.university === selectedUniversity);
 
     return (
         <div className="matching-page">
@@ -104,7 +132,6 @@ function MatchingPage() {
                 email="admin@next.org"
             />
             <main className="matching-main-content">
-                {/* Header */}
                 <div className="matching-header">
                     <h1>Matching</h1>
                     <p>{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
@@ -119,9 +146,11 @@ function MatchingPage() {
                     <p className="section-subtitle">AI-generated mentee pairings awaiting your approval — based on field, university, and shared interests.</p>
 
                     <div className="suggested-matches-list">
-                        {suggestedMatches.map((match) => (
+                        {loading ? <p style={{padding: '12px', color: '#536077'}}>Loading...</p> :
+                            suggestedMatches.length === 0 ? <p style={{padding: '12px', color: '#536077'}}>No suggested matches.</p> :
+                            suggestedMatches.map((match) => (
                             <div className="suggested-match-row" key={match.id}>
-                                <span className="match-number">{match.id}</span>
+                                <span className="match-number">{match.number}</span>
 
                                 <div className="match-person">
                                     <div className="match-avatar aspiring-avatar">
@@ -170,7 +199,9 @@ function MatchingPage() {
                     <p className="section-subtitle">Click any match to view curriculum progress.</p>
 
                     <div className="active-matches-list">
-                        {activeMatchesData.map((match) => (
+                        {loading ? <p style={{padding: '12px', color: '#536077'}}>Loading...</p> :
+                            activeMatchesData.length === 0 ? <p style={{padding: '12px', color: '#536077'}}>No active matches.</p> :
+                            activeMatchesData.map((match) => (
                             <div className="active-match-row" key={match.id}>
                                 <div className="match-person">
                                     <div className="match-avatar aspiring-avatar">
@@ -208,6 +239,59 @@ function MatchingPage() {
                                 <button className="btn-view-match">›</button>
                             </div>
                         ))}
+                    </div>
+                </div>
+
+                {/* Create Match Manually */}
+                <div className="matching-section">
+                    <div className="section-header">
+                        <h2>Create Match Manually</h2>
+                    </div>
+
+                    <div className="manual-match-form">
+                        <div className="form-group">
+                            <label>Filter by University</label>
+                            <select
+                                value={selectedUniversity}
+                                onChange={(e) => setSelectedUniversity(e.target.value)}
+                                className="form-select"
+                            >
+                                {universities.map((u, i) => (
+                                    <option key={i} value={u}>{u}</option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div className="form-row">
+                            <div className="form-group">
+                                <label>Aspiring Professional</label>
+                                <select
+                                    className="form-select"
+                                    value={selectedAspiring}
+                                    onChange={(e) => setSelectedAspiring(e.target.value)}
+                                >
+                                    <option value="">Choose aspiring professional</option>
+                                    {filteredAspiring.map(a => (
+                                        <option key={a.id} value={a.id}>{a.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="form-group">
+                                <label>Established Professional</label>
+                                <select
+                                    className="form-select"
+                                    value={selectedEstablished}
+                                    onChange={(e) => setSelectedEstablished(e.target.value)}
+                                >
+                                    <option value="">Choose established professional</option>
+                                    {establishedList.map(e => (
+                                        <option key={e.id} value={e.id}>{e.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+
+                        <button className="btn-create-match" onClick={handleCreateMatch}>✓ Create Match</button>
                     </div>
                 </div>
             </main>
