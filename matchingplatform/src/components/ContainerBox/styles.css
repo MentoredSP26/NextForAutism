@@ -1,0 +1,34 @@
+/* TODO: import font, make it so that text wraps towards next line */
+
+@import url("https://use.typekit.net/tub4ocm.css");
+
+.wholeentirefullboxmegabooleanintfloatstrdoublelongsubwaychickenbaconranchmeltwithextraolives{
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    overflow: hidden;
+    width: fit-content;
+    border: 1.5px solid gray;
+    
+    font-family: proxima-nova, sans-serif;
+    font-style: normal;
+    
+}
+
+.bluebackground{
+    background-color: #041e42;
+    color: white;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 500;
+
+}
+
+.whitebackground{
+    background-color: whitesmoke;
+    color: black;
+    padding: 10px;
+    font-size: 7px;
+    font-weight: 200;
+}
+

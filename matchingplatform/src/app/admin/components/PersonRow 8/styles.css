@@ -1,0 +1,91 @@
+.person-row {
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    padding: 10px 12px; 
+    border-radius: 12px; 
+    border: 1px solid transparent; 
+    transition: border-color 0.15s ease, background-color 0.15s ease; 
+    cursor: pointer;
+}
+
+.person-row:hover {
+    border-color: #e0e0e0; 
+    background-color: #fafafa; 
+}
+
+
+.person-row-avatar {
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    width: 36px; 
+    height: 36px; 
+    min-width: 36px; 
+    border-radius: 50%; 
+    background-color: #0072ce; 
+    color: #ffffff; 
+    font-family: 'DM Sans', sans-serif; 
+    font-size: 12px; 
+    font-weight: 700; 
+}
+
+.person-row-avatar--established {
+    background-color: #041e42;
+}
+
+.person-row-info {
+    display: flex; 
+    flex-direction: column; 
+    gap: 1px; 
+    min-width: 0; 
+    flex: 1; 
+}
+
+.person-row-name {
+    font-family: 'DM Sans', sans-serif; 
+    font-size: 14px; 
+    font-weight: 600; 
+    color: #041e42; 
+    margin: 0; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+}
+
+.person-row-detail {
+    font-family: 'DM Sans', sans-serif; 
+    font-size: 12px; 
+    font-weight: 400; 
+    color: #9099a6; 
+    margin: 0; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+}
+
+.person-row-status {
+    flex-shrink: 0; 
+}
+
+.status-matched {
+    display: inline-block; 
+    padding: 3px 10px; 
+    border-radius: 999px; 
+    font-family: 'DM Sans', sans-serif; 
+    font-size: 11px; 
+    font-weight: 600; 
+    background-color: #e2e9f1; 
+    color: #0072ce; 
+}
+
+.status-pending {
+    display: inline-block; 
+    padding: 3px 10px; 
+    border-radius: 999px; 
+    font-family: 'DM Sans', sans-serif; 
+    font-size: 11px; 
+    font-weight: 600; 
+    background-color: #f8e1e4; 
+    color: #cb333b; 
+}
