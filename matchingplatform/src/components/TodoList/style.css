@@ -3,9 +3,13 @@
     font-family: 'DM Sans', sans-serif;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 9376915 (fix styling)
+=======
+
+>>>>>>> e7f8473 (wip, styling todo)
 .header{
   /* CardHeader */
 
@@ -51,6 +55,7 @@
   padding: 120px 60px;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 .intro {
@@ -107,6 +112,8 @@ flex-grow: 1;
 
 }
 >>>>>>> 9376915 (fix styling)
+=======
+>>>>>>> e7f8473 (wip, styling todo)
 .dashboard{
   /* SimpleDashboard */
 
@@ -119,11 +126,15 @@ top: 95.33px;
 
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e7f8473 (wip, styling todo)
 
 .todobar {
   max-width: 700px;
   margin: 40px auto;
   font-family: 'DM Sans', sans-serif;
+<<<<<<< HEAD
 }
 
 .header {
@@ -185,100 +196,64 @@ input[type="checkbox"] {
 .intro a {
   font-weight: 500;
   color: var(--text-primary);
+=======
+>>>>>>> e7f8473 (wip, styling todo)
 }
 
-.due style {
-  /* max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  text-align: right;
-  color: var(--text-secondary); */
-  /* Due in 16 days */
-
-  width: 82px;
-  height: 16px;
-
-  font-family: 'DM Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 8px;
-  line-height: 12px;
-  /* identical to box height, or 133% */
-
-  color: #99A1AF;
-
-
-  /* Inside auto layout */
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-
-  
+.header {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #0f172a;
+  margin-left: 10px;
 }
 
-.ctas {
+.dashboard {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-row {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
-}
-
-.ctas a {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  margin-right: 16px;
   cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+.text-block {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f2a44;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
+.description {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 4px;
+  font-family: 'DM Sans', sans-serif;
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
+.due {
+  margin-left: auto;
+  font-size: 14px;
+  color: #9ca3af;
 }
 
+<<<<<<< HEAD
 @media (prefers-color-scheme: dark) {
   .logo {
     filter: invert();
@@ -296,4 +271,8 @@ a.secondary {
     --button-secondary-border: #1a1a1a;
   }
 >>>>>>> 9376915 (fix styling)
+=======
+input[type="checkbox"] {
+  transform: scale(1.25);
+>>>>>>> e7f8473 (wip, styling todo)
 }

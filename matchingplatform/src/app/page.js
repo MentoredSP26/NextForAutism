@@ -7,6 +7,7 @@ import styles from "./page.module.css";
 <<<<<<< HEAD
 <<<<<<< HEAD
 import App from "./admin/page";
+<<<<<<< HEAD
 =======
 import TodoList from "@/components/todo section/page";
 <<<<<<< HEAD
@@ -44,6 +45,9 @@ import RecentActivity from "@/components/RecentActivity/page";
 import App from "./admin/page";
 import TodoList from "../components/TodoList/TodoList";
 >>>>>>> 4e3a922 (wip, styling todo)
+=======
+import TodoList from "../components/TodoList/TodoList";
+>>>>>>> e7f8473 (wip, styling todo)
 
 export default function Home() {
   return (
@@ -53,7 +57,10 @@ export default function Home() {
 =======
       <p>This is the home page (Next 4 Autism).</p>
       {/* <App /> */}
+<<<<<<< HEAD
 >>>>>>> 4e3a922 (wip, styling todo)
+=======
+>>>>>>> e7f8473 (wip, styling todo)
       <TodoList />
     </div>
     
