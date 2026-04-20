@@ -4,7 +4,7 @@ import ActivityFeed from '../../components/ActivityFeed/ActivityFeed';
 import PersonRow from '../../components/PersonRow/PersonRow';
 import StatsCard from '../../components/StatsCard/StatsCard';
 import NavBar from '../../components/navbar/page';
-import { getDashboardStats, getAspiringProfessionals, getEstablishedProfessionals, getRecentActivity } from '../../lib/queries';
+import { getDashboardStats, getAspiringProfessionals, getEstablishedProfessionals, getRecentActivity } from '../../api/queries';
 import './styles.css';
 
 const navButtons = [
