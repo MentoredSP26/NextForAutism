@@ -10,7 +10,7 @@ function NavBar(props) {
         <div className="navBar">
 
             <div className="nav-top">
-                <img className="logo" alt="Next for Autism Logo" src="logo.png"/>
+                <img className="logo" alt="Next for Autism Logo" src="/logo.png"/>
                 <span className="nav-profile">{profile} Portal</span>
             </div>
             <nav className="navBar-buttons">

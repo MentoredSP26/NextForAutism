@@ -233,3 +233,9 @@ body {
     flex-grow: 0;
 
 }
+
+.navBar-buttons ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

@@ -1,0 +1,11 @@
+.dashboard-content {
+    margin-left: 200px;
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    gap: 2vh;
+}
+
+.date-dsp {
+    color: gray;
+}
