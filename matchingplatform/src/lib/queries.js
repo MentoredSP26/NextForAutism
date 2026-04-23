@@ -1,6 +1,6 @@
 import { supabase } from './supabase';
 
-// a) Get users by role type
+// get users by role type
 export async function getUsersByRole(role) {
     const { data, error } = await supabase
         .from('profiles')
@@ -30,7 +30,7 @@ export async function getEstablishedProfessionals() {
     return data;
 }
 
-// b) Get users by activity status
+// get users by activity status
 export async function getUsersByStatus(status) {
     const { data, error } = await supabase
         .from('profiles')
@@ -40,7 +40,7 @@ export async function getUsersByStatus(status) {
     return data;
 }
 
-// c) Get suggested matches with compatibility info
+// get suggested matches with compatibility info
 export async function getSuggestedMatches() {
     const { data, error } = await supabase
         .from('matches')
@@ -55,7 +55,7 @@ export async function getSuggestedMatches() {
     return data;
 }
 
-// Get active matches with progress
+// get active matches with progress
 export async function getActiveMatches() {
     const { data, error } = await supabase
         .from('matches')
@@ -70,7 +70,7 @@ export async function getActiveMatches() {
     return data;
 }
 
-// d) Get matched vs unmatched users
+// get matched vs unmatched users
 export async function getUnmatchedUsers() {
     const { data, error } = await supabase
         .from('profiles')
