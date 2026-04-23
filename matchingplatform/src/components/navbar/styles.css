@@ -1,22 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
 body {
     font-family: 'DM Sans', sans-serif;
 }
-.navBar {
-        /* SimpleSidebar */
 
-    /* Auto layout */
+.navBar {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px 0px 3.8147e-05px;
+    padding: 0;
     position: fixed;
-    width: 192px;
+    width: 13.33vw;      /* 192px / 1440px */
     height: 100vh;
-
     background: #041E42;
-
-    /* Inside auto layout */
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -24,106 +20,66 @@ body {
 
 .nav-top {
     box-sizing: border-box;
-
-    width: 192px;
-    height: 150.75px;
-
-    border-bottom: 1.33333px solid rgba(255, 255, 255, 0.1);
+    width: 13.33vw;          /* 192px / 1440px */
+    height: 16.75vh;         /* 150.75px / 900px */
+    border-bottom: 0.15vh solid rgba(255, 255, 255, 0.1);  /* 1.33px / 900px */
     background: #041E42;
-
-    /* Inside auto layout */
     flex: none;
     order: 0;
     flex-grow: 0;
 }
 
 .logo {
-        /* NextForAutismLogo */
-
-    /* Auto layout */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
-
+    padding: 0;
     position: absolute;
-    width: 128px;
-    height: 89.42px;
-    left: 16px;
-    top: 16px;
+    width: 66.67%;           /* 128px / 192px — relative to parent */
+    height: 59.31%;          /* 89.42px / 150.75px — relative to nav-top */
+    left: 8.33%;             /* 16px / 192px */
+    top: 10.61%;             /* 16px / 150.75px */
 }
 
 .nav-profile {
-        /* Paragraph */
-
-    /* Auto layout */
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 0px;
-
+    padding: 0;
     position: absolute;
-    width: 160px;
-    height: 16px;
-    left: 16px;
-    top: 117.42px;
-    /* Aspiring Prof Portal */
-
-    width: 160px;
-    height: 16px;
-
-    /* font-family: 'DM Sans';
-    font-style: normal; */
+    width: 83.33%;           /* 160px / 192px */
+    height: 1.78vh;          /* 16px / 900px */
+    left: 8.33%;             /* 16px / 192px */
+    top: 77.89%;             /* 117.42px / 150.75px */
     font-weight: 400;
-    font-size: 16px;
-    line-height: 16px;
-    /* identical to box height, or 133% */
-
+    font-size: clamp(12px, 1.11vw, 16px);   /* 16px / 1440px, clamped */
+    line-height: 1;
     color: rgba(255, 255, 255, 0.7);
-
-
-    /* Inside auto layout */
     flex: none;
     order: 0;
     flex-grow: 1;
-
 }
 
 .navBar-buttons {
-        /* Navigation */
-
-    /* Auto layout */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 12px 0px 0px;
-
-    width: 192px;
-
-
-    /* Inside auto layout */
+    padding: 1.33vh 0 0;     /* 12px / 900px */
+    width: 13.33vw;
     flex: none;
     order: 1;
     flex-grow: 0;
 }
 
 .navBar-bottom {
-        /* Container */
-
     box-sizing: border-box;
-
-    /* Auto layout */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 13.3334px 12px 0px;
-
-    width: 192px;
-    height: 57.33px;
-
-    border-top: 1.33333px solid rgba(255, 255, 255, 0.1);
-
-    /* Inside auto layout */
+    padding: 1.48vh 0.83vw 0;  /* 13.33px / 900px, 12px / 1440px */
+    width: 13.33vw;
+    height: 6.37vh;            /* 57.33px / 900px */
+    border-top: 0.15vh solid rgba(255, 255, 255, 0.1);
     flex: none;
     order: 2;
     flex-grow: 0;
@@ -131,20 +87,13 @@ body {
 }
 
 .bottom-content {
-        /* Container */
-
-    /* Auto layout */
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0px;
-    gap: 8px;
-
-    width: 168px;
-    height: 32px;
-
-
-    /* Inside auto layout */
+    padding: 0;
+    gap: 0.56vw;             /* 8px / 1440px */
+    width: 87.5%;            /* 168px / 192px */
+    height: 3.56vh;          /* 32px / 900px */
     flex: none;
     order: 0;
     align-self: stretch;
@@ -152,60 +101,39 @@ body {
 }
 
 .nav-profile-circle {
-        /* Container */
-
-    /* Auto layout */
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 0px;
-
-    width: 32px;
-    height: 32px;
-
+    padding: 0;
+    width: 3.56vh;           /* 32px / 900px — keep square with vh */
+    height: 3.56vh;
     background: #CB333B;
-    border-radius: 4.47392e+07px;
-
-    /* Inside auto layout */
+    border-radius: 50%;
     flex: none;
     order: 0;
     flex-grow: 0;
 }
 
 .user-text {
-        /* Container */
-
-    /* Auto layout */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
-
-    width: 91.29px;
-    height: 32px;
-
-
-    /* Inside auto layout */
+    padding: 0;
+    width: 54.24%;           /* 91.29px / 168px — relative to parent */
+    height: 3.56vh;
     flex: none;
     order: 1;
     flex-grow: 0;
 }
 
 .user-name {
-        /* Paragraph */
-
-    /* Auto layout */
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 0px;
-
-    width: 91.29px;
-    height: 16px;
-
-
-    /* Inside auto layout */
+    padding: 0;
+    width: 100%;
+    height: 50%;             /* half of user-text */
     flex: none;
     order: 0;
     align-self: stretch;
@@ -213,23 +141,16 @@ body {
 }
 
 .user-email {
-        /* Paragraph */
-
-    /* Auto layout */
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 0px;
-
-    width: 91.29px;
-    height: 16px;
-    font-size: 14px;
+    padding: 0;
+    width: 100%;
+    height: 50%;
+    font-size: clamp(11px, 0.97vw, 14px);   /* 14px / 1440px */
     color: rgba(255, 255, 255, 0.7);
-
-    /* Inside auto layout */
     flex: none;
     order: 1;
     align-self: stretch;
     flex-grow: 0;
-
 }
