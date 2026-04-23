@@ -1,4 +1,6 @@
-import { createSupabaseBrowserClient } from './supabase-browser';
+import { createClient } from '@supabase/supabase-js';
 
-// Shared singleton browser client — authenticated session is automatically attached
-export const supabase = createSupabaseBrowserClient();
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+export const supabase = createClient(supabaseUrl, supabaseKey);

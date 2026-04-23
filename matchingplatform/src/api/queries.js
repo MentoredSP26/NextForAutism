@@ -2,7 +2,7 @@ import { createClient } from "./createClient";
 
 const supabase = createClient();
 
-// get users by role type
+// a) Get users by role type
 export async function getUsersByRole(role) {
     const { data, error } = await supabase
         .from('profiles')
@@ -32,7 +32,7 @@ export async function getEstablishedProfessionals() {
     return data;
 }
 
-// get users by activity status
+// b) Get users by activity status
 export async function getUsersByStatus(status) {
     const { data, error } = await supabase
         .from('profiles')
@@ -42,7 +42,7 @@ export async function getUsersByStatus(status) {
     return data;
 }
 
-// get suggested matches with compatibility info
+// c) Get suggested matches with compatibility info
 export async function getSuggestedMatches() {
     const { data, error } = await supabase
         .from('matches')
@@ -57,7 +57,7 @@ export async function getSuggestedMatches() {
     return data;
 }
 
-// get active matches with progress
+// Get active matches with progress
 export async function getActiveMatches() {
     const { data, error } = await supabase
         .from('matches')
@@ -72,7 +72,7 @@ export async function getActiveMatches() {
     return data;
 }
 
-// get matched vs unmatched users
+// d) Get matched vs unmatched users
 export async function getUnmatchedUsers() {
     const { data, error } = await supabase
         .from('profiles')
