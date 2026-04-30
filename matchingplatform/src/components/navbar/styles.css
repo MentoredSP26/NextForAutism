@@ -85,9 +85,9 @@ body {
     flex-direction: row;
     align-items: center;
     padding: 0;
-    gap: 0.53vw;              /* 8 / 1512 */
+    gap: 0.53vw;
     width: 100%;
-    height: 3.26vh;
+    height: auto;             /* was 3.26vh — let it grow */
 }
 
 .nav-profile-circle {
@@ -110,9 +110,9 @@ body {
     align-items: flex-start;
     justify-content: center;
     padding: 0;
-    flex: 1;                  /* takes remaining space */
-    height: 3.26vh;
-    overflow: hidden;
+    flex: 1;
+    height: auto;             /* was 3.26vh — was clipping descenders */
+    overflow: visible;
 }
 
 .user-name {
@@ -129,6 +129,6 @@ body {
     font-size: clamp(9px, 0.79vw, 12px);
     color: rgba(255, 255, 255, 0.7);
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible;        /* was 'hidden' — was clipping g, y, p */
+    line-height: 1.5;         /* extra room for descenders */
 }
