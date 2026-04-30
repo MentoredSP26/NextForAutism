@@ -1,15 +1,15 @@
-import { sendEmail } from "../shared/resend/";
-import { weeklyReminderTemplate } from "../shared/templates"
+import { sendEmail } from "../shared/resend.js";
+import { weeklyReminderTemplate } from "../shared/templates.js"
 import { createClient } from 'npm:@supabase/supabase-js'
-import { weeks } from "../shared/weekData"
+import { weeks } from "../shared/weekData.js"
 
 Deno.serve(async (req) => {
     try {
         const supabase = createClient(Deno.env.get("SUPABASE_URL"), Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"))
 
-        const { data: matches, error: matchesError } = await supabase.from("matches").select(`id, current_week, 
-            aspiring_professionals(profile_id, profiles (email, full_name)),
-            established_professionals(profile_id, profiles (email, full_name))`).eq("status", "accepted");
+        const { data: matches, error: matchesError } = await supabase.from("matches").select(`id, current_week,
+            aspiring:profiles!matches_aspiring_id_fkey (email, full_name),
+            established:profiles!matches_established_id_fkey (email, full_name)`).eq("status", "active")
 
         if (matchesError) {
             return new Response(matchesError.message, { status: 500 })
@@ -23,8 +23,8 @@ Deno.serve(async (req) => {
             const weekIndex = match.current_week - 1
             if (weekIndex < 0 || weekIndex >= weeks.length) continue
             const weekData = weeks[weekIndex]
-            const mentee = match.aspiring_professionals.profiles
-            const mentor = match.established_professionals.profiles
+            const mentee = match.aspiring
+            const mentor = match.established
 
             const recipients = [
                 { email: mentor.email, name: mentor.full_name, partnerName: mentee.full_name },

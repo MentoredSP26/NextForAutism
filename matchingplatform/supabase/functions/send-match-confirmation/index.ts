@@ -12,16 +12,16 @@ Deno.serve(async (req) => {
 
         const supabase = createClient(Deno.env.get("SUPABASE_URL"), Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"))
 
-        const { data: match, error: matchError } = await supabase.from("matches").select(`id, 
-            aspiring_professionals(profile_id, profiles (email, full_name)),
-            established_professionals(profile_id, profiles (email, full_name))`).eq("id", match_id).single()
+        const { data: match, error: matchError } = await supabase.from("matches").select(`id, aspiring_id, established_id,
+            aspiring:profiles!matches_aspiring_id_fkey (email, full_name),
+            established:profiles!matches_established_id_fkey (email, full_name)`).eq("id", match_id).single()
 
         if (matchError || !match) {
             return new Response("Match not found", { status: 404 })
         }
 
-        const mentee = match.aspiring_professionals.profiles
-        const mentor = match.established_professionals.profiles
+        const mentee = match.aspiring
+        const mentor = match.established
 
         const html = matchConfirmationTemplate({
             mentorName: mentor.full_name,

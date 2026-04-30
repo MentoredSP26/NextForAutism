@@ -1,6 +1,6 @@
 import { Resend } from "npm:resend"
 
-const from = "Next For Autism <AutoEmail@nextforautism.org>"
+const from = "Next For Autism <onboarding@resend.dev>"
 
 export async function sendEmail({ to, subject, html }) {
   const resend = new Resend(Deno.env.get("RESEND_API_KEY"))
