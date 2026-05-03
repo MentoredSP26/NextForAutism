@@ -97,21 +97,15 @@ export function weeklyReminderTemplate({ recipientName, partnerName, weekNumber,
   const weekTypeLabel = isLearning ? "Learning Week" : "Discussion Week"
   const emoji = isLearning ? "📚" : "💬"
  
-  const fixBranding = (str) => str
-    .replace(/What is Next Connects\??/gi, "What is NEXT For Autism?")
-    .replace(/This week['']s topic in NEXT Connects/gi, "This week's topic in NEXT For Autism")
-    .replace(/NEXT Connects/gi, "NEXT For Autism")
- 
   const itemsHtml = weekData.items.map(item => {
-    const text = fixBranding(item.text)
     if (item.link) {
-      return `<li><a href="${item.link}">${text}</a></li>`
+      return `<li><a href="${item.link}">${item.text}</a></li>`
     }
-    return `<li>${text}</li>`
+    return `<li>${item.text}</li>`
   }).join("")
  
   const footerNote = weekData.footer
-    ? `<p style="font-size:13px;color:#0072ce;text-align:center;margin-top:16px">${fixBranding(weekData.footer)}</p>`
+    ? `<p style="font-size:13px;color:#0072ce;text-align:center;margin-top:16px">${weekData.footer}</p>`
     : ""
  
   const html = `
