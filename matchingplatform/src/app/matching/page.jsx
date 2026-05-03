@@ -79,17 +79,6 @@ function MatchingPage() {
         try {
             await approveMatch(id, ADMIN_ID);
             setSuggestedMatches(prev => prev.filter(m => m.id !== id));
-    
-            // Send match confirmation email to both mentor and mentee
-            await fetch('https://lgmtapkhdwlgbkkcikqh.supabase.co/functions/v1/send-match-confirmation', {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ match_id: id })
-            });
-    
             fetchData();
         } catch (err) {
             console.error('Failed to approve match:', err);
@@ -206,16 +195,6 @@ function MatchingPage() {
                 <div className="matching-section">
                     <div className="section-header">
                         <h2>Active Matches ({activeMatchesData.length})</h2>
-                        <button 
-                            className="btn-create-match"
-                            onClick={async () => {
-                                await fetch('https://lgmtapkhdwlgbkkcikqh.supabase.co/functions/v1/send-weekly-reminder', {
-                                    method: 'POST',
-                                    headers: { 'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}` }
-                                });
-                                alert('Weekly reminder emails sent!');
-                            }}>📧 Send Weekly Reminders
-                        </button>
                     </div>
                     <p className="section-subtitle">Click any match to view curriculum progress.</p>
 

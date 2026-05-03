@@ -7,13 +7,7 @@ const LearningBox = ({week}) => {
       
       <div className='week-bar'>
         <h2><b>Week {week.week}</b></h2>
-        <a onClick={async () => {
-          await fetch('https://lgmtapkhdwlgbkkcikqh.supabase.co/functions/v1/send-weekly-reminder', {
-            method: 'POST',
-            headers: { 'Authorization': `Bearer ${process.env.NEXT_PUBLIC_ANON_KEY}` }
-          });
-          alert('Weekly reminder sent!'); }} style={{ cursor: 'pointer' }}><img src="/belll.png" alt="bell icon" className='logo-sizing'/>
-        </a>
+        <a href="mailto:example@domain.com"><img src="/belll.png" alt = "bell icon" className='logo-sizing'></img></a>
       </div>
 
       <div>
