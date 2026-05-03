@@ -22,6 +22,16 @@ export async function getAspiringProfessionals() {
     return data;
 }
 
+export async function getAspiringProfessionalByID(aspiring_id) {
+    const { data, error } = await supabase
+        .from('profiles')
+        .select('*, aspiring_professionals(*)')
+        .eq('id', 'aspiring_id')
+        .in('role', 'aspiring');
+    if (error) throw error;
+    return data;
+}
+
 // Get established professionals with their extra details
 export async function getEstablishedProfessionals() {
     const { data, error } = await supabase
@@ -89,6 +99,16 @@ export async function getMatchedUsers() {
         .select('*')
         .eq('is_matched', true)
         .in('role', ['aspiring', 'established']);
+    if (error) throw error;
+    return data;
+}
+
+export async function getAvailableEstablished() {
+    const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('activity_status', "available")
+        .in('role', 'established');
     if (error) throw error;
     return data;
 }
