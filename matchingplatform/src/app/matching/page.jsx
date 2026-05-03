@@ -1,7 +1,8 @@
 'use client';
 import { useState } from 'react';
-import NavBar from '../../components/navbar/page';
 import './styles.css';
+import NavBar from '../../components/navbar/page';
+import Dropdown from '../../components/creatematch/details';
 
 const navButtons = [
     { page: "Dashboard", path: "/admin", icon: "/home.png"},
@@ -210,9 +211,36 @@ function MatchingPage() {
                         ))}
                     </div>
                 </div>
+                <DropdownSection />
             </main>
         </div>
     );
 }
+function DropdownSection() {
+  return (
+    <>
+      <div className="top-container">
+        <Dropdown
+          label="All Universities"
+          instruction="Filter by University"
+          options={["UC Berkeley", "Trees"]}
+        />
+      </div>
 
+      <div className="dropdown-container">
+        <Dropdown
+          label="Choose aspiring professional"
+          instruction="Aspiring Professional"
+          options={["John William", "Pork Pig", "Ada Lovelace"]}
+        />
+
+        <Dropdown
+          label="Choose established professional"
+          instruction="Established Professional"
+          options={["Jane Doe", "Bob Smith"]}
+        />
+      </div>
+    </>
+  );
+}
 export default MatchingPage;
