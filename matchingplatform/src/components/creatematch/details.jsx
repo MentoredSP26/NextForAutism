@@ -23,9 +23,10 @@ function Dropdown({label, instruction, options}) {
 }
 
 export default Dropdown;
-//function CreateMatch(){
+function CreateMatch(){
     //<button onClick={() => RUN FUNCTION TO ACTUALLY MATCH)}>Create Match</button>
-//}
+    
+}
 
 
 
