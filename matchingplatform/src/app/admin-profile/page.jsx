@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import NavBar from '../../components/navbar/page';
-import { getAdminProfile, getRecentActivity } from '../../lib/queries';
+import { getAdminProfile, getRecentActivity } from '../../api/queries';
 import './styles.css';
 
 const navButtons = [
