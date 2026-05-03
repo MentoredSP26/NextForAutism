@@ -3,43 +3,56 @@
 body {
     font-family: 'DM Sans', sans-serif;
 }
-.nav-button {
-        /* Button */
 
-    /* Auto layout */
+.nav-button {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0px 0px 0px 16px;
-    gap: 12px;
-
-    width: 192px;
-    height: 44px;
-
+    padding: 0 0 0 1.06vw;
+    gap: 0.79vw;
+    width: 12.7vw;
+    min-width: 192px;
+    height: 4.48vh;
+    min-height: 44px;
     background: #041E42;
-
-    /* Inside auto layout */
     flex: none;
     order: 0;
     align-self: stretch;
     flex-grow: 0;
     color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
 }
 
-.button :hover {
+.nav-button:hover {
     background-color: #CB333B;
 }
 
+.nav-button.active {
+    background-color: #CB333B;
+    color: #ffffff;
+}
+
 .content {
-    gap: 1px;
-    padding-left: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.1vh;
+    padding-left: 1.06vw;
 }
 
 .nav-logo {
-    width: 18px;
-    padding-right: 3px;
+    width: 1.19vw;
+    min-width: 18px;
+    height: auto;
+    padding-right: 0.2vw;
+    flex: none;
+    flex-shrink: 0;
 }
 
 .button-text {
-    padding-left: 6px;
+    padding-left: 0.4vw;
+    font-size: 16px;          /* fixed — never shrinks */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
