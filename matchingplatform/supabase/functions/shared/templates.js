@@ -12,7 +12,7 @@ const BASE_STYLES = `
     .intro { font-size: 15px; line-height: 1.65; color: #3f3f46; margin-bottom: 28px; }
     .card { background: #f9f9fb; border: 1px solid #e4e4e7; border-radius: 8px; padding: 24px; margin-bottom: 24px; }
     .card h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: #cb333b; margin-bottom: 14px; }
-    .info-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e4e4e7; font-size: 14px; }
+    .info-row { display: flex; justify-content: flex-start; gap: 4px; padding: 8px 0; border-bottom: 1px solid #e4e4e7; font-size: 14px; }
     .info-row:last-child { border-bottom: none; }
     .info-row .label { color: #041e42; font-weight: 600; }
     .info-row .value { font-weight: 600; color: #0072ce; }
@@ -28,7 +28,7 @@ const BASE_STYLES = `
     .footer-bar p { font-size: 12px; color: #ffffff; line-height: 1.6; }
   </style>
 `
-
+ 
 function footerHtml() {
   return `
     <div class="footer-bar">
@@ -39,7 +39,7 @@ function footerHtml() {
     </div>
   `
 }
-
+ 
 export function matchConfirmationTemplate({ mentorName, menteeName }) {
   const html = `
 <!DOCTYPE html>
@@ -88,26 +88,32 @@ export function matchConfirmationTemplate({ mentorName, menteeName }) {
 </body>
 </html>
   `.trim()
-
+ 
   return html
 }
-
+ 
 export function weeklyReminderTemplate({ recipientName, partnerName, weekNumber, weekData }) {
   const isLearning = weekData.type === "learning"
   const weekTypeLabel = isLearning ? "Learning Week" : "Discussion Week"
   const emoji = isLearning ? "📚" : "💬"
-
+ 
+  const fixBranding = (str) => str
+    .replace(/What is Next Connects\??/gi, "What is NEXT For Autism?")
+    .replace(/This week['']s topic in NEXT Connects/gi, "This week's topic in NEXT For Autism")
+    .replace(/NEXT Connects/gi, "NEXT For Autism")
+ 
   const itemsHtml = weekData.items.map(item => {
+    const text = fixBranding(item.text)
     if (item.link) {
-      return `<li><a href="${item.link}">${item.text}</a></li>`
+      return `<li><a href="${item.link}">${text}</a></li>`
     }
-    return `<li>${item.text}</li>`
+    return `<li>${text}</li>`
   }).join("")
-
+ 
   const footerNote = weekData.footer
-    ? `<p style="font-size:13px;color:#0072ce;text-align:center;margin-top:16px">${weekData.footer}</p>`
+    ? `<p style="font-size:13px;color:#0072ce;text-align:center;margin-top:16px">${fixBranding(weekData.footer)}</p>`
     : ""
-
+ 
   const html = `
 <!DOCTYPE html>
 <html lang="en">
@@ -141,6 +147,6 @@ export function weeklyReminderTemplate({ recipientName, partnerName, weekNumber,
 </body>
 </html>
   `.trim()
-
+ 
   return html
 }
