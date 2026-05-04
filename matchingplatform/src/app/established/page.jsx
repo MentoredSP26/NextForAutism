@@ -18,10 +18,9 @@ export default function EstablishedDashboard() {
 
   useEffect(() => {
     async function fetchData() {
-      // const { data: { session } } = await supabase.auth.getSession()
-      // if (!session) { router.push("/login"); return }
-
-      const userId = 'e1000000-0000-0000-0000-000000000003'
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) { router.push("/login"); return }
+      const userId = session.user.id
 
       const { data: profile } = await supabase
         .from("profiles")

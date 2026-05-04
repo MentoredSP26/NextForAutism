@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../../lib/supabase';
-import NavBar from "../../../components//navbar/page";
+import NavBar from "../../../components/navbar/page";
 import ProfilePic from '../../../components/ProfilePic/ProfilePic';
 import './styles.css';
 
@@ -18,9 +18,8 @@ export default function EstablishedProfile() {
   useEffect(() => {
     async function fetchData() {
       try {
-        // const { data: { session } } = await supabase.auth.getSession()
-        // const userId = session?.user?.id
-        const userId = 'e1000000-0000-0000-0000-000000000003'
+        const { data: { session } } = await supabase.auth.getSession()
+        const userId = session?.user?.id
 
         if (!userId) {
           console.error("No session found")
