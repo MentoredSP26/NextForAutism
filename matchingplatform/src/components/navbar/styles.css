@@ -49,7 +49,7 @@ body {
     align-items: flex-start;
     width: 100%;
     font-weight: 400;
-    font-size: 16px;          /* fixed — never shrinks */
+    font-size: 16px;
     line-height: 1;
     color: rgba(255, 255, 255, 0.7);
 }
@@ -65,6 +65,20 @@ body {
     order: 1;
     flex-grow: 0;
 }
+
+.navBar-buttons ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.navBar a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ─── BOTTOM SECTION ─── */
 
 .navBar-bottom {
     box-sizing: border-box;
@@ -83,6 +97,11 @@ body {
     bottom: 0;
     left: 0;
     z-index: 2;
+    cursor: pointer;
+}
+
+.navBar-bottom:hover {
+    background: #0a2d5e;
 }
 
 .bottom-content {
@@ -100,14 +119,19 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    min-width: 3.26vh;
     width: 3.26vh;
-    min-width: 32px;
     height: 3.26vh;
-    min-height: 32px;
     background: #CB333B;
     border-radius: 50%;
     flex: none;
     flex-shrink: 0;
+}
+
+.user-initial {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .user-text {
@@ -123,18 +147,44 @@ body {
 
 .user-name {
     width: 100%;
-    font-size: 14px;          /* fixed — never shrinks */
+    font-size: 16px;
     color: #ffffff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.user-email {
+
+/* ─── SIGNOUT POPUP ─── */
+
+.signout-popup {
+    position: fixed;
+    bottom: 6vh;
+    left: 0.79vw;
+    width: 11vw;
+    min-width: 175px;
+    background: #0a2d5e;
+    border: 0.14vh solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    z-index: 3;
+    padding: 0;               /* remove padding so button fills the box */
+    overflow: hidden;         /* clips the button's hover to the rounded corners */
+}
+
+.signout-button {
+    display: flex;
+    align-items: center;
     width: 100%;
-    font-size: 12px;          /* fixed — never shrinks */
-    color: rgba(255, 255, 255, 0.7);
-    white-space: nowrap;
-    overflow: visible;
-    line-height: 1.5;
+    padding: 1vh 1.06vw;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    text-align: left;
+}
+
+.signout-button:hover {
+    background: #CB333B;
 }
