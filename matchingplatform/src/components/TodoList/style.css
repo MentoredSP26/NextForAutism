@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+.todobar {
+    font-family: 'DM Sans', sans-serif;
+}
+.header{
+  /* CardHeader */
+
+  position: absolute;
+  width: 746.67px;
+  height: 54px;
+  left: 1.33px;
+  top: 1.33px;
+
+  background: #041E42;
+  border-radius: 16px 16px 0px 0px;
+
+}
+.page {
+  --background: #fafafa;
+  --foreground: #fff;
+
+  --text-primary: #000;
+  --text-secondary: #666;
+
+  --button-primary-hover: #383838;
+  --button-secondary-hover: #f2f2f2;
+  --button-secondary-border: #ebebeb;
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-geist-sans);
+  background-color: var(--background);
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  max-width: 800px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: var(--foreground);
+  padding: 120px 60px;
+}
+
+
+.todobar {
+  max-width: 700px;
+  margin: 40px auto;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.header {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #0f172a;
+  margin-left: 10px;
+}
+
+.dashboard {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-row {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.text-block {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f2a44;
+}
+
+.description {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 4px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.due {
+  margin-left: auto;
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.25);
+}

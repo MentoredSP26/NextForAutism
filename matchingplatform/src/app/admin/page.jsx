@@ -1,7 +1,10 @@
+'use client';
+import { useState, useEffect } from 'react';
 import ActivityFeed from '../../components/ActivityFeed/ActivityFeed';
 import PersonRow from '../../components/PersonRow/PersonRow';
 import StatsCard from '../../components/StatsCard/StatsCard';
 import NavBar from '../../components/navbar/page';
+import { getDashboardStats, getAspiringProfessionals, getEstablishedProfessionals, getRecentActivity } from '../../api/queries';
 import './styles.css';
 
 const navButtons = [
@@ -10,29 +13,63 @@ const navButtons = [
     { page: "Admin Profile", path: "/admin-profile", icon: "/profile.png" },
 ];
 
-const stats = [
-    { icon: "👥", label: "Total Aspiring", value: "9" },
-    { icon: "💼", label: "Total Established", value: "8" },
-    { icon: "🤝", label: "Total Matched", value: "3" },
-    { icon: "⏳", label: "Total Unmatched", value: "6" },
-];
-const recentActivity = [
-    { action: "New match created", user: "Alice Johnson and Bob Smith", time: "2 hours ago" },
-    { action: "Profile updated", user: "Charlie Davis", time: "5 hours ago" },
-    { action: "New aspiring professional registered", user: "Emily Clark", time: "1 day ago" },
-    { action: "Curriculum week completed", user: "Frank Miller", time: "3 days ago" }
-];
-const aspiringProfessionals = [
-    { name: "Alice Johnson", major: "Computer Science", university: "University A", isMatched: true },
-    { name: "Charlie Davis", major: "Business Administration", university: "University B", isMatched: false },
-    { name: "Emily Clark", major: "Psychology", university: "University C", isMatched: false },
-];
-const establishedProfessionals = [
-    { name: "Bob Smith", major: "Software Engineering", university: "Tech Company X", isMatched: true },
-    { name: "Frank Miller", major: "Marketing", university: "Company Y", isMatched: false },
-];
-
 function AdminPage() {
+    const [stats, setStats] = useState([
+        { icon: "👥", label: "Total Aspiring", value: "..." },
+        { icon: "💼", label: "Total Established", value: "..." },
+        { icon: "🤝", label: "Total Matched", value: "..." },
+        { icon: "⏳", label: "Total Unmatched", value: "..." },
+    ]);
+    const [aspiringProfessionals, setAspiringProfessionals] = useState([]);
+    const [establishedProfessionals, setEstablishedProfessionals] = useState([]);
+    const [recentActivity, setRecentActivity] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const [dashStats, aspiring, established, activity] = await Promise.all([
+                    getDashboardStats(),
+                    getAspiringProfessionals(),
+                    getEstablishedProfessionals(),
+                    getRecentActivity(),
+                ]);
+
+                setStats([
+                    { icon: "👥", label: "Total Aspiring", value: String(dashStats.totalAspiring) },
+                    { icon: "💼", label: "Total Established", value: String(dashStats.totalEstablished) },
+                    { icon: "🤝", label: "Total Matched", value: String(dashStats.totalMatched) },
+                    { icon: "⏳", label: "Total Unmatched", value: String(dashStats.totalUnmatched) },
+                ]);
+
+                setAspiringProfessionals(aspiring.map(p => ({
+                    name: p.full_name,
+                    major: p.aspiring_professionals?.[0]?.major || '',
+                    university: p.aspiring_professionals?.[0]?.university || '',
+                    isMatched: p.is_matched,
+                })));
+
+                setEstablishedProfessionals(established.map(p => ({
+                    name: p.full_name,
+                    major: p.established_professionals?.[0]?.field || '',
+                    university: p.established_professionals?.[0]?.company || '',
+                    isMatched: p.is_matched,
+                })));
+
+                setRecentActivity((activity || []).map(a => ({
+                    action: a.action,
+                    user: a.detail || '',
+                    time: timeAgo(a.created_at),
+                })));
+            } catch (err) {
+                console.error('Failed to fetch dashboard data:', err);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchData();
+    }, []);
+
     return (
         <div className="admin-page">
             <NavBar
@@ -59,27 +96,31 @@ function AdminPage() {
                 <div className="roster-section">
                     <div className="roster-column">
                         <h3>Aspiring Professionals</h3>
-                        {aspiringProfessionals.map((person, index) => (
-                            <PersonRow
-                                key={index}
-                                name={person.name}
-                                major={person.major}
-                                university={person.university}
-                                isMatched={person.isMatched}
-                            />
-                        ))}
+                        {loading ? <p style={{padding: '12px', color: '#536077'}}>Loading...</p> :
+                            aspiringProfessionals.map((person, index) => (
+                                <PersonRow
+                                    key={index}
+                                    name={person.name}
+                                    major={person.major}
+                                    university={person.university}
+                                    isMatched={person.isMatched}
+                                />
+                            ))
+                        }
                     </div>
                     <div className="roster-column">
                         <h3>Established Professionals</h3>
-                        {establishedProfessionals.map((person, index) => (
-                            <PersonRow
-                                key={index}
-                                name={person.name}
-                                major={person.major}
-                                university={person.university}
-                                isMatched={person.isMatched}
-                            />
-                        ))}
+                        {loading ? <p style={{padding: '12px', color: '#536077'}}>Loading...</p> :
+                            establishedProfessionals.map((person, index) => (
+                                <PersonRow
+                                    key={index}
+                                    name={person.name}
+                                    major={person.major}
+                                    university={person.university}
+                                    isMatched={person.isMatched}
+                                />
+                            ))
+                        }
                     </div>
                 </div>
                 <div className="activity-feed-wrapper">
@@ -88,6 +129,19 @@ function AdminPage() {
             </main>
         </div>
     );
+}
+
+function timeAgo(timestamp) {
+    const now = new Date();
+    const then = new Date(timestamp);
+    const seconds = Math.floor((now - then) / 1000);
+    if (seconds < 60) return 'just now';
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return `${minutes}m ago`;
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `${hours}h ago`;
+    const days = Math.floor(hours / 24);
+    return `${days}d ago`;
 }
 
 export default AdminPage;
