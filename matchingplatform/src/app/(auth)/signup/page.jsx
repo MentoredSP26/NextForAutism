@@ -1,19 +1,47 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Select from 'react-select';
 import { createClient } from '../../../api/createClient';
 import './styles.css';
+import universities from "../../us_institutions.json";
 
 export default function SignupPage() {
     const router = useRouter();
+
+    // UI State
+    const [isMounted, setIsMounted] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
+
+    // Form State
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('aspiring');
-    const [error, setError] = useState('');
-    const [message, setMessage] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [field_of_interest, setFieldOfInterest] = useState([]);
+    const [selectedUniversity, setSelectedUniversity] = useState(null);
+    const [universityInput, setUniversityInput] = useState('');
+
+    // Fix for Next.js Hydration
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    const loadUniversityOptions = (inputValue) => {
+        const query = inputValue?.trim().toLowerCase();
+        if (!query || query.length < 2) return [];
+
+        return universities
+            .filter((u) => u.institution.toLowerCase().includes(query))
+            .slice(0, 15)
+            .map((u) => ({
+                value: u.institution,
+                label: u.institution,
+            }));
+    };
 
     const handleSignup = async (e) => {
         e.preventDefault();
@@ -30,6 +58,8 @@ export default function SignupPage() {
                 data: {
                     full_name: fullName,
                     role: role,
+                    university: selectedUniversity,
+                    field_of_interest: field_of_interest,
                 },
             },
         });
@@ -48,6 +78,9 @@ export default function SignupPage() {
         }
         setLoading(false);
     };
+
+    // Prevent rendering on server to avoid hydration mismatch
+    if (!isMounted) return null;
 
     return (
         <div className="auth-page">
@@ -91,11 +124,57 @@ export default function SignupPage() {
                     </div>
 
                     <div className="auth-field">
+                        <label>University</label>
+                        <Select
+                            options={loadUniversityOptions(universityInput)}
+                            onInputChange={(val) => setUniversityInput(val)}
+                            onChange={(option) => setSelectedUniversity(option?.value || null)}
+                            placeholder="Search university..."
+                            className="react-select-container"
+                            classNamePrefix="react-select"
+                            menuPortalTarget={document.body}
+                            styles={{
+                                menuPortal: (base) => ({ ...base, zIndex: 9999 }),
+                                control: (base) => ({
+                                    ...base,
+                                    borderRadius: '8px',
+                                    padding: '2px',
+                                    borderColor: '#ddd',
+                                }),
+                            }}
+                        />
+                    </div>
+
+                    <div className="auth-field">
+                        <label>Field of Interest (Multi-Select)</label>
+                        <select
+                            multiple
+                            className="multi-select"
+                            value={field_of_interest}
+                            onChange={(e) => {
+                                const values = Array.from(
+                                    e.target.selectedOptions,
+                                    (option) => option.value
+                                );
+                                setFieldOfInterest(values);
+                            }}
+                        >
+                            <option value="tech">Technology & Computing</option>
+                            <option value="business">Business & Entrepreneurship</option>
+                            <option value="social">Social Sciences & Society</option>
+                            <option value="arts">Arts, Design & Media</option>
+                            <option value="health">Health & Human Wellbeing</option>
+                            <option value="law">Law, Policy & Public Impact</option>
+                            <option value="environment">Natural World & Environment</option>
+                            <option value="education">Education & Human Development</option>
+                        </select>
+                    </div>
+
+                    <div className="auth-field">
                         <label>I am signing up as</label>
                         <select value={role} onChange={(e) => setRole(e.target.value)} required>
                             <option value="aspiring">Aspiring Professional (Student)</option>
                             <option value="established">Established Professional (Mentor)</option>
-                            <option value="admin">Admin</option>
                         </select>
                     </div>
 
@@ -117,7 +196,6 @@ export default function SignupPage() {
 
 function getLandingForRole(role) {
     switch (role) {
-        case 'admin': return '/admin';
         case 'established': return '/established';
         case 'aspiring': return '/aspiring';
         default: return '/';
