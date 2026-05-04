@@ -1,0 +1,21 @@
+.materials-page {
+  padding: 40px;
+  margin-left: 180px;
+}
+  .established-dashboard-header {
+    margin-bottom: 32px;
+  }
+  
+  .materials-header {
+    margin-bottom: 8px;
+  }
+  
+  .materials-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+  }
+  
+  .low-opacity-text {
+    color: #666;
+    font-size: 14px;
+  }
