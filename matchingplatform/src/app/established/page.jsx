@@ -1,3 +1,4 @@
+"use client";
 import WeeklyMaterials from "../../components/WeeklyMaterials/WeeklyMaterials";
 
 export default function EstablishedDashboard() {
