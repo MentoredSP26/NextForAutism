@@ -53,7 +53,7 @@ export default function TodoList() {
             </li>
           ))}
         </ul>
-      } width='80vw'/>
+      } width='40vw'/>
     </div>
   );
 }
