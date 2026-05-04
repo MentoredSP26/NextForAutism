@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import NavBar from '../../components/navbar/page';
 import { getSuggestedMatches, getActiveMatches, getAspiringProfessionals, getEstablishedProfessionals, approveMatch, rejectMatch, createManualMatch } from '../../api/queries';
+import generateMatches from '../../components/creatematch/GenerateMatches';
 import './styles.css';
 
 const navButtons = [
@@ -11,6 +12,8 @@ const navButtons = [
 ];
 
 const ADMIN_ID = 'ad000000-0000-0000-0000-000000000001';
+
+let hasAttemptedAutoGenerate = false;
 
 function MatchingPage() {
     const [suggestedMatches, setSuggestedMatches] = useState([]);
@@ -73,7 +76,24 @@ function MatchingPage() {
         }
     }
 
-    useEffect(() => { fetchData(); }, []);
+    useEffect(() => {
+        async function loadMatchingData() {
+            try {
+                if (!hasAttemptedAutoGenerate) {
+                    hasAttemptedAutoGenerate = true;
+                    const result = await generateMatches();
+                    console.log('Auto-generate matches result:', result);
+                }
+
+                await fetchData();
+            } catch (err) {
+                console.error('Failed to auto-generate matches:', err);
+                await fetchData();
+            }
+        }
+
+        loadMatchingData();
+    }, []);
 
     const handleApprove = async (id) => {
         try {
