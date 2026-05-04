@@ -1,22 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
 body {
     font-family: 'DM Sans', sans-serif;
 }
-.navBar {
-        /* SimpleSidebar */
 
-    /* Auto layout */
+/* ─── NAVBAR ─── */
+
+.navBar {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px 0px 3.8147e-05px;
+    padding: 0;
     position: fixed;
-    width: 192px;
+    width: 12.7vw;
+    min-width: 192px;
     height: 100vh;
-
     background: #041E42;
-
-    /* Inside auto layout */
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -24,212 +23,118 @@ body {
 
 .nav-top {
     box-sizing: border-box;
-
-    width: 192px;
-    height: 150.75px;
-
-    border-bottom: 1.33333px solid rgba(255, 255, 255, 0.1);
+    width: 12.7vw;
+    min-width: 192px;
+    padding: 1.63vh 1.06vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.81vh;
+    border-bottom: 0.14vh solid rgba(255, 255, 255, 0.1);
     background: #041E42;
-
-    /* Inside auto layout */
     flex: none;
     order: 0;
     flex-grow: 0;
 }
 
 .logo {
-        /* NextForAutismLogo */
-
-    /* Auto layout */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-
-    position: absolute;
-    width: 128px;
-    height: 89.42px;
-    left: 16px;
-    top: 16px;
+    width: 10.58vw;
+    min-width: 160px;
+    height: auto;
 }
 
 .nav-profile {
-        /* Paragraph */
-
-    /* Auto layout */
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 0px;
-
-    position: absolute;
-    width: 160px;
-    height: 16px;
-    left: 16px;
-    top: 117.42px;
-    /* Aspiring Prof Portal */
-
-    width: 160px;
-    height: 16px;
-
-    /* font-family: 'DM Sans';
-    font-style: normal; */
+    width: 100%;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 16px;
-    /* identical to box height, or 133% */
-
+    font-size: 16px;          /* fixed — never shrinks */
+    line-height: 1;
     color: rgba(255, 255, 255, 0.7);
-
-
-    /* Inside auto layout */
-    flex: none;
-    order: 0;
-    flex-grow: 1;
-
 }
 
 .navBar-buttons {
-        /* Navigation */
-
-    /* Auto layout */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 12px 0px 0px;
-
-    width: 192px;
-
-
-    /* Inside auto layout */
+    padding: 1.22vh 0 0;
+    width: 12.7vw;
+    min-width: 192px;
     flex: none;
     order: 1;
     flex-grow: 0;
 }
 
 .navBar-bottom {
-        /* Container */
-
     box-sizing: border-box;
-
-    /* Auto layout */
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
-    padding: 13.3334px 12px 0px;
-
-    width: 192px;
-    height: 57.33px;
-
-    border-top: 1.33333px solid rgba(255, 255, 255, 0.1);
-
-    /* Inside auto layout */
-    flex: none;
-    order: 2;
-    flex-grow: 0;
-    margin-top: auto;
+    padding: 1.36vh 0.79vw 2vh;
+    width: 12.7vw;
+    min-width: 192px;
+    height: auto;
+    min-height: 5.84vh;
+    border-top: 0.14vh solid rgba(255, 255, 255, 0.1);
+    background: #041E42;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
 }
 
 .bottom-content {
-        /* Container */
-
-    /* Auto layout */
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0px;
-    gap: 8px;
-
-    width: 168px;
-    height: 32px;
-
-
-    /* Inside auto layout */
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
+    padding: 0;
+    gap: 0.53vw;
+    width: 100%;
+    height: auto;
 }
 
 .nav-profile-circle {
-        /* Container */
-
-    /* Auto layout */
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 0px;
-
-    width: 32px;
-    height: 32px;
-
+    width: 3.26vh;
+    min-width: 32px;
+    height: 3.26vh;
+    min-height: 32px;
     background: #CB333B;
-    border-radius: 4.47392e+07px;
-
-    /* Inside auto layout */
+    border-radius: 50%;
     flex: none;
-    order: 0;
-    flex-grow: 0;
+    flex-shrink: 0;
 }
 
 .user-text {
-        /* Container */
-
-    /* Auto layout */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
-
-    width: 91.29px;
-    height: 32px;
-
-
-    /* Inside auto layout */
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+    justify-content: center;
+    padding: 0;
+    flex: 1;
+    height: auto;
+    overflow: visible;
 }
 
 .user-name {
-        /* Paragraph */
-
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-
-    width: 91.29px;
-    height: 16px;
-
-
-    /* Inside auto layout */
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
+    width: 100%;
+    font-size: 14px;          /* fixed — never shrinks */
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .user-email {
-        /* Paragraph */
-
-    /* Auto layout */
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-
-    width: 91.29px;
-    height: 16px;
-    font-size: 14px;
+    width: 100%;
+    font-size: 12px;          /* fixed — never shrinks */
     color: rgba(255, 255, 255, 0.7);
-
-    /* Inside auto layout */
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
-
+    white-space: nowrap;
+    overflow: visible;
+    line-height: 1.5;
 }
