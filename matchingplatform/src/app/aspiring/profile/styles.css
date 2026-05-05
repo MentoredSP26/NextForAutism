@@ -1,0 +1,19 @@
+.dashboard-content {
+    margin-left: 200px;
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw - 200px);
+    gap: 2vh;
+}
+
+.date-dsp {
+    color: gray;
+}
+
+.asp-profile-content {
+    margin-left: 200px;
+    padding: 32px 40px;
+    width: calc(100vw - 200px);
+    max-width: 860px;
+    box-sizing: border-box;
+}

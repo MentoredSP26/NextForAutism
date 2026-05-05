@@ -1,5 +1,11 @@
 import { redirect } from 'next/navigation';
+import AspiringDashboard from './aspiring/page';
 
 export default function Home() {
-    redirect('/login');
+    // redirect('/login');
+    return (
+        <>
+            <AspiringDashboard />
+        </>
+    )
 }
