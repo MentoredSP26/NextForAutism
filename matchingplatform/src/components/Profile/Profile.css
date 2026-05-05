@@ -1,78 +1,231 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Montserrat:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Montserrat:wght@400;500;600&display=swap');
 
-
-.box {
+.profile-page {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    border: solid lightgray;
-    border-radius: 20px;
-    padding: 1%;  
-    background-color: #ffffff; 
+    gap: 2vh;
+    max-width: 860px;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    color: #1a2332;
+    padding: 1vh 0;
 }
 
-.side {
+.profile-card,
+.mentor-card {
+    background: #ffffff;
+    border: 1px solid #e4e8ee;
+    border-radius: 16px;
+    padding: 3vh 2vw;
+}
+
+.profile-top {
     display: flex;
+    align-items: flex-start;
+    gap: 2vw;
+    margin-bottom: 2.5vh;
 }
 
-.greySide {
-  display: flex;
-  gap: 5px;
-}
-
-.grey {
-  display: flex;
+.profile-info {
+    display: flex;
     flex-direction: column;
-    gap: 20px;
-    border-radius: 20px;
-    padding: 1%;  
-    background-color: #ECEEF2; 
+    gap: 0.8vh;
 }
 
-.profile {
-  font-family: 'Montserrat', sans-serif;
-  color: black;
+.profile-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+    color: #0f1c2e;
 }
 
-.profile h1 {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin: 0;
-  font-weight: 550;
+.profile-title {
+    font-size: 0.9rem;
+    color: #536077;
+    margin: 0;
+    font-weight: 400;
 }
 
-.profile h2 {
-  font-size: 1.0rem;
-  font-weight: 400;
-  margin: 0;
-  margin-bottom: 8px;
-}
-
-.profile h3,
-.profile h4,
-.profile h5,
-.profile p {
-  font-size: 0.75rem;
-  margin: 0.3rem 0;
-  font-weight: 400;
-  margin-bottom: 6px;
-}
-
-.profile h6 {
-  font-size: 0.75rem;
-  margin: 0.3rem 0;
-  font-weight: 400;
-  margin-left: 25px;
-}
-
-.Row {
+.profile-tags {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    flex-wrap: wrap;
+    gap: 0.8vh;
+    margin-top: 0.5vh;
 }
 
-.icon {
+.tag {
+    background: #f0f2f5;
+    color: #374151;
+    border-radius: 6px;
+    padding: 0.5vh 1vw;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.tag-outline {
+    background: transparent;
+    border: 1px solid #d1d5db;
+    color: #374151;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+    border-top: 1px solid #f0f2f5;
+    padding-top: 2vh;
+}
+
+.detail-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1vw;
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+.detail-icon {
     width: 18px;
     height: 18px;
+    min-width: 18px;
+}
+
+.career-goals {
+    padding-top: 0.5vh;
+}
+
+.goals-label {
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin: 0 0 0.3vh 0;
+    color: #1a2332;
+}
+
+.goals-text {
+    font-size: 0.85rem;
+    color: #536077;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.mentor-card-header {
+    margin-bottom: 2vh;
+}
+
+.mentor-heading {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 0.5vh 0;
+    color: #0f1c2e;
+}
+
+.mentor-sub {
+    font-size: 0.85rem;
+    color: #536077;
+    margin: 0;
+}
+
+.mentor-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    border-top: 1px solid #f0f2f5;
+    padding-top: 2vh;
+}
+
+.mentor-top {
+    display: flex;
+    align-items: center;
+    gap: 1.5vw;
+}
+
+.mentor-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.mentor-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mentor-avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #0f1c2e;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.mentor-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.mentor-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.3vh 0;
+    color: #0f1c2e;
+}
+
+.mentor-role,
+.mentor-company {
+    font-size: 0.85rem;
+    color: #536077;
+    margin: 0;
+}
+
+.message-btn {
+    background: #0f1c2e;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 1vh 1.5vw;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    font-family: 'Montserrat', sans-serif;
+    transition: background 0.15s ease;
+    white-space: nowrap;
+}
+
+.message-btn:hover {
+    background: #1e3a5f;
+}
+
+.mentor-bio {
+    font-size: 0.875rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0;
+    padding: 2vh 0;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+.expertise-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1a2332;
+    margin: 0 0 1vh 0;
+}
+
+.expertise-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8vh;
 }
