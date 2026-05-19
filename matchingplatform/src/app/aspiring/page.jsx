@@ -109,7 +109,7 @@ export default function AspiringPage() {
                             <span className="step-num">3</span>
                             <div>
                                 <p className="step-title">Start your mentorship</p>
-                                <p className="step-desc">Once matched, you'll begin the weekly curriculum with your mentor.</p>
+                                <p className="step-desc">Once matched, you&apos;ll begin the weekly curriculum with your mentor.</p>
                             </div>
                         </div>
                     </div>

@@ -9,7 +9,7 @@
 
 .auth-card {
     width: 100%;
-    max-width: 400px;
+    max-width: 560px;
     background-color: #ffffff;
     border-radius: 16px;
     padding: 40px 32px;
@@ -51,7 +51,8 @@
 }
 
 .auth-field input,
-.auth-field select {
+.auth-field select,
+.auth-field textarea {
     padding: 10px 14px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
@@ -63,8 +64,44 @@
 }
 
 .auth-field input:focus,
-.auth-field select:focus {
+.auth-field select:focus,
+.auth-field textarea:focus {
     border-color: #0072ce;
+}
+
+.auth-field textarea {
+    min-height: 84px;
+    resize: vertical;
+}
+
+.auth-fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 18px;
+    border: 1px solid #e6eaf0;
+    border-radius: 10px;
+    background-color: #f8fafc;
+}
+
+.auth-fieldset h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #041e42;
+    margin: 0;
+}
+
+.auth-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.auth-grid > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .auth-error {

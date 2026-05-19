@@ -1,16 +1,16 @@
 'use client';
 import { useState, useEffect } from 'react';
 import NavBar from '../../components/navbar/page';
-import { getAdminProfile, getRecentActivity } from '../../api/queries';
+import { getRecentActivity } from '../../api/queries';
+import { getCurrentProfileWithDetails } from '../../api/profile';
 import './styles.css';
 
 const navButtons = [
     { page: "Dashboard", path: "/admin", icon: "/home.png" },
+    { page: "Profiles", path: "/admin/profiles", icon: "/profile.png" },
     { page: "Matching", path: "/matching", icon: "/globe.svg" },
     { page: "Admin Profile", path: "/admin-profile", icon: "/profile.png" },
 ];
-
-const ADMIN_ID = 'ad000000-0000-0000-0000-000000000001';
 
 function AdminProfilePage() {
     const [adminData, setAdminData] = useState(null);
@@ -21,10 +21,10 @@ function AdminProfilePage() {
         async function fetchData() {
             try {
                 const [profile, recentActivity] = await Promise.all([
-                    getAdminProfile(ADMIN_ID),
+                    getCurrentProfileWithDetails(),
                     getRecentActivity(5),
                 ]);
-                setAdminData(profile);
+                setAdminData(profile?.profile || null);
                 setActivity(recentActivity || []);
             } catch (err) {
                 console.error('Failed to fetch admin profile:', err);
@@ -90,7 +90,7 @@ function AdminProfilePage() {
                                 </div>
                             </div>
                         </div>
-                        <button className="btn-edit-profile">Edit Profile</button>
+                        <a className="btn-edit-profile" href="/admin-profile/edit">Edit Profile</a>
                     </div>
                     {adminData?.bio && <p className="profile-bio">{adminData.bio}</p>}
                 </div>

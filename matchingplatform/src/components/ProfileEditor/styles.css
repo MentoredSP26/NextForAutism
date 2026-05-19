@@ -1,0 +1,168 @@
+.profile-editor-page {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f9;
+}
+
+.profile-editor-main {
+    margin-left: 192px;
+    padding: 40px;
+    flex: 1;
+}
+
+.profile-editor-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.profile-editor-header h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #041e42;
+    margin: 0 0 4px;
+}
+
+.profile-editor-header p,
+.profile-editor-loading {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: #536077;
+    margin: 0;
+}
+
+.profile-editor-card {
+    width: 100%;
+    max-width: 920px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    border-top: 3px solid #cb333b;
+    padding: 28px;
+}
+
+.profile-editor-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.profile-editor-section h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #041e42;
+    margin: 0;
+}
+
+.profile-editor-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.profile-editor-section label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #041e42;
+}
+
+.profile-editor-section input,
+.profile-editor-section select,
+.profile-editor-section textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d9e0ea;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #041e42;
+    background-color: #ffffff;
+    outline: none;
+}
+
+.profile-editor-section textarea {
+    resize: vertical;
+    min-height: 92px;
+}
+
+.profile-editor-section input:focus,
+.profile-editor-section select:focus,
+.profile-editor-section textarea:focus {
+    border-color: #0072ce;
+}
+
+.profile-editor-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-editor-save,
+.profile-editor-delete {
+    min-height: 42px;
+    padding: 0 18px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.profile-editor-save {
+    border: none;
+    background-color: #cb333b;
+    color: #ffffff;
+}
+
+.profile-editor-delete {
+    border: 1px solid #f0c7cb;
+    background-color: #fff7f7;
+    color: #a82830;
+}
+
+.profile-editor-save:disabled,
+.profile-editor-delete:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.profile-editor-error,
+.profile-editor-success {
+    padding: 11px 14px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+}
+
+.profile-editor-error {
+    background-color: #fef2f2;
+    border: 1px solid #f8e1e4;
+    color: #cb333b;
+}
+
+.profile-editor-success {
+    background-color: #e8f5ec;
+    border: 1px solid #cce8d4;
+    color: #1f7a3d;
+}
+
+@media (max-width: 860px) {
+    .profile-editor-main {
+        margin-left: 0;
+        padding: 24px;
+    }
+
+    .profile-editor-grid {
+        grid-template-columns: 1fr;
+    }
+}

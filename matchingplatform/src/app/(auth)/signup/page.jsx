@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '../../../api/createClient';
+import { saveSignupProfile } from '../../../api/profile';
 import './styles.css';
 
 export default function SignupPage() {
@@ -11,6 +12,21 @@ export default function SignupPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('aspiring');
+    const [aspiringDetails, setAspiringDetails] = useState({
+        university: '',
+        major: '',
+        field_of_interest: '',
+        graduation_year: '',
+        goals: '',
+    });
+    const [establishedDetails, setEstablishedDetails] = useState({
+        company: '',
+        job_title: '',
+        field: '',
+        years_experience: '',
+        mentoring_capacity: '',
+        university: '',
+    });
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
@@ -30,6 +46,7 @@ export default function SignupPage() {
                 data: {
                     full_name: fullName,
                     role: role,
+                    profile_details: role === 'aspiring' ? aspiringDetails : establishedDetails,
                 },
             },
         });
@@ -40,13 +57,41 @@ export default function SignupPage() {
             return;
         }
 
+        if (authData.user && authData.session) {
+            try {
+                await saveSignupProfile(
+                    supabase,
+                    authData.user.id,
+                    role,
+                    {
+                        email,
+                        full_name: fullName,
+                        activity_status: 'available',
+                    },
+                    role === 'aspiring' ? aspiringDetails : establishedDetails
+                );
+            } catch (profileError) {
+                setError(profileError.message);
+                setLoading(false);
+                return;
+            }
+        }
+
         if (authData.session) {
             router.push(getLandingForRole(role));
             router.refresh();
         } else {
-            setMessage('Check your email to confirm your account, then log in.');
+            setMessage('Check your email to confirm your account, then log in. Your profile details were saved as signup metadata and may need review after first login.');
         }
         setLoading(false);
+    };
+
+    const updateAspiringDetails = (field, value) => {
+        setAspiringDetails(prev => ({ ...prev, [field]: value }));
+    };
+
+    const updateEstablishedDetails = (field, value) => {
+        setEstablishedDetails(prev => ({ ...prev, [field]: value }));
     };
 
     return (
@@ -98,6 +143,131 @@ export default function SignupPage() {
                             <option value="admin">Admin</option>
                         </select>
                     </div>
+
+                    {role === 'aspiring' && (
+                        <div className="auth-fieldset">
+                            <h2>Student Profile</h2>
+                            <div className="auth-field">
+                                <label>University</label>
+                                <input
+                                    type="text"
+                                    value={aspiringDetails.university}
+                                    onChange={(e) => updateAspiringDetails('university', e.target.value)}
+                                    required
+                                    placeholder="University or program"
+                                />
+                            </div>
+                            <div className="auth-field">
+                                <label>Major</label>
+                                <input
+                                    type="text"
+                                    value={aspiringDetails.major}
+                                    onChange={(e) => updateAspiringDetails('major', e.target.value)}
+                                    required
+                                    placeholder="Business, Design, Computer Science"
+                                />
+                            </div>
+                            <div className="auth-field">
+                                <label>Field of Interest</label>
+                                <input
+                                    type="text"
+                                    value={aspiringDetails.field_of_interest}
+                                    onChange={(e) => updateAspiringDetails('field_of_interest', e.target.value)}
+                                    required
+                                    placeholder="Strategy, UX Design, Software Engineering"
+                                />
+                            </div>
+                            <div className="auth-field">
+                                <label>Graduation Year</label>
+                                <input
+                                    type="number"
+                                    min="2020"
+                                    max="2040"
+                                    value={aspiringDetails.graduation_year}
+                                    onChange={(e) => updateAspiringDetails('graduation_year', e.target.value)}
+                                    placeholder="2026"
+                                />
+                            </div>
+                            <div className="auth-field">
+                                <label>Goals / Preferences</label>
+                                <textarea
+                                    value={aspiringDetails.goals}
+                                    onChange={(e) => updateAspiringDetails('goals', e.target.value)}
+                                    placeholder="What kind of mentor or career support would help most?"
+                                    rows={3}
+                                />
+                            </div>
+                        </div>
+                    )}
+
+                    {role === 'established' && (
+                        <div className="auth-fieldset">
+                            <h2>Mentor Profile</h2>
+                            <div className="auth-field">
+                                <label>Company</label>
+                                <input
+                                    type="text"
+                                    value={establishedDetails.company}
+                                    onChange={(e) => updateEstablishedDetails('company', e.target.value)}
+                                    required
+                                    placeholder="Company or organization"
+                                />
+                            </div>
+                            <div className="auth-field">
+                                <label>Job Title</label>
+                                <input
+                                    type="text"
+                                    value={establishedDetails.job_title}
+                                    onChange={(e) => updateEstablishedDetails('job_title', e.target.value)}
+                                    required
+                                    placeholder="Software Engineer, Designer, Manager"
+                                />
+                            </div>
+                            <div className="auth-field">
+                                <label>Mentoring Field</label>
+                                <input
+                                    type="text"
+                                    value={establishedDetails.field}
+                                    onChange={(e) => updateEstablishedDetails('field', e.target.value)}
+                                    required
+                                    placeholder="Computer Science, Marketing, Finance"
+                                />
+                            </div>
+                            <div className="auth-field">
+                                <label>University</label>
+                                <input
+                                    type="text"
+                                    value={establishedDetails.university}
+                                    onChange={(e) => updateEstablishedDetails('university', e.target.value)}
+                                    placeholder="Optional alma mater"
+                                />
+                            </div>
+                            <div className="auth-field auth-grid">
+                                <div>
+                                    <label>Years Experience</label>
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        max="80"
+                                        value={establishedDetails.years_experience}
+                                        onChange={(e) => updateEstablishedDetails('years_experience', e.target.value)}
+                                        placeholder="5"
+                                    />
+                                </div>
+                                <div>
+                                    <label>Mentoring Capacity</label>
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        max="20"
+                                        value={establishedDetails.mentoring_capacity}
+                                        onChange={(e) => updateEstablishedDetails('mentoring_capacity', e.target.value)}
+                                        placeholder="2"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    )}
 
                     {error && <div className="auth-error">{error}</div>}
                     {message && <div className="auth-success">{message}</div>}
