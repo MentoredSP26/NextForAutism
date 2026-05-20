@@ -38,6 +38,8 @@ export default function SignupPage() {
         setLoading(true);
 
         const supabase = createClient();
+        const signupRole = normalizePublicSignupRole(role);
+        const signupDetails = signupRole === 'aspiring' ? aspiringDetails : establishedDetails;
 
         const { data: authData, error: authError } = await supabase.auth.signUp({
             email,
@@ -45,8 +47,8 @@ export default function SignupPage() {
             options: {
                 data: {
                     full_name: fullName,
-                    role: role,
-                    profile_details: role === 'aspiring' ? aspiringDetails : establishedDetails,
+                    role: signupRole,
+                    profile_details: signupDetails,
                 },
             },
         });
@@ -62,13 +64,13 @@ export default function SignupPage() {
                 await saveSignupProfile(
                     supabase,
                     authData.user.id,
-                    role,
+                    signupRole,
                     {
                         email,
                         full_name: fullName,
                         activity_status: 'available',
                     },
-                    role === 'aspiring' ? aspiringDetails : establishedDetails
+                    signupDetails
                 );
             } catch (profileError) {
                 setError(profileError.message);
@@ -78,7 +80,7 @@ export default function SignupPage() {
         }
 
         if (authData.session) {
-            router.push(getLandingForRole(role));
+            router.push(getLandingForRole(signupRole));
             router.refresh();
         } else {
             setMessage('Check your email to confirm your account, then log in. Your profile details were saved as signup metadata and may need review after first login.');
@@ -140,7 +142,6 @@ export default function SignupPage() {
                         <select value={role} onChange={(e) => setRole(e.target.value)} required>
                             <option value="aspiring">Aspiring Professional (Student)</option>
                             <option value="established">Established Professional (Mentor)</option>
-                            <option value="admin">Admin</option>
                         </select>
                     </div>
 
@@ -287,9 +288,12 @@ export default function SignupPage() {
 
 function getLandingForRole(role) {
     switch (role) {
-        case 'admin': return '/admin';
         case 'established': return '/established';
         case 'aspiring': return '/aspiring';
         default: return '/';
     }
+}
+
+function normalizePublicSignupRole(role) {
+    return role === 'established' ? 'established' : 'aspiring';
 }

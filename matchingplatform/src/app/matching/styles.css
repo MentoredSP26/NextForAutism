@@ -21,6 +21,10 @@
     padding: 20px 28px;
     border-radius: 16px 16px 0 0;
     border-top: 4px solid #cb333b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
 }
 
 .matching-header h1 {
@@ -37,6 +41,48 @@
     font-weight: 400;
     color: rgba(255, 255, 255, 0.6);
     margin: 4px 0 0;
+}
+
+.btn-generate-matches {
+    min-height: 38px;
+    padding: 0 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #041e42;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-generate-matches:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.matching-notice,
+.matching-error {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 16px;
+    padding: 11px 14px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+}
+
+.matching-notice {
+    background-color: #e8f5ec;
+    border: 1px solid #cce8d4;
+    color: #1f7a3d;
+}
+
+.matching-error {
+    background-color: #fef2f2;
+    border: 1px solid #f8e1e4;
+    color: #cb333b;
 }
 
 /* Section shared styles */

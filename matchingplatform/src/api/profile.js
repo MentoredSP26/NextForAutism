@@ -170,11 +170,12 @@ export async function deleteManagedRoleDetails(profileId, role) {
 }
 
 export async function saveSignupProfile(supabase, userId, role, profile, details) {
+    const signupRole = normalizePublicSignupRole(role);
     const profilePayload = {
         id: userId,
         email: profile.email,
         full_name: profile.full_name,
-        role,
+        role: signupRole,
         activity_status: profile.activity_status || "available",
     };
 
@@ -183,10 +184,10 @@ export async function saveSignupProfile(supabase, userId, role, profile, details
         .upsert(profilePayload, { onConflict: "id" });
     if (profileError) throw profileError;
 
-    const table = ROLE_DETAIL_TABLES[role];
+    const table = ROLE_DETAIL_TABLES[signupRole];
     if (!table) return;
 
-    await saveRoleDetails(supabase, table, role, userId, details);
+    await saveRoleDetails(supabase, table, signupRole, userId, details);
 }
 
 export async function deleteCurrentRoleDetails() {
@@ -245,7 +246,7 @@ async function saveRoleDetails(supabase, table, role, profileId, details) {
 
 async function createProfileFromMetadata(supabase, user) {
     const metadata = user.user_metadata || {};
-    const role = metadata.role || "aspiring";
+    const role = normalizePublicSignupRole(metadata.role);
     const profilePayload = {
         id: user.id,
         email: user.email,
@@ -268,4 +269,8 @@ async function createProfileFromMetadata(supabase, user) {
     }
 
     return data;
+}
+
+function normalizePublicSignupRole(role) {
+    return role === "established" ? "established" : "aspiring";
 }

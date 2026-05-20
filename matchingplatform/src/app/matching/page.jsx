@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import NavBar from '../../components/navbar/page';
-import { getSuggestedMatches, getActiveMatches, getAspiringProfessionals, getEstablishedProfessionals, approveMatch, rejectMatch, createManualMatch } from '../../api/queries';
+import { getSuggestedMatches, getActiveMatches, getAspiringProfessionals, getEstablishedProfessionals, approveMatch, rejectMatch, createManualMatch, generateSuggestedMatches } from '../../api/queries';
 import './styles.css';
 
 const navButtons = [
@@ -22,6 +22,9 @@ function MatchingPage() {
     const [selectedEstablished, setSelectedEstablished] = useState('');
     const [selectedUniversity, setSelectedUniversity] = useState('All Universities');
     const [loading, setLoading] = useState(true);
+    const [generating, setGenerating] = useState(false);
+    const [notice, setNotice] = useState('');
+    const [error, setError] = useState('');
 
     async function fetchData() {
         try {
@@ -37,7 +40,7 @@ function MatchingPage() {
                 number: i + 1,
                 aspiring: {
                     name: m.aspiring?.full_name || '',
-                    field: m.aspiring?.aspiring_professionals?.[0]?.major || '',
+                    field: m.aspiring?.aspiring_professionals?.[0]?.field_of_interest || m.aspiring?.aspiring_professionals?.[0]?.major || '',
                     university: m.aspiring?.aspiring_professionals?.[0]?.university || '',
                 },
                 established: {
@@ -69,6 +72,7 @@ function MatchingPage() {
             setEstablishedList(established.map(p => ({ id: p.id, name: p.full_name })));
         } catch (err) {
             console.error('Failed to fetch matching data:', err);
+            setError(err.message);
         } finally {
             setLoading(false);
         }
@@ -83,6 +87,7 @@ function MatchingPage() {
             fetchData();
         } catch (err) {
             console.error('Failed to approve match:', err);
+            setError(err.message);
         }
     };
 
@@ -92,18 +97,44 @@ function MatchingPage() {
             setSuggestedMatches(prev => prev.filter(m => m.id !== id));
         } catch (err) {
             console.error('Failed to reject match:', err);
+            setError(err.message);
+        }
+    };
+
+    const handleGenerateSuggestions = async () => {
+        setGenerating(true);
+        setNotice('');
+        setError('');
+
+        try {
+            const generated = await generateSuggestedMatches(ADMIN_ID);
+            setNotice(generated.length > 0
+                ? `${generated.length} ranked suggested matches generated.`
+                : 'No new suggestions were generated. Check unmatched students, mentor capacity, or existing suggested matches.'
+            );
+            fetchData();
+        } catch (err) {
+            console.error('Failed to generate suggestions:', err);
+            setError(err.message);
+        } finally {
+            setGenerating(false);
         }
     };
 
     const handleCreateMatch = async () => {
         if (!selectedAspiring || !selectedEstablished) return;
+        setNotice('');
+        setError('');
         try {
-            await createManualMatch(selectedAspiring, selectedEstablished, ADMIN_ID);
+            const created = await createManualMatch(selectedAspiring, selectedEstablished, ADMIN_ID);
+            const attributes = created.compatibility_attributes?.join(', ') || 'manual review';
+            setNotice(`Manual match created with ${created.compatibility_score}% compatibility: ${attributes}.`);
             setSelectedAspiring('');
             setSelectedEstablished('');
             fetchData();
         } catch (err) {
             console.error('Failed to create match:', err);
+            setError(err.message);
         }
     };
 
@@ -134,9 +165,17 @@ function MatchingPage() {
             />
             <main className="matching-main-content">
                 <div className="matching-header">
-                    <h1>Matching</h1>
-                    <p>{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                    <div>
+                        <h1>Matching</h1>
+                        <p>{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                    </div>
+                    <button className="btn-generate-matches" onClick={handleGenerateSuggestions} disabled={generating}>
+                        {generating ? 'Generating...' : 'Generate Suggestions'}
+                    </button>
                 </div>
+
+                {notice && <div className="matching-notice">{notice}</div>}
+                {error && <div className="matching-error">{error}</div>}
 
                 {/* Suggested Matches */}
                 <div className="matching-section">
@@ -144,7 +183,7 @@ function MatchingPage() {
                         <span className="section-icon">✨</span>
                         <h2>Suggested Matches</h2>
                     </div>
-                    <p className="section-subtitle">AI-generated mentee pairings awaiting your approval — based on field, university, and shared interests.</p>
+                    <p className="section-subtitle">Ranked mentee pairings awaiting approval, based on field, university, mentor capacity, availability, and experience.</p>
 
                     <div className="suggested-matches-list">
                         {loading ? <p style={{padding: '12px', color: '#536077'}}>Loading...</p> :
