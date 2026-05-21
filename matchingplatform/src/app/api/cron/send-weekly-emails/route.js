@@ -3,11 +3,15 @@ import { sendWeeklyReminders } from "@/lib/email/weeklyEmails";
 
 function isAuthorized(request) {
   const secret = process.env.CRON_SECRET;
-  if (!secret) return true;
+  if (!secret) return process.env.NODE_ENV !== "production";
   return request.headers.get("authorization") === `Bearer ${secret}`;
 }
 
 export async function GET(request) {
+  if (!process.env.CRON_SECRET && process.env.NODE_ENV === "production") {
+    return NextResponse.json({ success: false, error: "CRON_SECRET is required" }, { status: 500 });
+  }
+
   if (!isAuthorized(request)) {
     return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
   }

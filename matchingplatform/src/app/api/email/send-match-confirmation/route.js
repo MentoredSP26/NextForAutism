@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
 import { sendMatchConfirmation } from "@/lib/email/matchEmails";
+import { requireAdmin } from "@/lib/auth/requireAdmin";
 
 export async function POST(request) {
+  const admin = await requireAdmin();
+  if (!admin.authorized) return admin.response;
+
   try {
     const body = await request.json();
     const result = await sendMatchConfirmation(body.match_id);

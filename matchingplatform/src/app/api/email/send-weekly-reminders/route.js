@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
 import { sendWeeklyReminders } from "@/lib/email/weeklyEmails";
+import { requireAdmin } from "@/lib/auth/requireAdmin";
 
 export async function POST(request) {
+  const admin = await requireAdmin();
+  if (!admin.authorized) return admin.response;
+
   try {
     const body = await request.json().catch(() => ({}));
     const result = await sendWeeklyReminders({
