@@ -113,6 +113,29 @@
     margin: 0;
 }
 
+.btn-send-weekly {
+    margin-left: auto;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #041e42;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.btn-send-weekly:hover:not(:disabled) {
+    background-color: #e8f4ff;
+}
+
+.btn-send-weekly:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
 .section-icon {
     font-size: 16px;
 }

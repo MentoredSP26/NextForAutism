@@ -23,6 +23,7 @@ function MatchingPage() {
     const [selectedUniversity, setSelectedUniversity] = useState('All Universities');
     const [loading, setLoading] = useState(true);
     const [generating, setGenerating] = useState(false);
+    const [sendingWeekly, setSendingWeekly] = useState(false);
     const [notice, setNotice] = useState('');
     const [error, setError] = useState('');
 
@@ -80,10 +81,36 @@ function MatchingPage() {
 
     useEffect(() => { fetchData(); }, []);
 
+    const sendMatchConfirmationEmail = async (matchId) => {
+        const response = await fetch('/api/email/send-match-confirmation', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ match_id: matchId }),
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) {
+            throw new Error(result.error || 'Match was saved, but confirmation email failed.');
+        }
+        return result;
+    };
+
     const handleApprove = async (id) => {
+        setNotice('');
+        setError('');
         try {
             await approveMatch(id, ADMIN_ID);
+            let emailNotice = 'Confirmation emails sent.';
+            try {
+                const emailResult = await sendMatchConfirmationEmail(id);
+                const dryRun = emailResult.results?.some(result => result.dryRun);
+                emailNotice = dryRun ? 'Confirmation emails were logged in dry-run mode.' : emailNotice;
+            } catch (emailError) {
+                console.error('Failed to send match confirmation email:', emailError);
+                emailNotice = 'Confirmation emails need to be sent manually.';
+                setError(emailError.message);
+            }
             setSuggestedMatches(prev => prev.filter(m => m.id !== id));
+            setNotice(`Match approved. ${emailNotice}`);
             fetchData();
         } catch (err) {
             console.error('Failed to approve match:', err);
@@ -127,14 +154,54 @@ function MatchingPage() {
         setError('');
         try {
             const created = await createManualMatch(selectedAspiring, selectedEstablished, ADMIN_ID);
+            let emailNotice = 'Confirmation emails sent.';
+            try {
+                const emailResult = await sendMatchConfirmationEmail(created.id);
+                const dryRun = emailResult.results?.some(result => result.dryRun);
+                emailNotice = dryRun ? 'Confirmation emails were logged in dry-run mode.' : emailNotice;
+            } catch (emailError) {
+                console.error('Failed to send match confirmation email:', emailError);
+                emailNotice = 'Confirmation emails need to be sent manually.';
+                setError(emailError.message);
+            }
             const attributes = created.compatibility_attributes?.join(', ') || 'manual review';
-            setNotice(`Manual match created with ${created.compatibility_score}% compatibility: ${attributes}.`);
+            setNotice(`Manual match created with ${created.compatibility_score}% compatibility: ${attributes}. ${emailNotice}`);
             setSelectedAspiring('');
             setSelectedEstablished('');
             fetchData();
         } catch (err) {
             console.error('Failed to create match:', err);
             setError(err.message);
+        }
+    };
+
+    const handleSendWeeklyReminders = async () => {
+        setSendingWeekly(true);
+        setNotice('');
+        setError('');
+
+        try {
+            const response = await fetch('/api/email/send-weekly-reminders', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({}),
+            });
+            const result = await response.json().catch(() => ({}));
+            if (!response.ok) {
+                throw new Error(result.error || 'Weekly reminder emails failed.');
+            }
+
+            const sent = result.processed?.filter(match => match.status === 'sent').length || 0;
+            const dryRun = result.processed?.filter(match => match.status === 'dry_run').length || 0;
+            const skipped = result.processed?.filter(match => match.status === 'skipped').length || 0;
+            const failed = result.processed?.filter(match => match.status === 'failed').length || 0;
+            setNotice(`Weekly reminders complete: ${sent} sent, ${dryRun} dry-run, ${skipped} skipped, ${failed} failed.`);
+            fetchData();
+        } catch (err) {
+            console.error('Failed to send weekly reminders:', err);
+            setError(err.message);
+        } finally {
+            setSendingWeekly(false);
         }
     };
 
@@ -235,6 +302,13 @@ function MatchingPage() {
                 <div className="matching-section">
                     <div className="section-header">
                         <h2>Active Matches ({activeMatchesData.length})</h2>
+                        <button
+                            className="btn-send-weekly"
+                            onClick={handleSendWeeklyReminders}
+                            disabled={sendingWeekly || activeMatchesData.length === 0}
+                        >
+                            {sendingWeekly ? 'Sending...' : 'Send Weekly Reminders'}
+                        </button>
                     </div>
                     <p className="section-subtitle">Click any match to view curriculum progress.</p>
 
