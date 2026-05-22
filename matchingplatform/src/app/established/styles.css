@@ -1,21 +1,50 @@
 .materials-page {
   padding: 40px;
-  margin-left: 180px;
+  margin-left: 200px;
 }
-  .established-dashboard-header {
-    margin-bottom: 32px;
-  }
-  
-  .materials-header {
-    margin-bottom: 8px;
-  }
-  
-  .materials-header h1 {
-    font-size: 28px;
-    font-weight: 700;
-  }
-  
-  .low-opacity-text {
-    color: #666;
-    font-size: 14px;
-  }
+
+.established-dashboard-header {
+  margin-bottom: 32px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.materials-header {
+  margin-bottom: 8px;
+}
+
+.materials-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #111;
+}
+
+.materials-header p {
+  font-size: 16px;
+  color: #444;
+  font-weight: 400;
+}
+
+.low-opacity-text {
+  color: #666;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.container-subtext {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 20px;
+  padding: 12px 4px 0 4px;
+}
+
+.dashboard-welcome {
+  margin-bottom: 24px;
+}
+
+.dashboard-welcome h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+}
