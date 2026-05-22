@@ -215,7 +215,7 @@ const weeks = [
     {
         week: 16,
         type: "discussion",
-        subject: "NEXT For Autism: Final Discussion & Celebration!",
+        subject: "NEXT For Autisms: Final Discussion & Celebration!",
         description: "Final meeting and reflection.",
         footer: "Congratulations — you made it to the final week!",
         items: [
@@ -227,177 +227,15 @@ const weeks = [
     }
 ]
 
-const WeeklyMaterials = () => {
-
+const WeeklyMaterials = ({ currentWeek, meetingLink }) => {
     return (
-        <div className='materials-container'>
-            {weeks.map((week) => (
-                week.type == "learning" 
-                ? <LearningBox key={week.week} week={week}/>
-                : <DiscussionBox key={week.week} week={week}/>
-                
-            ))}
-        </div>
+      <div className='materials-container'>
+        {weeks.map((week) => (
+          week.type == "learning"
+            ? <LearningBox key={week.week} week={week} />
+            : <DiscussionBox key={week.week} week={week} meetingLink={meetingLink} />
+        ))}
+      </div>
     )
 }
 export default WeeklyMaterials
-
-// const WeeklyMaterials = () => {
-//   return (
-//     //add a flexbox and grid of 16 weeks
-//     //add static resources from google drive
-//         //https://docs.google.com/document/d/1kaEbF4LFaL2KlYpK_xpNbnlx1i63OQrKt8YKuQ0xnV8/edit?tab=t.0#heading=h.gpjdwxua4nzq
-
-//         <div className='materials-container'>
-
-//             <div className='material-box'>
-
-//                 <div className='week-bar'>
-//                     <p>Week 1</p>
-//                     <a href="mailto:example@domain.com">Reminder</a>
-//                 </div>
-
-//                 <div>
-//                     <p>Subject: NEXT Connects Learning Week: Mentorship and Connection</p>
-//                     <p>This week's topic in NEXT Connects is Mentorship! You'll learn what mentorship means and how it can help you grow—both at work and in life.</p>
-//                 </div>
-                
-//                 <div className='material-description'>
-//                     <div className='description-logo'>
-//                         <img src = "/play.png" alt="logo" className='logo-sizing'></img>
-//                         <a href = "https://vimeo.com/1135356068?share=copy&fl=sv&fe=ci" alt = 'Video: What is Next Connects?'>Video: What is Next Connects?</a>
-//                     </div>
-//                     <div className='description-logo'>
-//                         <img src = "/assigment.png" alt="logo" className='logo-sizing'></img>
-//                         <a href = "https://drive.google.com/file/d/1c2MJiC6CA9c8MzLVGlX5x-NElmzK2BJi/view?usp=share_link" alt = 'Co-Mentor Communication Guide Assigment PDF'>Assigment: Co-Mentor Communication Guide</a>
-//                     </div>
-//                     <div className='description-logo'>
-//                         <img src = "/assigment.png" alt="logo" className='logo-sizing'></img>
-//                         <a href = "https://drive.google.com/file/d/1q6_tfUcUk7F3zrtdQgl5SI9Y5UqZpF_g/view?usp=share_link" alt = 'Pre/Post-Session Worksheet Assigment PDF'>Assigment: Pre-Session Worksheet</a>
-//                     </div>
-//                     <div className='description-logo'>
-//                         <img src = "/assigment.png" alt="logo" className='logo-sizing'></img>
-//                         <a href = "https://docs.google.com/document/d/1SeVK2SldbBOvKiPOj_XytbAVyohuZKzOylELLOjbCy8/edit?usp=sharing" alt = 'Schedule a meeting Assigment PDF'>Assigment: Schedule a meeting with your co-mentor</a>
-//                     </div>
-//                 </div>
-
-//                 <div>
-//                     <p>Next week: You'll finally get to meet your co-mentor and start learning together!</p>
-//                 </div>
-
-//             </div>
-
-
-//             <div className='material-box-w-meeting'>
-
-//                 <div className='week-bar-w-meeting'>
-//                     <p>Week 2</p>
-//                     <a>Meeting Link</a>
-//                     <a href="mailto:example@domain.com">Reminder</a>
-//                 </div>
-    
-//                 <div>
-//                     <p>Subject: NEXT Connects Discussion Week: Time for Your First Chat!</p>
-//                     <p>It's Discussion Week in NEXT Connects — time for your first chat with your co-mentor! This is your chance to get to know each other and talk about what you've been learning so far.</p>
-//                 </div>
-
-//                 <div className='material-description'>
-//                     <div className='description-logo'>
-//                         <img src = "/agenda.png" alt="logo" className='logo-sizing'></img>
-//                         <a href = "https://drive.google.com/file/d/1NsVmRllVbRohRPS9z0ETwb1Y8CK-KGwi/view?usp=share_link" alt = 'Mentorship Agenda Assigment PDF'>Agenda: Mentorship Agenda</a>
-//                     </div>
-//                     <div className='description-logo'>
-//                         <img src = "/video.png" alt="logo" className='logo-sizing'></img>
-//                         <a alt = "Meeting Link" >Discussion: Meet with your co-mentor</a>
-//                     </div>
-//                     <div className='description-logo'>
-//                         <img src = "/assigment.png" alt="logo" className='logo-sizing'></img>
-//                         <a href = "https://drive.google.com/file/d/1q6_tfUcUk7F3zrtdQgl5SI9Y5UqZpF_g/view?usp=share_link" alt = "Post-Session Assigment PDF">Assignment: Post-Session Worksheet</a>
-//                     </div>
-//                 </div>
-
-//                 <div>
-//                     <p>We can't wait to hear how your first meeting goes!</p>
-//                 </div>
-//             </div>
-
-//             <div className='material-box'>
-
-//                 <div className='week-bar'>
-//                     <p>Week 3</p>
-//                     <a href="mailto:example@domain.com">Reminder</a>
-//                 </div>
-
-//                 <div>
-//                     <p>Subject: NEXT Connects Learning Week: Goal Setting</p>
-//                     <p>This week's topic for NEXT Connects is Goal Setting! Learn how to create clear and effective goals.</p>
-//                 </div>
-    
-//                 <div className='material-description'>
-//                     <div className='description-logo'>
-//                         <img src = "/play.png" alt="logo" className='logo-sizing'></img>
-//                         <a href="https://vimeo.com/1134698212?share=copy&fl=sv&fe=ci" alt="Goal Setting Video">Video: Goal Setting</a>
-//                     </div>
-//                     <div className='description-logo'>
-//                         <img src = "/assigment.png" alt="logo" className='logo-sizing'></img>
-//                         <a href="https://drive.google.com/file/d/1FcELgUl-_mTD1Bn4LI_bcEIpUQZDEC0-/view?usp=share_link" alt="SMART Goals Worksheet PDF">Assignment: SMART Goals Worksheet</a>
-//                     </div>
-//                     <div className='description-logo'>
-//                         <img src = "/assigment.png" alt="logo" className='logo-sizing'></img>
-//                         <a href="https://drive.google.com/file/d/1dsPfM6yaejJ533m6kRZPaOZcSlCRxCqO/view?usp=share_link" alt="Pre-Session Worksheet PDF">Assignment: Pre-Session Worksheet</a>
-//                     </div>
-//                     <div className='description-logo'>
-//                         <img src = "/assigment.png" alt="logo" className='logo-sizing'></img>
-//                         <a href="https://docs.google.com/document/d/1SeVK2SldbBOvKiPOj_XytbAVyohuZKzOylELLOjbCy8/edit?usp=sharing" alt="Schedule Meeting">Assignment: Schedule a meeting with your co-mentor</a>
-//                     </div>
-//                 </div>
-
-//                 <div>
-//                     <p>Next week: you'll share your goals with your co-mentor!</p>
-//                 </div>
-
-//             </div>
-
-//             <div className='material-box-w-meeting'>
-
-//                 <div className='week-bar-w-meeting'>
-//                     <p>Week 4</p>
-//                     <a alt="Meeting Link">Meeting Link</a>
-//                     <a href="mailto:example@domain.com">Reminder</a>
-//                 </div>
-
-//                 <div>
-//                     <p>Subject: NEXT Connects Discussion Week: Let's Talk About Your Goals!</p>
-//                     <p>This week, meet with your co-mentor to talk about your goals.</p>
-//                 </div>
-
-//                 <div className='material-description'>
-//                     <div className='description-logo'>
-//                         <img src = "/assigment.png" alt="logo" className='logo-sizing'></img>
-//                         <a href="https://drive.google.com/file/d/1FcELgUl-_mTD1Bn4LI_bcEIpUQZDEC0-/view?usp=share_link" alt="SMART Goals Worksheet">Review: SMART Goals Worksheet</a>
-//                     </div>
-//                     <div className='description-logo'>
-//                         <img src = "/agenda.png" alt="logo" className='logo-sizing'></img>
-//                         <a href="https://drive.google.com/file/d/1dWate9NOpJhNtGxMVQxUT4iECp15z-dW/view?usp=share_link" alt="Goal Setting Agenda PDF">Agenda: Goal Setting Agenda</a>
-//                     </div>
-//                     <div className='description-logo'>
-//                         <img src = "/video.png" alt="logo" className='logo-sizing'></img>
-//                         <a alt = "Meeting Link" >Discussion: Meet with your co-mentor</a>
-//                     </div>
-//                     <div className='description-logo'>
-//                         <img src = "/assigment.png" alt="logo" className='logo-sizing'></img>
-//                         <a href="https://drive.google.com/file/d/1dsPfM6yaejJ533m6kRZPaOZcSlCRxCqO/view?usp=share_link" alt="Post-Session Worksheet PDF">Assignment: Post-Session Worksheet</a>
-//                     </div>
-//                 </div>
-
-//                 <div>
-//                     <p>Choose 1-2 goals to focus on together! Remember: good goals are clear and realistic, and help you grow!</p>
-//                 </div>
-
-//             </div>
-
-//         </div>
-//   )
-// }
-
-// export default WeeklyMaterials

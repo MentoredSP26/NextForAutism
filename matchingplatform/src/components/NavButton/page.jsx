@@ -27,7 +27,7 @@ function NavButton({ page, path, icon }) {
         <li className="button">
             <a className="nav-button" href={path}>
                 <div className="content">
-                    <img className="nav-logo" alt="icon" src={icon}/>
+                    <img className="nav-logo" alt="icon" src={icon && <img className="nav-logo" alt="icon" src={icon}/>}/>
                     <span className="button-text">{page}</span>
                 </div>
             </a>

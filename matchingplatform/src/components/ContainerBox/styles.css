@@ -2,33 +2,34 @@
 
 @import url("https://use.typekit.net/tub4ocm.css");
 
-.wholeentirefullboxmegabooleanintfloatstrdoublelongsubwaychickenbaconranchmeltwithextraolives{
+
+  
+  .bluebackground {
+    background-color: #041e42;
+    color: white;
+    padding: 16px 20px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .wholeentirefullboxmegabooleanintfloatstrdoublelongsubwaychickenbaconranchmeltwithextraolives {
     display: flex;
     flex-direction: column;
     border-radius: 15px;
-    overflow: hidden;
-    width: fit-content;
+    overflow: visible;
+    width: 100%;
     border: 1.5px solid gray;
-    
     font-family: proxima-nova, sans-serif;
     font-style: normal;
-    
-}
-
-.bluebackground{
-    background-color: #041e42;
-    color: white;
-    padding: 10px;
-    font-size: 12px;
-    font-weight: 500;
-
-}
-
-.whitebackground{
+    margin-bottom: 24px;
+  }
+  
+  .whitebackground {
     background-color: whitesmoke;
     color: black;
-    padding: 10px;
-    font-size: 7px;
-    font-weight: 200;
-}
-
+    padding: 20px;
+    padding-bottom: 40px;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 0 0 15px 15px;
+  }

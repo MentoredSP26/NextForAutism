@@ -1,13 +1,17 @@
 import React from 'react'
 import MaterialItem from './MaterialItem'
 
-const DiscussionBox = ({week}) => {
+const DiscussionBox = ({ week, meetingLink}) => {
+  const safeLink = typeof meetingLink === 'string' 
+    ? (meetingLink.startsWith('http') ? meetingLink : `https://${meetingLink}`)
+    : null
+
   return (
     <div className='material-box-w-meeting'>
       
       <div className='week-bar-w-meeting'>
         <h2><b>Week {week.week}</b></h2>
-        <a><img src="/video.png" alt = "bell icon" className='logo-sizing'></img></a>
+        <a href={safeLink || "#"} target="_blank" rel="noopener noreferrer" style={{ opacity: safeLink ? 1 : 0.4, cursor: safeLink ? 'pointer' : 'not-allowed' }} title={safeLink ? "Join meeting" : "No meeting link set yet"}><img src="/video.png" alt="meeting icon" className='logo-sizing' /></a>
         <a onClick={async () => {
           await fetch('https://lgmtapkhdwlgbkkcikqh.supabase.co/functions/v1/send-weekly-reminder', {
             method: 'POST',
