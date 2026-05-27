@@ -1,0 +1,141 @@
+.admin-users-panel {
+    width: 100%;
+    max-width: 900px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    padding: 20px;
+    margin: 24px 0 20px;
+}
+
+.admin-users-header h2 {
+    font-family: var(--font-app);
+    font-size: 18px;
+    color: #041e42;
+    margin: 0;
+}
+
+.admin-users-header p {
+    font-family: var(--font-app);
+    font-size: 13px;
+    color: #536077;
+    margin: 4px 0 16px;
+}
+
+.admin-users-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 132px;
+    gap: 12px;
+    align-items: end;
+}
+
+.admin-users-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: var(--font-app);
+    font-size: 12px;
+    font-weight: 700;
+    color: #041e42;
+}
+
+.admin-users-form input {
+    min-height: 42px;
+    border: 1px solid #d6dce6;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: var(--font-app);
+    font-size: 14px;
+    color: #041e42;
+    background-color: #ffffff;
+    outline: none;
+    color-scheme: light;
+}
+
+.admin-users-form input::placeholder {
+    color: #536077;
+    opacity: 1;
+}
+
+.admin-users-form button {
+    min-height: 42px;
+    border: none;
+    border-radius: 8px;
+    padding: 0 14px;
+    background: #cb333b;
+    color: #ffffff;
+    font-family: var(--font-app);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.admin-users-form button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.admin-users-error,
+.admin-users-success {
+    margin-top: 12px;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: var(--font-app);
+    font-size: 13px;
+}
+
+.admin-users-error {
+    background: #fef2f2;
+    border: 1px solid #f8e1e4;
+    color: #cb333b;
+}
+
+.admin-users-success {
+    background: #e8f5ec;
+    border: 1px solid #cce8d5;
+    color: #155724;
+}
+
+.admin-users-list {
+    display: grid;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.admin-users-list p {
+    font-family: var(--font-app);
+    font-size: 13px;
+    color: #536077;
+    margin: 0;
+}
+
+.admin-user-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    border-top: 1px solid #edf0f4;
+    padding-top: 8px;
+    font-family: var(--font-app);
+}
+
+.admin-user-row span {
+    font-size: 14px;
+    font-weight: 700;
+    color: #041e42;
+}
+
+.admin-user-row small {
+    font-size: 12px;
+    color: #536077;
+    overflow-wrap: anywhere;
+    text-align: right;
+}
+
+@media (max-width: 700px) {
+    .admin-users-form {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-user-row {
+        flex-direction: column;
+    }
+}

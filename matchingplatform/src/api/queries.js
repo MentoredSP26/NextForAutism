@@ -194,7 +194,12 @@ export async function getRecentActivity(limit = 10) {
 export async function approveMatch(matchId, adminId) {
     const { data: match, error: fetchError } = await supabase
         .from('matches')
-        .select('aspiring_id, established_id')
+        .select(`
+            aspiring_id,
+            established_id,
+            aspiring:aspiring_id(full_name),
+            established:established_id(full_name)
+        `)
         .eq('id', matchId)
         .single();
     if (fetchError) throw fetchError;
@@ -212,7 +217,7 @@ export async function approveMatch(matchId, adminId) {
     // Log the activity
     await supabase.from('activity_log').insert({
         action: 'Match approved',
-        detail: `Match ${matchId} approved`,
+        detail: `${getDisplayName(match.aspiring, 'Aspiring professional')} matched with ${getDisplayName(match.established, 'Established professional')}`,
         user_id: adminId,
     });
 }
@@ -264,7 +269,7 @@ export async function createManualMatch(aspiringId, establishedId, adminId) {
         if (error) throw error;
 
         await markProfilesMatched(aspiringId, establishedId);
-        await logManualMatch(adminId, compatibility.score);
+        await logManualMatch(adminId, aspiring, established, compatibility.score);
         return data;
     }
 
@@ -285,7 +290,7 @@ export async function createManualMatch(aspiringId, establishedId, adminId) {
     if (error) throw error;
 
     await markProfilesMatched(aspiringId, establishedId);
-    await logManualMatch(adminId, compatibility.score);
+    await logManualMatch(adminId, aspiring, established, compatibility.score);
 
     return data;
 }
@@ -411,10 +416,14 @@ async function markProfilesMatched(aspiringId, establishedId) {
     await supabase.from('profiles').update({ is_matched: true }).eq('id', establishedId);
 }
 
-async function logManualMatch(adminId, score) {
+function getDisplayName(profile, fallback) {
+    return profile?.full_name || profile?.email || fallback;
+}
+
+async function logManualMatch(adminId, aspiring, established, score) {
     await supabase.from('activity_log').insert({
         action: 'Created match',
-        detail: `Manual match created with ${score}% compatibility`,
+        detail: `${getDisplayName(aspiring, 'Aspiring professional')} matched with ${getDisplayName(established, 'Established professional')} (${score}% compatibility)`,
         user_id: adminId,
     });
 }

@@ -106,8 +106,9 @@ export async function getManagedProfileWithDetails(profileId, role) {
         .from("profiles")
         .select("*")
         .eq("id", profileId)
-        .single();
+        .maybeSingle();
     if (profileError) throw profileError;
+    if (!profile) throw new Error("That profile could not be found. It may have been deleted or changed by another admin.");
 
     const table = ROLE_DETAIL_TABLES[role || profile.role];
     let details = null;
@@ -134,8 +135,9 @@ export async function saveManagedProfile(profileId, role, { profile, details }) 
         .update(profilePayload)
         .eq("id", profileId)
         .select("*")
-        .single();
+        .maybeSingle();
     if (profileError) throw profileError;
+    if (!updatedProfile) throw new Error("That profile could not be saved because it no longer exists.");
 
     const table = ROLE_DETAIL_TABLES[role || updatedProfile.role];
     let updatedDetails = null;
@@ -230,8 +232,9 @@ async function saveRoleDetails(supabase, table, role, profileId, details) {
             .update(detailPayload)
             .eq("id", existing.id)
             .select("*")
-            .single();
+            .maybeSingle();
         if (error) throw error;
+        if (!data) throw new Error("Those profile details could not be saved because they no longer exist.");
         return data;
     }
 

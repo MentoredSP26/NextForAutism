@@ -41,6 +41,20 @@ function normalize(values) {
     );
 }
 
+function getFriendlyProfileError(error) {
+    const message = error?.message || '';
+    if (
+        message.includes('JSON object requested') ||
+        message.includes('multiple (or no) rows returned') ||
+        message.includes('no rows') ||
+        message.includes('could not be found') ||
+        message.includes('no longer exists')
+    ) {
+        return 'This profile could not be loaded. It may have been deleted or changed by another admin. Select another profile or refresh the page.';
+    }
+    return message || 'Something went wrong. Please try again.';
+}
+
 function AdminProfilesManager() {
     const [people, setPeople] = useState([]);
     const [selectedId, setSelectedId] = useState('');
@@ -110,7 +124,9 @@ function AdminProfilesManager() {
                 ...normalize(current.details),
             });
         } catch (err) {
-            setError(err.message);
+            setProfile(emptyCommon);
+            setDetails(emptyDetails[role] || {});
+            setError(getFriendlyProfileError(err));
         }
     }, []);
 
@@ -167,7 +183,11 @@ function AdminProfilesManager() {
             setMessage('Profile saved.');
             await loadPeople();
         } catch (err) {
-            setError(err.message);
+            if (getFriendlyProfileError(err).includes('could not be loaded')) {
+                setProfile(emptyCommon);
+                setDetails(emptyDetails[selectedRole] || {});
+            }
+            setError(getFriendlyProfileError(err));
         } finally {
             setSaving(false);
         }

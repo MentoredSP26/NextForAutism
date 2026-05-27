@@ -2,18 +2,20 @@
 import { useState, useEffect } from 'react';
 import NavBar from '../../components/navbar/page';
 import { getSuggestedMatches, getActiveMatches, getAspiringProfessionals, getEstablishedProfessionals, approveMatch, rejectMatch, createManualMatch, generateSuggestedMatches } from '../../api/queries';
+import { useCurrentProfile } from '../../hooks/useCurrentProfile';
 import './styles.css';
 
 const navButtons = [
-    { page: "Dashboard", path: "/admin", icon: "/home.png" },
-    { page: "Profiles", path: "/admin/profiles", icon: "/profile.png" },
-    { page: "Matching", path: "/matching", icon: "/globe.svg" },
-    { page: "Admin Profile", path: "/admin-profile", icon: "/profile.png" },
+    { page: "Dashboard", path: "/admin", icon: "/home-icon.svg" },
+    { page: "Profiles", path: "/admin/profiles", icon: "/profile-icon.svg" },
+    { page: "Matching", path: "/matching", icon: "/matching-icon.svg" },
+    { page: "Admin Profile", path: "/admin-profile", icon: "/profile-icon.svg" },
 ];
 
 const ADMIN_ID = 'ad000000-0000-0000-0000-000000000001';
 
 function MatchingPage() {
+    const currentProfile = useCurrentProfile();
     const [suggestedMatches, setSuggestedMatches] = useState([]);
     const [activeMatchesData, setActiveMatchesData] = useState([]);
     const [aspiringList, setAspiringList] = useState([]);
@@ -227,8 +229,8 @@ function MatchingPage() {
             <NavBar
                 buttons={navButtons}
                 profile="Admin"
-                user="Admin User"
-                email="admin@next.org"
+                user={currentProfile?.full_name || currentProfile?.email || 'Admin'}
+                email={currentProfile?.email || ''}
             />
             <main className="matching-main-content">
                 <div className="matching-header">

@@ -69,6 +69,12 @@
     border-color: #0072ce;
 }
 
+.auth-field input::placeholder,
+.auth-field textarea::placeholder {
+    color: #3f4b5f;
+    opacity: 1;
+}
+
 .auth-field textarea {
     min-height: 84px;
     resize: vertical;

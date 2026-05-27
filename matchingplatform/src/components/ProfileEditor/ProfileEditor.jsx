@@ -41,6 +41,20 @@ function normalizeFormValues(values) {
     );
 }
 
+function getFriendlyProfileError(error) {
+    const message = error?.message || '';
+    if (
+        message.includes('JSON object requested') ||
+        message.includes('multiple (or no) rows returned') ||
+        message.includes('no rows') ||
+        message.includes('could not be found') ||
+        message.includes('no longer exists')
+    ) {
+        return 'Your profile could not be loaded. It may have been changed or removed. Refresh the page or contact an admin.';
+    }
+    return message || 'Something went wrong. Please try again.';
+}
+
 function ProfileEditor({ expectedRole, nav, title }) {
     const [profile, setProfile] = useState(emptyCommon);
     const [details, setDetails] = useState(emptyDetails[expectedRole] || {});
@@ -69,13 +83,15 @@ function ProfileEditor({ expectedRole, nav, title }) {
                     ...normalizeFormValues(current.details),
                 });
             } catch (err) {
-                setError(err.message);
+                setProfile(emptyCommon);
+                setDetails(emptyDetails[expectedRole] || {});
+                setError(getFriendlyProfileError(err));
             } finally {
                 setLoading(false);
             }
         }
         loadProfile();
-    }, []);
+    }, [expectedRole]);
 
     const updateProfile = (field, value) => {
         setProfile(prev => ({ ...prev, [field]: value }));
@@ -103,7 +119,11 @@ function ProfileEditor({ expectedRole, nav, title }) {
             });
             setMessage('Profile saved.');
         } catch (err) {
-            setError(err.message);
+            if (getFriendlyProfileError(err).includes('could not be loaded')) {
+                setProfile(emptyCommon);
+                setDetails(emptyDetails[role] || {});
+            }
+            setError(getFriendlyProfileError(err));
         } finally {
             setSaving(false);
         }

@@ -37,9 +37,10 @@ body {
 }
 
 .logo {
-    width: 10.58vw;
-    min-width: 160px;
+    width: 160px;
+    max-width: 100%;
     height: auto;
+    display: block;
 }
 
 .nav-profile {

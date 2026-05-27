@@ -24,6 +24,7 @@ body {
 
 .nav-button:hover {
     background-color: #CB333B;
+    color: #ffffff;
 }
 
 .nav-button.active {
@@ -42,10 +43,12 @@ body {
 .nav-logo {
     width: 1.19vw;
     min-width: 18px;
-    height: auto;
-    padding-right: 0.2vw;
+    height: 18px;
     flex: none;
     flex-shrink: 0;
+    background-color: currentColor;
+    mask: var(--nav-icon) center / contain no-repeat;
+    -webkit-mask: var(--nav-icon) center / contain no-repeat;
 }
 
 .button-text {

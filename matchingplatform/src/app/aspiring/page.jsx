@@ -5,8 +5,8 @@ import NavBar from '../../components/navbar/page';
 import './styles.css';
 
 const navButtons = [
-    { page: "Dashboard", path: "/aspiring", icon: "/home.png" },
-    { page: "Profile", path: "/aspiring/profile", icon: "/profile.png" },
+    { page: "Dashboard", path: "/aspiring", icon: "/home-icon.svg" },
+    { page: "Profile", path: "/aspiring/profile", icon: "/profile-icon.svg" },
 ];
 
 export default function AspiringPage() {

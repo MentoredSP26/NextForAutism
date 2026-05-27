@@ -6,15 +6,9 @@
   --font-app: 'Atkinson Hyperlegible', Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 html {
   height: 100%;
+  color-scheme: light;
 }
 
 html,
@@ -45,8 +39,9 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+input,
+select,
+textarea,
+button {
+  color-scheme: light;
 }
