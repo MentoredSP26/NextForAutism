@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createSupabaseServerClient } from "@/api/supabase-server";
+import { createSupabaseServerClient } from "../../api/supabase-server";
 
 export async function requireAdmin() {
   const supabase = await createSupabaseServerClient();

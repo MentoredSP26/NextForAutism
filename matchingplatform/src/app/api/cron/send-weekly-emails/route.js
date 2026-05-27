@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sendWeeklyReminders } from "@/lib/email/weeklyEmails";
+import { sendWeeklyReminders } from "../../../../lib/email/weeklyEmails";
 
 function isAuthorized(request) {
   const secret = process.env.CRON_SECRET;

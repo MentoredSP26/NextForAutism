@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 p{ 
     color: black;
-    font-family:"DM Sans", sans-serif;
+    font-family: var(--font-app);
     font-size: 7.88px;
     font-weight: 600;
     margin-bottom: 3px;
@@ -21,7 +20,7 @@ select {
     border-width: 1.5px;
     border-color: #bfbfbf;
     border-style: solid;
-    font-family:"DM Sans", sans-serif;
+    font-family: var(--font-app);
     background-color: #f2f2f2;
     color: #bfbfbf;
 }

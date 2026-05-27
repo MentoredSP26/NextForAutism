@@ -17,7 +17,7 @@
 }
 
 .auth-title {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 28px;
     font-weight: 700;
     color: #041e42;
@@ -25,7 +25,7 @@
 }
 
 .auth-subtitle {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 14px;
     color: #536077;
     margin: 6px 0 28px;
@@ -44,7 +44,7 @@
 }
 
 .auth-field label {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     font-weight: 600;
     color: #041e42;
@@ -56,7 +56,7 @@
     padding: 10px 14px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 14px;
     color: #041e42;
     outline: none;
@@ -85,7 +85,7 @@
 }
 
 .auth-fieldset h2 {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 15px;
     font-weight: 700;
     color: #041e42;
@@ -110,7 +110,7 @@
     border: 1px solid #f8e1e4;
     border-radius: 8px;
     color: #cb333b;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 13px;
 }
 
@@ -120,7 +120,7 @@
     border: 1px solid #c3e6cb;
     border-radius: 8px;
     color: #155724;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 13px;
 }
 
@@ -130,7 +130,7 @@
     border-radius: 8px;
     background-color: #cb333b;
     color: #ffffff;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -150,7 +150,7 @@
 .auth-switch {
     margin: 20px 0 0;
     text-align: center;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 13px;
     color: #536077;
 }

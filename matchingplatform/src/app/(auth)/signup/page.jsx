@@ -40,9 +40,33 @@ export default function SignupPage() {
         const supabase = createClient();
         const signupRole = normalizePublicSignupRole(role);
         const signupDetails = signupRole === 'aspiring' ? aspiringDetails : establishedDetails;
+        const normalizedEmail = email.trim().toLowerCase();
+
+        try {
+            const emailCheck = await fetch('/api/auth/check-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: normalizedEmail }),
+            });
+            const emailCheckResult = await emailCheck.json().catch(() => ({}));
+
+            if (!emailCheck.ok) {
+                throw new Error(emailCheckResult.error || 'Could not verify whether this email is already registered.');
+            }
+
+            if (emailCheckResult.exists) {
+                setError('An account already exists for this email. Log in instead, or use password reset if you forgot your password.');
+                setLoading(false);
+                return;
+            }
+        } catch (checkError) {
+            setError(checkError.message);
+            setLoading(false);
+            return;
+        }
 
         const { data: authData, error: authError } = await supabase.auth.signUp({
-            email,
+            email: normalizedEmail,
             password,
             options: {
                 data: {
@@ -59,6 +83,12 @@ export default function SignupPage() {
             return;
         }
 
+        if (authData.user && Array.isArray(authData.user.identities) && authData.user.identities.length === 0) {
+            setError('An account already exists for this email. Log in instead, or use password reset if you forgot your password.');
+            setLoading(false);
+            return;
+        }
+
         if (authData.user && authData.session) {
             try {
                 await saveSignupProfile(
@@ -66,7 +96,7 @@ export default function SignupPage() {
                     authData.user.id,
                     signupRole,
                     {
-                        email,
+                        email: normalizedEmail,
                         full_name: fullName,
                         activity_status: 'available',
                     },
@@ -83,7 +113,7 @@ export default function SignupPage() {
             router.push(getLandingForRole(signupRole));
             router.refresh();
         } else {
-            setMessage('Check your email to confirm your account, then log in. Your profile details were saved as signup metadata and may need review after first login.');
+            setMessage('Almost done. We sent a confirmation link to your email. Open that link, then come back and log in with the password you just created.');
         }
         setLoading(false);
     };

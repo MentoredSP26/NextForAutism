@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
 }
 
 /* ─── NAVBAR ─── */
@@ -66,6 +65,43 @@ body {
     flex-grow: 0;
 }
 
+.logout-section {
+    width: 100%;
+    padding: 12px 14px;
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    bottom: 74px;
+    width: 12.7vw;
+    min-width: 192px;
+    z-index: 3;
+    background: #041E42;
+}
+
+.logout-btn {
+    width: 100%;
+    min-height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-family: var(--font-app);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.logout-btn:hover {
+    background: #CB333B;
+    border-color: #CB333B;
+}
+
+.logout-btn:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
 .navBar-bottom {
     box-sizing: border-box;
     display: flex;
@@ -76,7 +112,7 @@ body {
     width: 12.7vw;
     min-width: 192px;
     height: auto;
-    min-height: 5.84vh;
+    min-height: 74px;
     border-top: 0.14vh solid rgba(255, 255, 255, 0.1);
     background: #041E42;
     position: fixed;
@@ -118,7 +154,8 @@ body {
     padding: 0;
     flex: 1;
     height: auto;
-    overflow: visible;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .user-name {
@@ -134,7 +171,8 @@ body {
     width: 100%;
     font-size: 12px;          /* fixed — never shrinks */
     color: rgba(255, 255, 255, 0.7);
-    white-space: nowrap;
-    overflow: visible;
-    line-height: 1.5;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.3;
 }

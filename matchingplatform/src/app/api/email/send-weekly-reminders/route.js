@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { sendWeeklyReminders } from "@/lib/email/weeklyEmails";
-import { requireAdmin } from "@/lib/auth/requireAdmin";
+import { requireAdmin } from "../../../../lib/auth/requireAdmin";
+import { sendWeeklyReminders } from "../../../../lib/email/weeklyEmails";
 
 export async function POST(request) {
   const admin = await requireAdmin();

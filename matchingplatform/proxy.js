@@ -20,7 +20,7 @@ const PROTECTED_PREFIXES = [
 
 const AUTH_ROUTES = ['/login', '/signup'];
 
-export async function middleware(request) {
+export async function proxy(request) {
     let response = NextResponse.next({ request });
 
     const supabase = createServerClient(SUPABASE_URL, SUPABASE_KEY, {
@@ -80,7 +80,8 @@ async function getUserRole(supabase, user) {
         .eq('id', user.id)
         .maybeSingle();
 
-    return profile?.role || normalizeSignupRole(user.user_metadata?.role);
+    if (profile?.role === 'admin') return 'admin';
+    return normalizeSignupRole(profile?.role || user.user_metadata?.role);
 }
 
 function normalizeSignupRole(role) {
@@ -89,10 +90,15 @@ function normalizeSignupRole(role) {
 
 export const config = {
     matcher: [
+        '/admin',
         '/admin/:path*',
+        '/admin-profile',
         '/admin-profile/:path*',
+        '/matching',
         '/matching/:path*',
+        '/aspiring',
         '/aspiring/:path*',
+        '/established',
         '/established/:path*',
         '/login',
         '/signup',

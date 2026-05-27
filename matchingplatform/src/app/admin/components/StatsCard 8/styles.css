@@ -35,7 +35,7 @@
 }
 
 .stats-card-label {
-    font-family: 'DM Sans', sans-serif; 
+    font-family: var(--font-app); 
     font-size: 12px; 
     font-weight: 500; 
     color: #536077;
@@ -44,7 +44,7 @@
 }
 
 .stats-card-value {
-    font-family: 'Montserrat', sans-serif; 
+    font-family: var(--font-app); 
     font-size: 24px; 
     font-weight: 700; 
     color: #041e42; 

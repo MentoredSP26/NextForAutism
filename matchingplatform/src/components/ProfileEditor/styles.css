@@ -18,7 +18,7 @@
 }
 
 .profile-editor-header h1 {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 28px;
     font-weight: 700;
     color: #041e42;
@@ -27,7 +27,7 @@
 
 .profile-editor-header p,
 .profile-editor-loading {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 14px;
     color: #536077;
     margin: 0;
@@ -52,7 +52,7 @@
 }
 
 .profile-editor-section h2 {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 17px;
     font-weight: 700;
     color: #041e42;
@@ -69,7 +69,7 @@
     display: flex;
     flex-direction: column;
     gap: 7px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     font-weight: 700;
     color: #041e42;
@@ -82,7 +82,7 @@
     padding: 10px 12px;
     border: 1px solid #d9e0ea;
     border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 14px;
     font-weight: 400;
     color: #041e42;
@@ -112,7 +112,7 @@
     min-height: 42px;
     padding: 0 18px;
     border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
@@ -140,7 +140,7 @@
 .profile-editor-success {
     padding: 11px 14px;
     border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 13px;
 }
 

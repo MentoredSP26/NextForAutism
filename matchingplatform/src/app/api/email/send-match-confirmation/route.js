@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { sendMatchConfirmation } from "@/lib/email/matchEmails";
-import { requireAdmin } from "@/lib/auth/requireAdmin";
+import { requireAdmin } from "../../../../lib/auth/requireAdmin";
+import { sendMatchConfirmation } from "../../../../lib/email/matchEmails";
 
 export async function POST(request) {
   const admin = await requireAdmin();

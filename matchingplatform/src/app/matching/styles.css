@@ -28,7 +28,7 @@
 }
 
 .matching-header h1 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-app);
     font-size: 22px;
     font-weight: 700;
     color: #ffffff;
@@ -36,7 +36,7 @@
 }
 
 .matching-header p {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.6);
@@ -50,7 +50,7 @@
     border-radius: 8px;
     background-color: #ffffff;
     color: #041e42;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 13px;
     font-weight: 700;
     cursor: pointer;
@@ -69,7 +69,7 @@
     margin-top: 16px;
     padding: 11px 14px;
     border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 13px;
 }
 
@@ -106,7 +106,7 @@
 }
 
 .section-header h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-app);
     font-size: 15px;
     font-weight: 700;
     color: #ffffff;
@@ -120,7 +120,7 @@
     border-radius: 8px;
     background-color: #ffffff;
     color: #041e42;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     font-weight: 700;
     cursor: pointer;
@@ -141,7 +141,7 @@
 }
 
 .section-subtitle {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     color: #536077;
     padding: 12px 20px 0;
@@ -181,7 +181,7 @@
     border-radius: 50%;
     background-color: #041e42;
     color: #ffffff;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     font-weight: 700;
 }
@@ -202,7 +202,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     font-weight: 700;
     color: #ffffff;
@@ -221,7 +221,7 @@
 }
 
 .match-person-name {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 13px;
     font-weight: 600;
     color: #041e42;
@@ -232,7 +232,7 @@
 }
 
 .match-person-detail {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 11px;
     font-weight: 400;
     color: #9099a6;
@@ -254,14 +254,14 @@
 }
 
 .compatibility-score {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-app);
     font-size: 16px;
     font-weight: 700;
     color: #ffffff;
 }
 
 .compatibility-label {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 9px;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.6);
@@ -278,7 +278,7 @@
 }
 
 .attribute-tag {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 8px;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.8);
@@ -321,7 +321,7 @@
     border: 1px solid #0072ce;
     background-color: #ffffff;
     color: #0072ce;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
@@ -365,7 +365,7 @@
 }
 
 .progress-label {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 11px;
     font-weight: 500;
     color: #536077;
@@ -387,7 +387,7 @@
 }
 
 .progress-percent {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-app);
     font-size: 14px;
     font-weight: 700;
     color: #041e42;
@@ -399,7 +399,7 @@
     display: inline-block;
     padding: 4px 12px;
     border-radius: 999px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 11px;
     font-weight: 600;
     min-width: 70px;
@@ -457,7 +457,7 @@
 }
 
 .form-group label {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     font-weight: 600;
     color: #041e42;
@@ -467,7 +467,7 @@
     padding: 10px 14px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 13px;
     color: #041e42;
     background-color: #ffffff;
@@ -493,7 +493,7 @@
     border-radius: 8px;
     background-color: #cb333b;
     color: #ffffff;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;

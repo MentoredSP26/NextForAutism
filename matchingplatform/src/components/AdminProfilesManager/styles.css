@@ -33,7 +33,7 @@
     padding: 10px 12px;
     border: 1px solid #d9e0ea;
     border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 14px;
     color: #041e42;
     background-color: #ffffff;
@@ -63,7 +63,7 @@
 .admin-profile-row-name,
 .admin-profile-form-header h2,
 .admin-profile-section h3 {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-weight: 700;
     color: #041e42;
 }
@@ -76,7 +76,7 @@
 .admin-profile-row-sub,
 .admin-profiles-empty,
 .admin-profile-form-header p {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     color: #536077;
 }
@@ -119,7 +119,7 @@
     display: flex;
     flex-direction: column;
     gap: 7px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     font-weight: 700;
     color: #041e42;
@@ -140,7 +140,7 @@
     min-height: 42px;
     padding: 0 18px;
     border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
@@ -168,7 +168,7 @@
 .admin-profile-success {
     padding: 11px 14px;
     border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 13px;
 }
 

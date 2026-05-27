@@ -25,7 +25,7 @@
 }
 
 .admin-page-header h1 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-app);
     font-size: 22px;
     font-weight: 700;
     color: #ffffff;
@@ -33,7 +33,7 @@
 }
 
 .admin-page-header p {
-    font-family: 'DM Sans', sans-serif; 
+    font-family: var(--font-app); 
     font-size: 12px; 
     font-weight: 400; 
     color: rgba(255, 255, 255, 0.6); 
@@ -66,7 +66,7 @@
 }
 
 .roster-column h3 {
-    font-family: 'Montserrat', sans-serif; 
+    font-family: var(--font-app); 
     font-size: 16px; 
     font-weight: 700; 
     color: #ffffff;
