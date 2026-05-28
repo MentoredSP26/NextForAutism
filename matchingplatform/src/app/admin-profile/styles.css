@@ -25,7 +25,7 @@
 }
 
 .profile-header h1 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-app);
     font-size: 22px;
     font-weight: 700;
     color: #ffffff;
@@ -33,7 +33,7 @@
 }
 
 .profile-header p {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.6);
@@ -69,7 +69,7 @@
     border-radius: 50%;
     background-color: #041e42;
     color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-app);
     font-size: 22px;
     font-weight: 700;
     display: flex;
@@ -78,7 +78,7 @@
 }
 
 .profile-name {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-app);
     font-size: 20px;
     font-weight: 700;
     color: #041e42;
@@ -98,7 +98,7 @@
     border-radius: 999px;
     background-color: #041e42;
     color: #ffffff;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 11px;
     font-weight: 600;
 }
@@ -107,7 +107,7 @@
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     font-weight: 500;
     color: #28a745;
@@ -127,7 +127,7 @@
     border-radius: 8px;
     background-color: #ffffff;
     color: #041e42;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
@@ -140,7 +140,7 @@
 }
 
 .profile-bio {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 13px;
     font-weight: 400;
     color: #536077;

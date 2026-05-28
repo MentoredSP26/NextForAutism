@@ -5,8 +5,8 @@ import NavBar from '../../components/navbar/page';
 import './styles.css';
 
 const navButtons = [
-    { page: "Dashboard", path: "/aspiring", icon: "/home.png" },
-    { page: "Profile", path: "/aspiring/profile", icon: "/profile.png" },
+    { page: "Dashboard", path: "/aspiring", icon: "/home-icon.svg" },
+    { page: "Profile", path: "/aspiring/profile", icon: "/profile-icon.svg" },
 ];
 
 export default function AspiringPage() {
@@ -109,7 +109,7 @@ export default function AspiringPage() {
                             <span className="step-num">3</span>
                             <div>
                                 <p className="step-title">Start your mentorship</p>
-                                <p className="step-desc">Once matched, you'll begin the weekly curriculum with your mentor.</p>
+                                <p className="step-desc">Once matched, you&apos;ll begin the weekly curriculum with your mentor.</p>
                             </div>
                         </div>
                     </div>

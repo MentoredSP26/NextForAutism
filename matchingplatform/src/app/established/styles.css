@@ -1,0 +1,11 @@
+.established-page {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f6f9;
+}
+
+.established-main {
+    margin-left: 192px;
+    padding: 40px;
+    flex: 1;
+}

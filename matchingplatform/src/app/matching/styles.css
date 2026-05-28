@@ -21,10 +21,14 @@
     padding: 20px 28px;
     border-radius: 16px 16px 0 0;
     border-top: 4px solid #cb333b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
 }
 
 .matching-header h1 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-app);
     font-size: 22px;
     font-weight: 700;
     color: #ffffff;
@@ -32,11 +36,53 @@
 }
 
 .matching-header p {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.6);
     margin: 4px 0 0;
+}
+
+.btn-generate-matches {
+    min-height: 38px;
+    padding: 0 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #041e42;
+    font-family: var(--font-app);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-generate-matches:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.matching-notice,
+.matching-error {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 16px;
+    padding: 11px 14px;
+    border-radius: 8px;
+    font-family: var(--font-app);
+    font-size: 13px;
+}
+
+.matching-notice {
+    background-color: #e8f5ec;
+    border: 1px solid #cce8d4;
+    color: #1f7a3d;
+}
+
+.matching-error {
+    background-color: #fef2f2;
+    border: 1px solid #f8e1e4;
+    color: #cb333b;
 }
 
 /* Section shared styles */
@@ -60,11 +106,34 @@
 }
 
 .section-header h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-app);
     font-size: 15px;
     font-weight: 700;
     color: #ffffff;
     margin: 0;
+}
+
+.btn-send-weekly {
+    margin-left: auto;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #041e42;
+    font-family: var(--font-app);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.btn-send-weekly:hover:not(:disabled) {
+    background-color: #e8f4ff;
+}
+
+.btn-send-weekly:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 .section-icon {
@@ -72,7 +141,7 @@
 }
 
 .section-subtitle {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     color: #536077;
     padding: 12px 20px 0;
@@ -112,7 +181,7 @@
     border-radius: 50%;
     background-color: #041e42;
     color: #ffffff;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     font-weight: 700;
 }
@@ -133,7 +202,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     font-weight: 700;
     color: #ffffff;
@@ -152,7 +221,7 @@
 }
 
 .match-person-name {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 13px;
     font-weight: 600;
     color: #041e42;
@@ -163,7 +232,7 @@
 }
 
 .match-person-detail {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 11px;
     font-weight: 400;
     color: #9099a6;
@@ -185,14 +254,14 @@
 }
 
 .compatibility-score {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-app);
     font-size: 16px;
     font-weight: 700;
     color: #ffffff;
 }
 
 .compatibility-label {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 9px;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.6);
@@ -209,7 +278,7 @@
 }
 
 .attribute-tag {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 8px;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.8);
@@ -252,7 +321,7 @@
     border: 1px solid #0072ce;
     background-color: #ffffff;
     color: #0072ce;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
@@ -280,7 +349,6 @@
     background-color: #f9fafb;
     border: 1px solid #e8ecf1;
     border-radius: 12px;
-    cursor: pointer;
     transition: box-shadow 0.15s ease;
 }
 
@@ -296,7 +364,7 @@
 }
 
 .progress-label {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 11px;
     font-weight: 500;
     color: #536077;
@@ -318,7 +386,7 @@
 }
 
 .progress-percent {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-app);
     font-size: 14px;
     font-weight: 700;
     color: #041e42;
@@ -330,7 +398,7 @@
     display: inline-block;
     padding: 4px 12px;
     border-radius: 999px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 11px;
     font-weight: 600;
     min-width: 70px;
@@ -352,14 +420,16 @@
     color: #155724;
 }
 
-.btn-view-match {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 1px solid #e0e0e0;
-    background-color: #ffffff;
-    color: #536077;
-    font-size: 16px;
+.btn-remove-match {
+    min-height: 30px;
+    border-radius: 8px;
+    border: 1px solid #f0c7cb;
+    background-color: #fff7f7;
+    color: #a82830;
+    font-family: var(--font-app);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 0 12px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -367,9 +437,10 @@
     transition: all 0.15s ease;
 }
 
-.btn-view-match:hover {
-    border-color: #0072ce;
-    color: #0072ce;
+.btn-remove-match:hover {
+    border-color: #cb333b;
+    background-color: #fef2f2;
+    color: #cb333b;
 }
 
 /* Manual Match Form */
@@ -388,7 +459,7 @@
 }
 
 .form-group label {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     font-weight: 600;
     color: #041e42;
@@ -398,7 +469,7 @@
     padding: 10px 14px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 13px;
     color: #041e42;
     background-color: #ffffff;
@@ -424,7 +495,7 @@
     border-radius: 8px;
     background-color: #cb333b;
     color: #ffffff;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;

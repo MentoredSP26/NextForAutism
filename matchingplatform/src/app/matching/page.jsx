@@ -1,18 +1,21 @@
 'use client';
 import { useState, useEffect } from 'react';
 import NavBar from '../../components/navbar/page';
-import { getSuggestedMatches, getActiveMatches, getAspiringProfessionals, getEstablishedProfessionals, approveMatch, rejectMatch, createManualMatch } from '../../api/queries';
+import { getSuggestedMatches, getActiveMatches, getAspiringProfessionals, getEstablishedProfessionals, approveMatch, rejectMatch, createManualMatch, generateSuggestedMatches, removeActiveMatch } from '../../api/queries';
+import { useCurrentProfile } from '../../hooks/useCurrentProfile';
 import './styles.css';
 
 const navButtons = [
-    { page: "Dashboard", path: "/admin", icon: "/home.png" },
-    { page: "Matching", path: "/matching", icon: "/globe.svg" },
-    { page: "Admin Profile", path: "/admin-profile", icon: "/profile.png" },
+    { page: "Dashboard", path: "/admin", icon: "/home-icon.svg" },
+    { page: "Profiles", path: "/admin/profiles", icon: "/profile-icon.svg" },
+    { page: "Matching", path: "/matching", icon: "/matching-icon.svg" },
+    { page: "Admin Profile", path: "/admin-profile", icon: "/profile-icon.svg" },
 ];
 
 const ADMIN_ID = 'ad000000-0000-0000-0000-000000000001';
 
 function MatchingPage() {
+    const currentProfile = useCurrentProfile();
     const [suggestedMatches, setSuggestedMatches] = useState([]);
     const [activeMatchesData, setActiveMatchesData] = useState([]);
     const [aspiringList, setAspiringList] = useState([]);
@@ -21,6 +24,10 @@ function MatchingPage() {
     const [selectedEstablished, setSelectedEstablished] = useState('');
     const [selectedUniversity, setSelectedUniversity] = useState('All Universities');
     const [loading, setLoading] = useState(true);
+    const [generating, setGenerating] = useState(false);
+    const [sendingWeekly, setSendingWeekly] = useState(false);
+    const [notice, setNotice] = useState('');
+    const [error, setError] = useState('');
 
     async function fetchData() {
         try {
@@ -36,7 +43,7 @@ function MatchingPage() {
                 number: i + 1,
                 aspiring: {
                     name: m.aspiring?.full_name || '',
-                    field: m.aspiring?.aspiring_professionals?.[0]?.major || '',
+                    field: m.aspiring?.aspiring_professionals?.[0]?.field_of_interest || m.aspiring?.aspiring_professionals?.[0]?.major || '',
                     university: m.aspiring?.aspiring_professionals?.[0]?.university || '',
                 },
                 established: {
@@ -68,6 +75,7 @@ function MatchingPage() {
             setEstablishedList(established.map(p => ({ id: p.id, name: p.full_name })));
         } catch (err) {
             console.error('Failed to fetch matching data:', err);
+            setError(err.message);
         } finally {
             setLoading(false);
         }
@@ -75,24 +83,40 @@ function MatchingPage() {
 
     useEffect(() => { fetchData(); }, []);
 
+    const sendMatchConfirmationEmail = async (matchId) => {
+        const response = await fetch('/api/email/send-match-confirmation', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ match_id: matchId }),
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) {
+            throw new Error(result.error || 'Match was saved, but confirmation email failed.');
+        }
+        return result;
+    };
+
     const handleApprove = async (id) => {
+        setNotice('');
+        setError('');
         try {
             await approveMatch(id, ADMIN_ID);
+            let emailNotice = 'Confirmation emails sent.';
+            try {
+                const emailResult = await sendMatchConfirmationEmail(id);
+                const dryRun = emailResult.results?.some(result => result.dryRun);
+                emailNotice = dryRun ? 'Confirmation emails were logged in dry-run mode.' : emailNotice;
+            } catch (emailError) {
+                console.error('Failed to send match confirmation email:', emailError);
+                emailNotice = 'Confirmation emails need to be sent manually.';
+                setError(emailError.message);
+            }
             setSuggestedMatches(prev => prev.filter(m => m.id !== id));
-    
-            // Send match confirmation email to both mentor and mentee
-            await fetch('https://lgmtapkhdwlgbkkcikqh.supabase.co/functions/v1/send-match-confirmation', {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ match_id: id })
-            });
-    
+            setNotice(`Match approved. ${emailNotice}`);
             fetchData();
         } catch (err) {
             console.error('Failed to approve match:', err);
+            setError(err.message);
         }
     };
 
@@ -102,18 +126,101 @@ function MatchingPage() {
             setSuggestedMatches(prev => prev.filter(m => m.id !== id));
         } catch (err) {
             console.error('Failed to reject match:', err);
+            setError(err.message);
+        }
+    };
+
+    const handleGenerateSuggestions = async () => {
+        setGenerating(true);
+        setNotice('');
+        setError('');
+
+        try {
+            const generated = await generateSuggestedMatches(ADMIN_ID);
+            setNotice(generated.length > 0
+                ? `${generated.length} ranked suggested matches generated.`
+                : 'No new suggestions were generated. Check unmatched students, mentor capacity, or existing suggested matches.'
+            );
+            fetchData();
+        } catch (err) {
+            console.error('Failed to generate suggestions:', err);
+            setError(err.message);
+        } finally {
+            setGenerating(false);
         }
     };
 
     const handleCreateMatch = async () => {
         if (!selectedAspiring || !selectedEstablished) return;
+        setNotice('');
+        setError('');
         try {
-            await createManualMatch(selectedAspiring, selectedEstablished, ADMIN_ID);
+            const created = await createManualMatch(selectedAspiring, selectedEstablished, ADMIN_ID);
+            let emailNotice = 'Confirmation emails sent.';
+            try {
+                const emailResult = await sendMatchConfirmationEmail(created.id);
+                const dryRun = emailResult.results?.some(result => result.dryRun);
+                emailNotice = dryRun ? 'Confirmation emails were logged in dry-run mode.' : emailNotice;
+            } catch (emailError) {
+                console.error('Failed to send match confirmation email:', emailError);
+                emailNotice = 'Confirmation emails need to be sent manually.';
+                setError(emailError.message);
+            }
+            const attributes = created.compatibility_attributes?.join(', ') || 'manual review';
+            setNotice(`Manual match created with ${created.compatibility_score}% compatibility: ${attributes}. ${emailNotice}`);
             setSelectedAspiring('');
             setSelectedEstablished('');
             fetchData();
         } catch (err) {
             console.error('Failed to create match:', err);
+            setError(err.message);
+        }
+    };
+
+    const handleSendWeeklyReminders = async () => {
+        setSendingWeekly(true);
+        setNotice('');
+        setError('');
+
+        try {
+            const response = await fetch('/api/email/send-weekly-reminders', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({}),
+            });
+            const result = await response.json().catch(() => ({}));
+            if (!response.ok) {
+                throw new Error(result.error || 'Weekly reminder emails failed.');
+            }
+
+            const sent = result.processed?.filter(match => match.status === 'sent').length || 0;
+            const dryRun = result.processed?.filter(match => match.status === 'dry_run').length || 0;
+            const skipped = result.processed?.filter(match => match.status === 'skipped').length || 0;
+            const failed = result.processed?.filter(match => match.status === 'failed').length || 0;
+            setNotice(`Weekly reminders complete: ${sent} sent, ${dryRun} dry-run, ${skipped} skipped, ${failed} failed.`);
+            fetchData();
+        } catch (err) {
+            console.error('Failed to send weekly reminders:', err);
+            setError(err.message);
+        } finally {
+            setSendingWeekly(false);
+        }
+    };
+
+    const handleRemoveActiveMatch = async (match) => {
+        const confirmed = window.confirm(`Remove the match between ${match.aspiring.name} and ${match.established.name}?`);
+        if (!confirmed) return;
+
+        setNotice('');
+        setError('');
+
+        try {
+            await removeActiveMatch(match.id, ADMIN_ID);
+            setNotice(`${match.aspiring.name} and ${match.established.name} are no longer matched.`);
+            fetchData();
+        } catch (err) {
+            console.error('Failed to remove match:', err);
+            setError(err.message);
         }
     };
 
@@ -139,14 +246,22 @@ function MatchingPage() {
             <NavBar
                 buttons={navButtons}
                 profile="Admin"
-                user="Admin User"
-                email="admin@next.org"
+                user={currentProfile?.full_name || currentProfile?.email || 'Admin'}
+                email={currentProfile?.email || ''}
             />
             <main className="matching-main-content">
                 <div className="matching-header">
-                    <h1>Matching</h1>
-                    <p>{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                    <div>
+                        <h1>Matching</h1>
+                        <p>{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                    </div>
+                    <button className="btn-generate-matches" onClick={handleGenerateSuggestions} disabled={generating}>
+                        {generating ? 'Generating...' : 'Generate Suggestions'}
+                    </button>
                 </div>
+
+                {notice && <div className="matching-notice">{notice}</div>}
+                {error && <div className="matching-error">{error}</div>}
 
                 {/* Suggested Matches */}
                 <div className="matching-section">
@@ -154,7 +269,7 @@ function MatchingPage() {
                         <span className="section-icon">✨</span>
                         <h2>Suggested Matches</h2>
                     </div>
-                    <p className="section-subtitle">AI-generated mentee pairings awaiting your approval — based on field, university, and shared interests.</p>
+                    <p className="section-subtitle">Ranked mentee pairings awaiting approval, based on field, university, mentor capacity, availability, and experience.</p>
 
                     <div className="suggested-matches-list">
                         {loading ? <p style={{padding: '12px', color: '#536077'}}>Loading...</p> :
@@ -206,18 +321,15 @@ function MatchingPage() {
                 <div className="matching-section">
                     <div className="section-header">
                         <h2>Active Matches ({activeMatchesData.length})</h2>
-                        <button 
-                            className="btn-create-match"
-                            onClick={async () => {
-                                await fetch('https://lgmtapkhdwlgbkkcikqh.supabase.co/functions/v1/send-weekly-reminder', {
-                                    method: 'POST',
-                                    headers: { 'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}` }
-                                });
-                                alert('Weekly reminder emails sent!');
-                            }}>📧 Send Weekly Reminders
+                        <button
+                            className="btn-send-weekly"
+                            onClick={handleSendWeeklyReminders}
+                            disabled={sendingWeekly || activeMatchesData.length === 0}
+                        >
+                            {sendingWeekly ? 'Sending...' : 'Send Weekly Reminders'}
                         </button>
                     </div>
-                    <p className="section-subtitle">Click any match to view curriculum progress.</p>
+                    <p className="section-subtitle">Manage active professional pairings and weekly progress.</p>
 
                     <div className="active-matches-list">
                         {loading ? <p style={{padding: '12px', color: '#536077'}}>Loading...</p> :
@@ -257,7 +369,7 @@ function MatchingPage() {
                                     {match.status}
                                 </span>
 
-                                <button className="btn-view-match">›</button>
+                                <button className="btn-remove-match" onClick={() => handleRemoveActiveMatch(match)}>Remove</button>
                             </div>
                         ))}
                     </div>

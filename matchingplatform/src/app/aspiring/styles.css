@@ -15,7 +15,7 @@
 }
 
 .aspiring-header h1 {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 28px;
     font-weight: 700;
     color: #041e42;
@@ -23,7 +23,7 @@
 }
 
 .aspiring-header p {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 14px;
     color: #536077;
     margin: 0;
@@ -49,7 +49,7 @@
 }
 
 .aspiring-card h3 {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 13px;
     font-weight: 600;
     color: #536077;
@@ -59,7 +59,7 @@
 }
 
 .card-value {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 20px;
     font-weight: 700;
     color: #041e42;
@@ -67,7 +67,7 @@
 }
 
 .card-sub {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 12px;
     color: #536077;
     margin: 0;
@@ -80,7 +80,7 @@
 }
 
 .aspiring-section h2 {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 18px;
     font-weight: 700;
     color: #041e42;
@@ -105,7 +105,7 @@
     border-radius: 50%;
     background-color: #cb333b;
     color: white;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 14px;
     font-weight: 700;
     display: flex;
@@ -115,7 +115,7 @@
 }
 
 .step-title {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 15px;
     font-weight: 600;
     color: #041e42;
@@ -123,7 +123,7 @@
 }
 
 .step-desc {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
     font-size: 13px;
     color: #536077;
     margin: 0;

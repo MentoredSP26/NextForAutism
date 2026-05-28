@@ -5,15 +5,18 @@ import PersonRow from '../../components/PersonRow/PersonRow';
 import StatsCard from '../../components/StatsCard/StatsCard';
 import NavBar from '../../components/navbar/page';
 import { getDashboardStats, getAspiringProfessionals, getEstablishedProfessionals, getRecentActivity } from '../../api/queries';
+import { useCurrentProfile } from '../../hooks/useCurrentProfile';
 import './styles.css';
 
 const navButtons = [
-    { page: "Dashboard", path: "/admin", icon: "/home.png" },
-    { page: "Matching", path: "/matching", icon: "/globe.svg" },
-    { page: "Admin Profile", path: "/admin-profile", icon: "/profile.png" },
+    { page: "Dashboard", path: "/admin", icon: "/home-icon.svg" },
+    { page: "Profiles", path: "/admin/profiles", icon: "/profile-icon.svg" },
+    { page: "Matching", path: "/matching", icon: "/matching-icon.svg" },
+    { page: "Admin Profile", path: "/admin-profile", icon: "/profile-icon.svg" },
 ];
 
 function AdminPage() {
+    const currentProfile = useCurrentProfile();
     const [stats, setStats] = useState([
         { icon: "👥", label: "Total Aspiring", value: "..." },
         { icon: "💼", label: "Total Established", value: "..." },
@@ -75,8 +78,8 @@ function AdminPage() {
             <NavBar
                 buttons={navButtons}
                 profile="Admin"
-                user="Admin User"
-                email="admin@next.org"
+                user={currentProfile?.full_name || currentProfile?.email || 'Admin'}
+                email={currentProfile?.email || ''}
             />
             <main className="admin-main-content">
                 <div className="admin-page-header">

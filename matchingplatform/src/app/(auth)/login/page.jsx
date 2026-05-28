@@ -1,12 +1,13 @@
 'use client';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '../../../api/createClient';
 import './styles.css';
 
 export default function LoginPage() {
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -31,9 +32,10 @@ export default function LoginPage() {
             .from('profiles')
             .select('role')
             .eq('id', data.user.id)
-            .single();
+            .maybeSingle();
 
-        const landing = getLandingForRole(profile?.role);
+        const role = profile?.role || normalizePublicSignupRole(data.user.user_metadata?.role);
+        const landing = getAllowedRedirect(searchParams.get('next'), role);
         router.push(landing);
         router.refresh();
         setLoading(false);
@@ -81,6 +83,26 @@ export default function LoginPage() {
             </div>
         </div>
     );
+}
+
+function normalizePublicSignupRole(role) {
+    return role === 'established' ? 'established' : 'aspiring';
+}
+
+function getAllowedRedirect(nextPath, role) {
+    const landing = getLandingForRole(role);
+    if (!nextPath || !nextPath.startsWith('/')) return landing;
+
+    const allowedPrefixes = {
+        admin: ['/admin', '/admin-profile', '/matching'],
+        established: ['/established'],
+        aspiring: ['/aspiring'],
+    };
+
+    const allowed = allowedPrefixes[role] || [];
+    return allowed.some(prefix => nextPath === prefix || nextPath.startsWith(`${prefix}/`))
+        ? nextPath
+        : landing;
 }
 
 function getLandingForRole(role) {

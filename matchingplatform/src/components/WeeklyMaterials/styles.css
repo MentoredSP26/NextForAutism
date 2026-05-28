@@ -65,17 +65,17 @@
 }
 
 h1 {
-    font-family: Inter, sans-serif;
+    font-family: var(--font-app);
 }
 
 h2 {
-    font-family: Inter, sans-serif;
+    font-family: var(--font-app);
 }
 
 p {
-    font-family: Inter, sans-serif;
+    font-family: var(--font-app);
 }
 
 a {
-    font-family: Inter, sans-serif;
+    font-family: var(--font-app);
 }

@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 * {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
 }
 
 .admin-header-card {
@@ -86,7 +85,7 @@
     left: 37.33px;
     top: 6.33px;
 
-    font-family: 'DM Sans';
+    font-family: var(--font-app);
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -189,7 +188,7 @@ top: 0px;
     left: 0px;
     top: -2.13px;
 
-    font-family: 'Montserrat';
+    font-family: var(--font-app);
     font-style: normal;
     font-weight: 700;
     font-size: 43.8123px;

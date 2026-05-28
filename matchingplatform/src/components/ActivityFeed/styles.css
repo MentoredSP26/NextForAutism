@@ -19,7 +19,7 @@
 }
 
 .activity-feed-title {
-   font-family: 'Montserrat', sans-serif; 
+   font-family: var(--font-app); 
     font-size: 15px; 
     font-weight: 700; 
     color: #ffffff; 
@@ -30,7 +30,7 @@
 }
 
 .activity-feed-action {
-    font-family: 'DM Sans', sans-serif; 
+    font-family: var(--font-app); 
     font-size: 13px; 
     font-weight: 600; 
     color: #041e42; 
@@ -40,7 +40,7 @@
 }
 
 .activity-feed-time {
-    font-family: 'DM Sans', sans-serif; 
+    font-family: var(--font-app); 
     font-size: 12px; 
     font-weight: 400; 
     color: #9099a6; 
@@ -51,7 +51,7 @@
 
 }
 .activity-feed-user {
-    font-family: 'DM Sans', sans-serif; 
+    font-family: var(--font-app); 
     font-size: 12px; 
     font-weight: 400; 
     color: #536077; 

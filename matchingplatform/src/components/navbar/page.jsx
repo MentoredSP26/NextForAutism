@@ -1,5 +1,4 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
 import NavButton from '../NavButton/page';
 import { createClient } from '../../api/createClient';
 import { useRouter } from 'next/navigation';
@@ -9,8 +8,6 @@ function NavBar(props) {
     const buttons = props.buttons;
     const profile = props.profile;
     const router = useRouter();
-    const [popupOpen, setPopupOpen] = useState(false);
-    const popupRef = useRef(null);
 
     const handleLogout = async () => {
         const supabase = createClient();
@@ -19,21 +16,10 @@ function NavBar(props) {
         router.refresh();
     };
 
-    // close popup when clicking outside
-    useEffect(() => {
-        const handleClickOutside = (e) => {
-            if (popupRef.current && !popupRef.current.contains(e.target)) {
-                setPopupOpen(false);
-            }
-        }
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
-
     return (
         <div className="navBar">
             <div className="nav-top">
-                <img className="logo" alt="Next for Autism Logo" src="/logo.png"/>
+                <img className="logo" alt="Next for Autism Logo" src="/next-for-autism-logo-light.svg"/>
                 <span className="nav-profile">{profile} Portal</span>
             </div>
             <nav className="navBar-buttons">
@@ -43,29 +29,24 @@ function NavBar(props) {
                     ))}
                 </ul>
             </nav>
-
-            <div ref={popupRef}>
-                {popupOpen && (
-                    <div className="signout-popup">
-                        <button className="signout-button" onClick={handleLogout}>
-                            Sign Out
-                        </button>
+            <div className="logout-section">
+                <button className="logout-btn" onClick={handleLogout}>
+                    Sign Out
+                </button>
+            </div>
+            <div className="navBar-bottom">
+                <div className="bottom-content">
+                    <div className="nav-profile-circle">
+                        <span className="user-initial">
+                            {props.user ? props.user.charAt(0).toUpperCase() : 'U'}
+                        </span>
                     </div>
-                )}
-                <div className="navBar-bottom" onClick={() => setPopupOpen(!popupOpen)}>
-                    <div className="bottom-content">
-                        <div className="nav-profile-circle">
-                            <span className="user-initial">
-                                {props.user ? props.user.charAt(0).toUpperCase() : 'U'}
-                            </span>
-                        </div>
-                        <div className="user-text">
-                            <span className="user-name">{props.user}</span>
-                        </div>
+                    <div className="user-text">
+                        <span className="user-name">{props.user}</span>
+                        <span className="user-email">{props.email}</span>
                     </div>
                 </div>
             </div>
-
         </div>
     );
 }

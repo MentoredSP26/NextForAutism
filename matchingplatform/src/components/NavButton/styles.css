@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-app);
 }
 
 .nav-button {
@@ -23,6 +22,7 @@ body {
 
 .nav-button:hover {
     background-color: #CB333B;
+    color: #ffffff;
 }
 
 .content {
@@ -34,10 +34,14 @@ body {
 }
 
 .nav-logo {
-    width: 1.19vw;            /* 18 / 1512 */
-    height: auto;             /* no stretching */
-    padding-right: 0.2vw;     /* 3 / 1512 */
+    width: 1.19vw;
+    min-width: 18px;
+    height: 18px;
     flex: none;
+    flex-shrink: 0;
+    background-color: currentColor;
+    mask: var(--nav-icon) center / contain no-repeat;
+    -webkit-mask: var(--nav-icon) center / contain no-repeat;
 }
 
 .button-text {
