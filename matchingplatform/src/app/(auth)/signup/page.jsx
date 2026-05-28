@@ -129,8 +129,8 @@ export default function SignupPage() {
     return (
         <div className="auth-page">
             <div className="auth-card">
-                <h1 className="auth-title">Sign Up</h1>
-                <p className="auth-subtitle">Create your Next For Autism account</p>
+                <h1 className="auth-title">Create Your NEXT Connects Account</h1>
+                <p className="auth-subtitle">Join as an aspiring or established professional</p>
 
                 <form onSubmit={handleSignup} className="auth-form">
                     <div className="auth-field">
@@ -170,14 +170,14 @@ export default function SignupPage() {
                     <div className="auth-field">
                         <label>I am signing up as</label>
                         <select value={role} onChange={(e) => setRole(e.target.value)} required>
-                            <option value="aspiring">Aspiring Professional (Student)</option>
-                            <option value="established">Established Professional (Mentor)</option>
+                            <option value="aspiring">Aspiring Professional</option>
+                            <option value="established">Established Professional</option>
                         </select>
                     </div>
 
                     {role === 'aspiring' && (
                         <div className="auth-fieldset">
-                            <h2>Student Profile</h2>
+                            <h2>Aspiring Professional Profile</h2>
                             <div className="auth-field">
                                 <label>University</label>
                                 <input
@@ -224,7 +224,7 @@ export default function SignupPage() {
                                 <textarea
                                     value={aspiringDetails.goals}
                                     onChange={(e) => updateAspiringDetails('goals', e.target.value)}
-                                    placeholder="What kind of mentor or career support would help most?"
+                                    placeholder="What kind of career support would help most?"
                                     rows={3}
                                 />
                             </div>
@@ -233,7 +233,7 @@ export default function SignupPage() {
 
                     {role === 'established' && (
                         <div className="auth-fieldset">
-                            <h2>Mentor Profile</h2>
+                            <h2>Established Professional Profile</h2>
                             <div className="auth-field">
                                 <label>Company</label>
                                 <input
@@ -255,7 +255,7 @@ export default function SignupPage() {
                                 />
                             </div>
                             <div className="auth-field">
-                                <label>Mentoring Field</label>
+                                <label>Professional Field</label>
                                 <input
                                     type="text"
                                     value={establishedDetails.field}
@@ -286,7 +286,7 @@ export default function SignupPage() {
                                     />
                                 </div>
                                 <div>
-                                    <label>Mentoring Capacity</label>
+                                    <label>Program Capacity</label>
                                     <input
                                         type="number"
                                         min="1"

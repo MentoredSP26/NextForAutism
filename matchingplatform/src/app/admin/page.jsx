@@ -83,7 +83,7 @@ function AdminPage() {
             />
             <main className="admin-main-content">
                 <div className="admin-page-header">
-                    <h1>Dashboard Overview</h1>
+                    <h1>Program Dashboard</h1>
                     <p>{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
                 </div>
                 <div className="stats-row">

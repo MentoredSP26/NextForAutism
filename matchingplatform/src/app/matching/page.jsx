@@ -252,7 +252,7 @@ function MatchingPage() {
             <main className="matching-main-content">
                 <div className="matching-header">
                     <div>
-                        <h1>Matching</h1>
+                        <h1>Match Management</h1>
                         <p>{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
                     </div>
                     <button className="btn-generate-matches" onClick={handleGenerateSuggestions} disabled={generating}>
@@ -269,7 +269,7 @@ function MatchingPage() {
                         <span className="section-icon">✨</span>
                         <h2>Suggested Matches</h2>
                     </div>
-                    <p className="section-subtitle">Ranked mentee pairings awaiting approval, based on field, university, mentor capacity, availability, and experience.</p>
+                    <p className="section-subtitle">Ranked professional pairings awaiting approval, based on field, university, capacity, availability, and experience.</p>
 
                     <div className="suggested-matches-list">
                         {loading ? <p style={{padding: '12px', color: '#536077'}}>Loading...</p> :

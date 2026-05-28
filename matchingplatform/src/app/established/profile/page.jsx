@@ -15,7 +15,7 @@ export default function EstablishedProfilePage() {
     return (
         <ProfileEditor
             expectedRole="established"
-            title="Mentor Profile"
+            title="Established Professional Profile"
             nav={
                 <NavBar
                     buttons={navButtons}
