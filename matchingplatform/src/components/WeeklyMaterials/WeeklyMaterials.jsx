@@ -35,7 +35,7 @@ const weeks = [
     {
         week: 3,
         type: "learning",
-        subject: "NEXT Connects Learning Week: Goal Setting",
+        subject: "NEXT For Autism Learning Week: Goal Setting",
         description: "This week's topic for NEXT Connects is Goal Setting!",
         footer: "Next week: you'll share your goals with your matched professional!",
         items: [
@@ -63,7 +63,7 @@ const weeks = [
     {
         week: 5,
         type: "learning",
-        subject: "NEXT Connects Learning Week: Learning About Communication!",
+        subject: "NEXT For Autism Learning Week: Learning About Communication!",
         description: "This week's lesson is all about communication styles and strategies.",
         footer: "Great communication makes every partnership stronger!",
         items: [
@@ -77,7 +77,7 @@ const weeks = [
     {
         week: 6,
         type: "discussion",
-        subject: "NEXT Connects Discussion Week: Let's Talk About Communication!",
+        subject: "NEXT For Autism Discussion Week: Let's Talk About Communication!",
         description: "It's time for another meeting!",
         footer: "",
         items: [
@@ -90,7 +90,7 @@ const weeks = [
     {
         week: 7,
         type: "learning",
-        subject: "NEXT Connects Learning Week: Workplace Intangibles",
+        subject: "NEXT For Autism Learning Week: Workplace Intangibles",
         description: "Learn about soft skills like teamwork and attitude.",
         footer: "",
         items: [
@@ -105,7 +105,7 @@ const weeks = [
     {
         week: 8,
         type: "discussion",
-        subject: "NEXT Connects Discussion Week: Let's Talk About Workplace Intangibles",
+        subject: "NEXT For Autism Discussion Week: Let's Talk About Workplace Intangibles",
         description: "Share what you learned about soft skills.",
         footer: "",
         items: [
@@ -118,7 +118,7 @@ const weeks = [
     {
         week: 9,
         type: "learning",
-        subject: "NEXT Connects Learning Week: Universal Design",
+        subject: "NEXT For Autism Learning Week: Universal Design",
         description: "Learn how Universal Design helps make spaces and systems work better for everyone.",
         footer: "You're halfway through this guided professional connection… great job!",
         items: [
@@ -134,7 +134,7 @@ const weeks = [
     {
         week: 10,
         type: "discussion",
-        subject: "NEXT Connects Discussion Week: Let's Talk About Universal Design",
+        subject: "NEXT For Autism Discussion Week: Let's Talk About Universal Design",
         description: "Talk about how small changes can make workplaces easier for everyone.",
         footer: "",
         items: [
@@ -147,7 +147,7 @@ const weeks = [
     {
         week: 11,
         type: "learning",
-        subject: "NEXT Connects Learning Week: The Job Search",
+        subject: "NEXT For Autism Learning Week: The Job Search",
         description: "Learn about finding the right job fit.",
         footer: "These tools will help you feel more confident.",
         items: [
@@ -174,7 +174,7 @@ const weeks = [
     {
         week: 13,
         type: "learning",
-        subject: "NEXT Connects Learning Week: Getting Ready for Interviews",
+        subject: "NEXT For Autism Learning Week: Getting Ready for Interviews",
         description: "Interviews can be tricky — this lesson makes it easier!",
         footer: "",
         items: [
@@ -189,7 +189,7 @@ const weeks = [
     {
         week: 14,
         type: "discussion",
-        subject: "NEXT Connects Discussion Week: Talking About Interviewing",
+        subject: "NEXT For Autism Discussion Week: Talking About Interviewing",
         description: "Practice and discuss interviews.",
         footer: "",
         items: [
@@ -202,7 +202,7 @@ const weeks = [
     {
         week: 15,
         type: "learning",
-        subject: "NEXT Connects Learning Week: Mindful Feedback",
+        subject: "NEXT For Autism Learning Week: Mindful Feedback",
         description: "Learn how to give and receive feedback effectively.",
         footer: "You're almost done!",
         items: [
@@ -215,7 +215,7 @@ const weeks = [
     {
         week: 16,
         type: "discussion",
-        subject: "NEXT Connects: Final Discussion & Celebration!",
+        subject: "NEXT For Autism: Final Discussion & Celebration!",
         description: "Final meeting and reflection.",
         footer: "Congratulations — you made it to the final week!",
         items: [

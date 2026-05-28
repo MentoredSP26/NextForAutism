@@ -36,7 +36,11 @@ function NavBar(props) {
             </div>
             <div className="navBar-bottom">
                 <div className="bottom-content">
-                    <div className="nav-profile-circle"></div>
+                    <div className="nav-profile-circle">
+                        <span className="user-initial">
+                            {props.user ? props.user.charAt(0).toUpperCase() : 'U'}
+                        </span>
+                    </div>
                     <div className="user-text">
                         <span className="user-name">{props.user}</span>
                         <span className="user-email">{props.email}</span>

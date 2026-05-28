@@ -3,7 +3,7 @@ body {
     font-family: var(--font-app);
 }
 
-/* ─── NAVBAR ─── */
+/* NAVBAR */
 
 .navBar {
     display: flex;
@@ -49,7 +49,7 @@ body {
     align-items: flex-start;
     width: 100%;
     font-weight: 400;
-    font-size: 16px;          /* fixed — never shrinks */
+    font-size: 16px;
     line-height: 1;
     color: rgba(255, 255, 255, 0.7);
 }
@@ -66,15 +66,26 @@ body {
     flex-grow: 0;
 }
 
-.logout-section {
+.navBar-buttons ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     width: 100%;
-    padding: 12px 14px;
+}
+
+.navBar a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logout-section {
     box-sizing: border-box;
     position: fixed;
     left: 0;
     bottom: 74px;
     width: 12.7vw;
     min-width: 192px;
+    padding: 12px 14px;
     z-index: 3;
     background: #041E42;
 }
@@ -137,14 +148,19 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    min-width: 3.26vh;
     width: 3.26vh;
-    min-width: 32px;
     height: 3.26vh;
-    min-height: 32px;
     background: #CB333B;
     border-radius: 50%;
     flex: none;
     flex-shrink: 0;
+}
+
+.user-initial {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .user-text {
@@ -161,7 +177,7 @@ body {
 
 .user-name {
     width: 100%;
-    font-size: 14px;          /* fixed — never shrinks */
+    font-size: 16px;
     color: #ffffff;
     white-space: nowrap;
     overflow: hidden;
@@ -170,7 +186,7 @@ body {
 
 .user-email {
     width: 100%;
-    font-size: 12px;          /* fixed — never shrinks */
+    font-size: 12px;
     color: rgba(255, 255, 255, 0.7);
     white-space: normal;
     overflow-wrap: anywhere;

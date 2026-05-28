@@ -329,7 +329,7 @@ function MatchingPage() {
                             {sendingWeekly ? 'Sending...' : 'Send Weekly Reminders'}
                         </button>
                     </div>
-                    <p className="section-subtitle">Manage active co-mentor pairings and weekly progress.</p>
+                    <p className="section-subtitle">Manage active professional pairings and weekly progress.</p>
 
                     <div className="active-matches-list">
                         {loading ? <p style={{padding: '12px', color: '#536077'}}>Loading...</p> :
