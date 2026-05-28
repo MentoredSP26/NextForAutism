@@ -1,11 +1,30 @@
 'use client';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '../../../api/createClient';
 import './styles.css';
 
 export default function LoginPage() {
+    return (
+        <Suspense fallback={<LoginFallback />}>
+            <LoginForm />
+        </Suspense>
+    );
+}
+
+function LoginFallback() {
+    return (
+        <div className="auth-page">
+            <div className="auth-card">
+                <h1 className="auth-title">Log In</h1>
+                <p className="auth-subtitle">Loading...</p>
+            </div>
+        </div>
+    );
+}
+
+function LoginForm() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const [email, setEmail] = useState('');
