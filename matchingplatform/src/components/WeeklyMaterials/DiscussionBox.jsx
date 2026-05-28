@@ -8,7 +8,6 @@ const DiscussionBox = ({week}) => {
       <div className='week-bar-w-meeting'>
         <h2><b>Week {week.week}</b></h2>
         <a><img src="/video.png" alt = "bell icon" className='logo-sizing'></img></a>
-        <a href="mailto:example@domain.com"><img src="/belll.png" alt = "bell icon" className='logo-sizing'></img></a>
       </div>
 
       <div>

@@ -1,3 +1,5 @@
+'use client';
+
 import WeeklyMaterials from "../../components/WeeklyMaterials/WeeklyMaterials";
 import NavBar from "../../components/navbar/page";
 import { useCurrentProfile } from "../../hooks/useCurrentProfile";

@@ -231,6 +231,37 @@ export async function rejectMatch(matchId) {
     if (error) throw error;
 }
 
+export async function removeActiveMatch(matchId, adminId) {
+    const { data: match, error: fetchError } = await supabase
+        .from('matches')
+        .select(`
+            aspiring_id,
+            established_id,
+            aspiring:aspiring_id(full_name, email),
+            established:established_id(full_name, email)
+        `)
+        .eq('id', matchId)
+        .eq('status', 'active')
+        .maybeSingle();
+    if (fetchError) throw fetchError;
+    if (!match) throw new Error('This active match could not be found. It may have already been removed.');
+
+    const { error: updateError } = await supabase
+        .from('matches')
+        .update({ status: 'rejected' })
+        .eq('id', matchId);
+    if (updateError) throw updateError;
+
+    await refreshMatchedFlag(match.aspiring_id);
+    await refreshMatchedFlag(match.established_id);
+
+    await supabase.from('activity_log').insert({
+        action: 'Removed match',
+        detail: `${getDisplayName(match.aspiring, 'Aspiring professional')} and ${getDisplayName(match.established, 'Established professional')} are no longer matched`,
+        user_id: adminId,
+    });
+}
+
 // Create a manual match
 export async function createManualMatch(aspiringId, establishedId, adminId) {
     const [aspiring, established, existingMatches] = await Promise.all([
@@ -414,6 +445,20 @@ function hasTokenOverlap(left, right) {
 async function markProfilesMatched(aspiringId, establishedId) {
     await supabase.from('profiles').update({ is_matched: true }).eq('id', aspiringId);
     await supabase.from('profiles').update({ is_matched: true }).eq('id', establishedId);
+}
+
+async function refreshMatchedFlag(profileId) {
+    const { count, error } = await supabase
+        .from('matches')
+        .select('id', { count: 'exact', head: true })
+        .eq('status', 'active')
+        .or(`aspiring_id.eq.${profileId},established_id.eq.${profileId}`);
+    if (error) throw error;
+
+    await supabase
+        .from('profiles')
+        .update({ is_matched: (count || 0) > 0 })
+        .eq('id', profileId);
 }
 
 function getDisplayName(profile, fallback) {

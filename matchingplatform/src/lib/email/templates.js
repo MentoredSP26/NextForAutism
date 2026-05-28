@@ -34,6 +34,21 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
+function capitalize(value) {
+  const text = String(value ?? "");
+  return text ? `${text.charAt(0).toUpperCase()}${text.slice(1)}` : "";
+}
+
+function personalizeWeekCopy(value, partnerRoleLabel) {
+  const roleLabel = partnerRoleLabel || "matched professional";
+  const capitalizedRoleLabel = capitalize(roleLabel);
+  return String(value ?? "")
+    .replaceAll("your matched professional", `your ${roleLabel}`)
+    .replaceAll("Your matched professional", `Your ${roleLabel}`)
+    .replaceAll("matched professional", roleLabel)
+    .replaceAll("Matched professional", capitalizedRoleLabel);
+}
+
 function footerHtml() {
   return `
     <div class="footer-bar">
@@ -45,7 +60,12 @@ function footerHtml() {
   `;
 }
 
-export function matchConfirmationTemplate({ mentorName, menteeName }) {
+export function matchConfirmationTemplate({
+  establishedName,
+  establishedEmail,
+  aspiringName,
+  aspiringEmail,
+}) {
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -64,18 +84,20 @@ export function matchConfirmationTemplate({ mentorName, menteeName }) {
     <div class="body">
       <p class="greeting">You have been matched.</p>
       <p class="intro">
-        We are excited to introduce your new co-mentor pair for NEXT Connects.
-        This is the start of your mentorship journey together.
+        We are excited to introduce your NEXT Connects match.
+        This is the start of your guided professional connection.
       </p>
       <div class="card">
         <h2>Your Match</h2>
-        <div class="info-row"><span class="label">Established Professional:</span> <span class="value">${escapeHtml(mentorName)}</span></div>
-        <div class="info-row"><span class="label">Aspiring Professional:</span> <span class="value">${escapeHtml(menteeName)}</span></div>
+        <div class="info-row"><span class="label">Established Professional:</span> <span class="value">${escapeHtml(establishedName)}</span></div>
+        <div class="info-row"><span class="label">Established Professional Email:</span> <span class="value">${escapeHtml(establishedEmail)}</span></div>
+        <div class="info-row"><span class="label">Aspiring Professional:</span> <span class="value">${escapeHtml(aspiringName)}</span></div>
+        <div class="info-row"><span class="label">Aspiring Professional Email:</span> <span class="value">${escapeHtml(aspiringEmail)}</span></div>
       </div>
       <div class="card">
         <h2>What Happens Next</h2>
         <ul class="prompts-list">
-          <li>Reach out to your co-mentor to introduce yourself.</li>
+          <li>Use the email address above to introduce yourself.</li>
           <li>Schedule your first session within the next week.</li>
           <li>Watch for weekly reminders and materials by email.</li>
           <li>Week 1 materials will arrive in your next reminder.</li>
@@ -89,19 +111,27 @@ export function matchConfirmationTemplate({ mentorName, menteeName }) {
   `.trim();
 }
 
-export function weeklyReminderTemplate({ recipientName, partnerName, weekNumber, weekData }) {
+export function weeklyReminderTemplate({
+  recipientName,
+  partnerName,
+  partnerRoleLabel,
+  weekNumber,
+  weekData,
+}) {
+  const roleLabel = partnerRoleLabel || "matched professional";
   const weekTypeLabel = weekData.type === "learning" ? "Learning Week" : "Discussion Week";
   const itemsHtml = weekData.items
     .map((item) => {
-      const text = escapeHtml(item.text);
+      const text = escapeHtml(personalizeWeekCopy(item.text, roleLabel));
       return item.link
         ? `<li><a href="${escapeHtml(item.link)}">${text}</a></li>`
         : `<li>${text}</li>`;
     })
     .join("");
   const footerNote = weekData.footer
-    ? `<p style="font-size:13px;color:#0072ce;text-align:center;margin-top:16px">${escapeHtml(weekData.footer)}</p>`
+    ? `<p style="font-size:13px;color:#0072ce;text-align:center;margin-top:16px">${escapeHtml(personalizeWeekCopy(weekData.footer, roleLabel))}</p>`
     : "";
+  const description = escapeHtml(personalizeWeekCopy(weekData.description, roleLabel));
 
   return `
 <!DOCTYPE html>
@@ -121,7 +151,7 @@ export function weeklyReminderTemplate({ recipientName, partnerName, weekNumber,
     <div class="body">
       <p class="greeting">Hi ${escapeHtml(recipientName)},</p>
       <p class="intro">
-        ${escapeHtml(weekData.description)} Your co-mentor this week is <strong>${escapeHtml(partnerName)}</strong>.
+        ${description} Your ${escapeHtml(roleLabel)} this week is <strong>${escapeHtml(partnerName)}</strong>.
       </p>
       <div class="card">
         <h2>This Week's Materials</h2>

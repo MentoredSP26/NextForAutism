@@ -7,14 +7,14 @@ const weeks = [
     {   
         week: 1,
         type: "learning",
-        subject: "NEXT Connects Learning Week: Mentorship and Connection",
-        description: "This week's topic in NEXT Connects is Mentorship! You'll learn what mentorship means and how it can help you grow—both at work and in life.",
-        footer: "Next week: You'll finally get to meet your co-mentor and start learning together!",
+        subject: "NEXT Connects Learning Week: Professional Connection",
+        description: "This week's topic in NEXT Connects is Professional Connection! You'll learn what professional connection means and how it can help you grow—both at work and in life.",
+        footer: "Next week: You'll finally get to meet your matched professional and start learning together!",
         items: [
             { icon: "/play.png", text: "Video: What is Next Connects?", link: "https://vimeo.com/1135356068?share=copy&fl=sv&fe=ci" },
-            { icon: "/assigment.png", text: "Assigment: Co-Mentor Communication Guide", link: "https://drive.google.com/file/d/1FcELgUl-_mTD1Bn4LI_bcEIpUQZDEC0-/view?usp=share_link" },
+            { icon: "/assigment.png", text: "Assigment: Professional Communication Guide", link: "https://drive.google.com/file/d/1FcELgUl-_mTD1Bn4LI_bcEIpUQZDEC0-/view?usp=share_link" },
             { icon: "/assigment.png", text: "Assigment: Pre-Session Worksheet", link: "https://drive.google.com/file/d/1q6_tfUcUk7F3zrtdQgl5SI9Y5UqZpF_g/view?usp=share_link" },
-            { icon: "/assigment.png", text: "Assigment: Schedule a meeting with your co-mentor", link: "https://docs.google.com/document/d/1SeVK2SldbBOvKiPOj_XytbAVyohuZKzOylELLOjbCy8/edit?usp=sharing"}
+            { icon: "/assigment.png", text: "Assigment: Schedule a meeting with your matched professional", link: "https://docs.google.com/document/d/1SeVK2SldbBOvKiPOj_XytbAVyohuZKzOylELLOjbCy8/edit?usp=sharing"}
         ]
         
     },
@@ -23,11 +23,11 @@ const weeks = [
         week: 2,
         type: "discussion",
         subject: "NEXT Connects Discussion Week: Time for Your First Chat!",
-        description: "It's Discussion Week in NEXT Connects — time for your first chat with your co-mentor! This is your chance to get to know each other and talk about what you've been learning so far.",
+        description: "It's Discussion Week in NEXT Connects — time for your first chat with your matched professional! This is your chance to get to know each other and talk about what you've been learning so far.",
         footer: "We can't wait to hear how your first meeting goes!",
         items: [
-            { icon: "/agenda.png", text: "Agenda: Mentorship Agenda", link: "https://drive.google.com/file/d/1NsVmRllVbRohRPS9z0ETwb1Y8CK-KGwi/view?usp=share_link" },
-            { icon: "/video.png", text: "Discussion: Meet with your co-mentor", link: "" },
+            { icon: "/agenda.png", text: "Agenda: Professional Connection Agenda", link: "https://drive.google.com/file/d/1NsVmRllVbRohRPS9z0ETwb1Y8CK-KGwi/view?usp=share_link" },
+            { icon: "/video.png", text: "Discussion: Meet with your matched professional", link: "" },
             { icon: "/assigment.png", text: "Assignment: Post-Session Worksheet", link: "https://drive.google.com/file/d/1q6_tfUcUk7F3zrtdQgl5SI9Y5UqZpF_g/view?usp=share_link" }
         ]
     },
@@ -37,12 +37,12 @@ const weeks = [
         type: "learning",
         subject: "NEXT Connects Learning Week: Goal Setting",
         description: "This week's topic for NEXT Connects is Goal Setting!",
-        footer: "Next week: you'll share your goals with your co-mentor!",
+        footer: "Next week: you'll share your goals with your matched professional!",
         items: [
             { icon: "/play.png", text: "Video: Goal Setting", link: "https://vimeo.com/1134698212?share=copy&fl=sv&fe=ci" },
             { icon: "/assigment.png", text: "Assignment: SMART Goals Worksheet", link: "https://drive.google.com/file/d/1FcELgUl-_mTD1Bn4LI_bcEIpUQZDEC0-/view?usp=share_link" },
             { icon: "/assigment.png", text: "Assignment: Pre-Session Worksheet", link: "https://drive.google.com/file/d/1dsPfM6yaejJ533m6kRZPaOZcSlCRxCqO/view?usp=share_link" },
-            { icon: "/assigment.png", text: "Assignment: Schedule a meeting with your co-mentor", link: "https://docs.google.com/document/d/1SeVK2SldbBOvKiPOj_XytbAVyohuZKzOylELLOjbCy8/edit?usp=sharing" }
+            { icon: "/assigment.png", text: "Assignment: Schedule a meeting with your matched professional", link: "https://docs.google.com/document/d/1SeVK2SldbBOvKiPOj_XytbAVyohuZKzOylELLOjbCy8/edit?usp=sharing" }
         ]
     },
 
@@ -50,12 +50,12 @@ const weeks = [
         week: 4,
         type: "discussion",
         subject: "NEXT Connects Discussion Week: Let's Talk About Your Goals!",
-        description: "This week, meet with your co-mentor to talk about your goals.",
+        description: "This week, meet with your matched professional to talk about your goals.",
         footer: "Choose 1–2 goals to focus on together!",
         items: [
             { icon: "/assigment.png", text: "Review: SMART Goals Worksheet", link: "https://drive.google.com/file/d/1FcELgUl-_mTD1Bn4LI_bcEIpUQZDEC0-/view?usp=share_link" },
             { icon: "/agenda.png", text: "Agenda: Goal Setting Agenda", link: "https://drive.google.com/file/d/1dWate9NOpJhNtGxMVQxUT4iECp15z-dW/view?usp=share_link" },
-            { icon: "/video.png", text: "Discussion: Meet with your co-mentor", link: "" },
+            { icon: "/video.png", text: "Discussion: Meet with your matched professional", link: "" },
             { icon: "/assigment.png", text: "Assignment: Post-Session Worksheet", link: "https://drive.google.com/file/d/1dsPfM6yaejJ533m6kRZPaOZcSlCRxCqO/view?usp=share_link" }
         ]
     },
@@ -68,9 +68,9 @@ const weeks = [
         footer: "Great communication makes every partnership stronger!",
         items: [
             { icon: "/play.png", text: "Video: Communication", link: "https://vimeo.com/1134698406?share=copy&fl=sv&fe=ci" },
-            { icon: "/assigment.png", text: "Review: Co-Mentor Connection Form", link: "https://drive.google.com/file/d/1c2MJiC6CA9c8MzLVGlX5x-NElmzK2BJi/view?usp=share_link" },
+            { icon: "/assigment.png", text: "Review: Professional Connection Form", link: "https://drive.google.com/file/d/1c2MJiC6CA9c8MzLVGlX5x-NElmzK2BJi/view?usp=share_link" },
             { icon: "/assigment.png", text: "Assignment: Pre-Session Worksheet", link: "https://drive.google.com/file/d/1i9QrC9RewFnR25vLFShw_wI2dqR_A97Z/view?usp=share_link" },
-            { icon: "/assigment.png", text: "Assignment: Schedule a meeting with your co-mentor", link: "https://docs.google.com/document/d/1SeVK2SldbBOvKiPOj_XytbAVyohuZKzOylELLOjbCy8/edit?usp=sharing" }
+            { icon: "/assigment.png", text: "Assignment: Schedule a meeting with your matched professional", link: "https://docs.google.com/document/d/1SeVK2SldbBOvKiPOj_XytbAVyohuZKzOylELLOjbCy8/edit?usp=sharing" }
         ]
     },
 
@@ -82,7 +82,7 @@ const weeks = [
         footer: "",
         items: [
             { icon: "/agenda.png", text: "Agenda: Communication Agenda", link: "https://drive.google.com/file/d/1TB4vIVTGsJo_oDSS2oiMaw5jId7unz2_/view?usp=share_link" },
-            { icon: "/video.png", text: "Discussion: Meet with your co-mentor", link: "" },
+            { icon: "/video.png", text: "Discussion: Meet with your matched professional", link: "" },
             { icon: "/assigment.png", text: "Assignment: Post-Session Worksheet", link: "https://drive.google.com/file/d/1i9QrC9RewFnR25vLFShw_wI2dqR_A97Z/view?usp=share_link" }
         ]
     },
@@ -98,7 +98,7 @@ const weeks = [
             { icon: "/play.png", text: "Video: Workplace Intangibles", link: "https://vimeo.com/1135353223?share=copy&fl=sv&fe=ci" },
             { icon: "/assigment.png", text: "Assignment: Workplace Intangibles Worksheet", link: "https://drive.google.com/file/d/13jJwGMCTYKkvGPdGuzu-hD8CPiDl-p4h/view?usp=share_link" },
             { icon: "/assigment.png", text: "Assignment: Pre-Session Worksheet", link: "https://drive.google.com/file/d/1dSe07WSSNupvtAxUZHPR-bBpRa9I9aSg/view?usp=share_link" },
-            { icon: "/assigment.png", text: "Assignment: Schedule a meeting with your co-mentor", link: "https://docs.google.com/document/d/1SeVK2SldbBOvKiPOj_XytbAVyohuZKzOylELLOjbCy8/edit?usp=sharing" }
+            { icon: "/assigment.png", text: "Assignment: Schedule a meeting with your matched professional", link: "https://docs.google.com/document/d/1SeVK2SldbBOvKiPOj_XytbAVyohuZKzOylELLOjbCy8/edit?usp=sharing" }
         ]
     },
 
@@ -110,7 +110,7 @@ const weeks = [
         footer: "",
         items: [
             { icon: "/agenda.png", text: "Agenda: Intangibles Agenda", link: "https://drive.google.com/file/d/1q7gnFIrMP-hzq45urcsNdlfKUo1hIh0p/view?usp=share_link" },
-            { icon: "/video.png", text: "Discussion: Meet with your co-mentor", link: "" },
+            { icon: "/video.png", text: "Discussion: Meet with your matched professional", link: "" },
             { icon: "/assigment.png", text: "Assignment: Post-Session Worksheet", link: "https://drive.google.com/file/d/1dSe07WSSNupvtAxUZHPR-bBpRa9I9aSg/view?usp=share_link" }
         ]
     },
@@ -120,7 +120,7 @@ const weeks = [
         type: "learning",
         subject: "NEXT Connects Learning Week: Universal Design",
         description: "Learn how Universal Design helps make spaces and systems work better for everyone.",
-        footer: "You're halfway through this guided mentorship… great job!",
+        footer: "You're halfway through this guided professional connection… great job!",
         items: [
             { icon: "/play.png", text: "Video: Universal Design", link: "https://vimeo.com/1134721852?share=copy&fl=sv&fe=ci" },
             { icon: "/assigment.png", text: "Review: Universal Design Guide", link: "https://drive.google.com/file/d/1fhxt9ZT54bE9DFvR805dIm_W7caAW_IQ/view?usp=share_link" },
@@ -139,7 +139,7 @@ const weeks = [
         footer: "",
         items: [
             { icon: "/agenda.png", text: "Agenda: Universal Design Agenda", link: "https://drive.google.com/file/d/1U39d0DNwkWkWFRP3_XmhUP0d82wyfGTT/view?usp=share_link" },
-            { icon: "/video.png", text: "Discussion: Meet with your co-mentor", link: "" },
+            { icon: "/video.png", text: "Discussion: Meet with your matched professional", link: "" },
             { icon: "/assigment.png", text: "Assignment: Post-Session Worksheet", link: "https://drive.google.com/file/d/19zpRZbaIIYpVdM_x2EVX2Z0nhlvcavqC/view?usp=share_link" }
         ]
     },
@@ -162,11 +162,11 @@ const weeks = [
         week: 12,
         type: "discussion",
         subject: "NEXT Connects Discussion Week: Talking About Job Search",
-        description: "Meet with your co-mentor again!",
+        description: "Meet with your matched professional again!",
         footer: "",
         items: [
             { icon: "/agenda.png", text: "Agenda: Job Search Agenda", link: "https://drive.google.com/file/d/1w2crTwGb7TD6tDwm0DWqQ6dmcI6BHt5d/view?usp=share_link" },
-            { icon: "/video.png", text: "Discussion: Meet with your co-mentor", link: "" },
+            { icon: "/video.png", text: "Discussion: Meet with your matched professional", link: "" },
             { icon: "/assigment.png", text: "Assignment: Post-Session Worksheet", link: "https://drive.google.com/file/d/1lew8hvhaHUAl5OsZ_7hSf4jxxoms7IuG/view?usp=share_link" }
         ]
     },
@@ -221,7 +221,7 @@ const weeks = [
         items: [
             { icon: "/agenda.png", text: "Agenda: Mindful Feedback Agenda", link: "https://drive.google.com/file/d/1fmy1iLBw__iPwybBces5isywj-oGkLPj/view?usp=share_link" },
             { icon: "/assigment.png", text: "Assignment: Post-Session Worksheet", link: "https://drive.google.com/file/d/1t9sOL43-NHrC7KDiisl4FnOzWAz5nfTe/view?usp=share_link" },
-            { icon: "/video.png", text: "Discussion: Meet with your co-mentor and reflect", link: "" },
+            { icon: "/video.png", text: "Discussion: Meet with your matched professional and reflect", link: "" },
             { icon: "/assigment.png", text: "Assignment: Post-Program Survey", link: "https://docs.google.com/forms/d/e/1FAIpQLScf3Yfwk4XKMWPVf_UbFnj2_Zn32rxyeSDpxqOSQE-a65ctzA/viewform?usp=header" }
         ]
     }
@@ -258,8 +258,8 @@ export default WeeklyMaterials
 //                 </div>
 
 //                 <div>
-//                     <p>Subject: NEXT Connects Learning Week: Mentorship and Connection</p>
-//                     <p>This week's topic in NEXT Connects is Mentorship! You'll learn what mentorship means and how it can help you grow—both at work and in life.</p>
+//                     <p>Subject: NEXT Connects Learning Week: Professional Connection</p>
+//                     <p>This week's topic in NEXT Connects is Professional Connection! You'll learn what professional connection means and how it can help you grow—both at work and in life.</p>
 //                 </div>
                 
 //                 <div className='material-description'>
@@ -269,7 +269,7 @@ export default WeeklyMaterials
 //                     </div>
 //                     <div className='description-logo'>
 //                         <img src = "/assigment.png" alt="logo" className='logo-sizing'></img>
-//                         <a href = "https://drive.google.com/file/d/1c2MJiC6CA9c8MzLVGlX5x-NElmzK2BJi/view?usp=share_link" alt = 'Co-Mentor Communication Guide Assigment PDF'>Assigment: Co-Mentor Communication Guide</a>
+//                         <a href = "https://drive.google.com/file/d/1c2MJiC6CA9c8MzLVGlX5x-NElmzK2BJi/view?usp=share_link" alt = 'Professional Communication Guide Assigment PDF'>Assigment: Professional Communication Guide</a>
 //                     </div>
 //                     <div className='description-logo'>
 //                         <img src = "/assigment.png" alt="logo" className='logo-sizing'></img>
@@ -277,12 +277,12 @@ export default WeeklyMaterials
 //                     </div>
 //                     <div className='description-logo'>
 //                         <img src = "/assigment.png" alt="logo" className='logo-sizing'></img>
-//                         <a href = "https://docs.google.com/document/d/1SeVK2SldbBOvKiPOj_XytbAVyohuZKzOylELLOjbCy8/edit?usp=sharing" alt = 'Schedule a meeting Assigment PDF'>Assigment: Schedule a meeting with your co-mentor</a>
+//                         <a href = "https://docs.google.com/document/d/1SeVK2SldbBOvKiPOj_XytbAVyohuZKzOylELLOjbCy8/edit?usp=sharing" alt = 'Schedule a meeting Assigment PDF'>Assigment: Schedule a meeting with your matched professional</a>
 //                     </div>
 //                 </div>
 
 //                 <div>
-//                     <p>Next week: You'll finally get to meet your co-mentor and start learning together!</p>
+//                     <p>Next week: You'll finally get to meet your matched professional and start learning together!</p>
 //                 </div>
 
 //             </div>
@@ -298,17 +298,17 @@ export default WeeklyMaterials
     
 //                 <div>
 //                     <p>Subject: NEXT Connects Discussion Week: Time for Your First Chat!</p>
-//                     <p>It's Discussion Week in NEXT Connects — time for your first chat with your co-mentor! This is your chance to get to know each other and talk about what you've been learning so far.</p>
+//                     <p>It's Discussion Week in NEXT Connects — time for your first chat with your matched professional! This is your chance to get to know each other and talk about what you've been learning so far.</p>
 //                 </div>
 
 //                 <div className='material-description'>
 //                     <div className='description-logo'>
 //                         <img src = "/agenda.png" alt="logo" className='logo-sizing'></img>
-//                         <a href = "https://drive.google.com/file/d/1NsVmRllVbRohRPS9z0ETwb1Y8CK-KGwi/view?usp=share_link" alt = 'Mentorship Agenda Assigment PDF'>Agenda: Mentorship Agenda</a>
+//                         <a href = "https://drive.google.com/file/d/1NsVmRllVbRohRPS9z0ETwb1Y8CK-KGwi/view?usp=share_link" alt = 'Professional Connection Agenda Assigment PDF'>Agenda: Professional Connection Agenda</a>
 //                     </div>
 //                     <div className='description-logo'>
 //                         <img src = "/video.png" alt="logo" className='logo-sizing'></img>
-//                         <a alt = "Meeting Link" >Discussion: Meet with your co-mentor</a>
+//                         <a alt = "Meeting Link" >Discussion: Meet with your matched professional</a>
 //                     </div>
 //                     <div className='description-logo'>
 //                         <img src = "/assigment.png" alt="logo" className='logo-sizing'></img>
@@ -348,12 +348,12 @@ export default WeeklyMaterials
 //                     </div>
 //                     <div className='description-logo'>
 //                         <img src = "/assigment.png" alt="logo" className='logo-sizing'></img>
-//                         <a href="https://docs.google.com/document/d/1SeVK2SldbBOvKiPOj_XytbAVyohuZKzOylELLOjbCy8/edit?usp=sharing" alt="Schedule Meeting">Assignment: Schedule a meeting with your co-mentor</a>
+//                         <a href="https://docs.google.com/document/d/1SeVK2SldbBOvKiPOj_XytbAVyohuZKzOylELLOjbCy8/edit?usp=sharing" alt="Schedule Meeting">Assignment: Schedule a meeting with your matched professional</a>
 //                     </div>
 //                 </div>
 
 //                 <div>
-//                     <p>Next week: you'll share your goals with your co-mentor!</p>
+//                     <p>Next week: you'll share your goals with your matched professional!</p>
 //                 </div>
 
 //             </div>
@@ -368,7 +368,7 @@ export default WeeklyMaterials
 
 //                 <div>
 //                     <p>Subject: NEXT Connects Discussion Week: Let's Talk About Your Goals!</p>
-//                     <p>This week, meet with your co-mentor to talk about your goals.</p>
+//                     <p>This week, meet with your matched professional to talk about your goals.</p>
 //                 </div>
 
 //                 <div className='material-description'>
@@ -382,7 +382,7 @@ export default WeeklyMaterials
 //                     </div>
 //                     <div className='description-logo'>
 //                         <img src = "/video.png" alt="logo" className='logo-sizing'></img>
-//                         <a alt = "Meeting Link" >Discussion: Meet with your co-mentor</a>
+//                         <a alt = "Meeting Link" >Discussion: Meet with your matched professional</a>
 //                     </div>
 //                     <div className='description-logo'>
 //                         <img src = "/assigment.png" alt="logo" className='logo-sizing'></img>

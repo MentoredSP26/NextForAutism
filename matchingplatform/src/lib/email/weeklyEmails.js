@@ -52,11 +52,21 @@ async function processMatch(supabase, match, force, dryRun) {
     return { matchId: match.id, week: currentWeek, status: "skipped", reason: "Already sent" };
   }
 
-  const mentee = match.aspiring;
-  const mentor = match.established;
+  const aspiringProfessional = match.aspiring;
+  const establishedProfessional = match.established;
   const recipients = [
-    { email: mentor?.email, name: mentor?.full_name, partnerName: mentee?.full_name },
-    { email: mentee?.email, name: mentee?.full_name, partnerName: mentor?.full_name },
+    {
+      email: establishedProfessional?.email,
+      name: establishedProfessional?.full_name,
+      partnerName: aspiringProfessional?.full_name,
+      partnerRoleLabel: "aspiring professional",
+    },
+    {
+      email: aspiringProfessional?.email,
+      name: aspiringProfessional?.full_name,
+      partnerName: establishedProfessional?.full_name,
+      partnerRoleLabel: "established professional",
+    },
   ];
   const results = [];
 
@@ -64,6 +74,7 @@ async function processMatch(supabase, match, force, dryRun) {
     const html = weeklyReminderTemplate({
       recipientName: recipient.name,
       partnerName: recipient.partnerName,
+      partnerRoleLabel: recipient.partnerRoleLabel,
       weekNumber: currentWeek,
       weekData,
     });

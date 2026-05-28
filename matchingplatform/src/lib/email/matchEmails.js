@@ -25,15 +25,17 @@ export async function sendMatchConfirmation(matchId) {
     throw new Error(error?.message || "Match not found");
   }
 
-  const mentee = match.aspiring;
-  const mentor = match.established;
+  const aspiringProfessional = match.aspiring;
+  const establishedProfessional = match.established;
   const html = matchConfirmationTemplate({
-    mentorName: mentor?.full_name,
-    menteeName: mentee?.full_name,
+    establishedName: establishedProfessional?.full_name,
+    establishedEmail: establishedProfessional?.email,
+    aspiringName: aspiringProfessional?.full_name,
+    aspiringEmail: aspiringProfessional?.email,
   });
   const recipients = [
-    { email: mentor?.email, name: mentor?.full_name },
-    { email: mentee?.email, name: mentee?.full_name },
+    { email: establishedProfessional?.email, name: establishedProfessional?.full_name },
+    { email: aspiringProfessional?.email, name: aspiringProfessional?.full_name },
   ];
 
   const results = [];

@@ -349,7 +349,6 @@
     background-color: #f9fafb;
     border: 1px solid #e8ecf1;
     border-radius: 12px;
-    cursor: pointer;
     transition: box-shadow 0.15s ease;
 }
 
@@ -421,14 +420,16 @@
     color: #155724;
 }
 
-.btn-view-match {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 1px solid #e0e0e0;
-    background-color: #ffffff;
-    color: #536077;
-    font-size: 16px;
+.btn-remove-match {
+    min-height: 30px;
+    border-radius: 8px;
+    border: 1px solid #f0c7cb;
+    background-color: #fff7f7;
+    color: #a82830;
+    font-family: var(--font-app);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 0 12px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -436,9 +437,10 @@
     transition: all 0.15s ease;
 }
 
-.btn-view-match:hover {
-    border-color: #0072ce;
-    color: #0072ce;
+.btn-remove-match:hover {
+    border-color: #cb333b;
+    background-color: #fef2f2;
+    color: #cb333b;
 }
 
 /* Manual Match Form */

@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import NavBar from '../../components/navbar/page';
-import { getSuggestedMatches, getActiveMatches, getAspiringProfessionals, getEstablishedProfessionals, approveMatch, rejectMatch, createManualMatch, generateSuggestedMatches } from '../../api/queries';
+import { getSuggestedMatches, getActiveMatches, getAspiringProfessionals, getEstablishedProfessionals, approveMatch, rejectMatch, createManualMatch, generateSuggestedMatches, removeActiveMatch } from '../../api/queries';
 import { useCurrentProfile } from '../../hooks/useCurrentProfile';
 import './styles.css';
 
@@ -207,6 +207,23 @@ function MatchingPage() {
         }
     };
 
+    const handleRemoveActiveMatch = async (match) => {
+        const confirmed = window.confirm(`Remove the match between ${match.aspiring.name} and ${match.established.name}?`);
+        if (!confirmed) return;
+
+        setNotice('');
+        setError('');
+
+        try {
+            await removeActiveMatch(match.id, ADMIN_ID);
+            setNotice(`${match.aspiring.name} and ${match.established.name} are no longer matched.`);
+            fetchData();
+        } catch (err) {
+            console.error('Failed to remove match:', err);
+            setError(err.message);
+        }
+    };
+
     const getStatusClass = (status) => {
         switch (status) {
             case 'New': return 'status-new';
@@ -312,7 +329,7 @@ function MatchingPage() {
                             {sendingWeekly ? 'Sending...' : 'Send Weekly Reminders'}
                         </button>
                     </div>
-                    <p className="section-subtitle">Click any match to view curriculum progress.</p>
+                    <p className="section-subtitle">Manage active co-mentor pairings and weekly progress.</p>
 
                     <div className="active-matches-list">
                         {loading ? <p style={{padding: '12px', color: '#536077'}}>Loading...</p> :
@@ -352,7 +369,7 @@ function MatchingPage() {
                                     {match.status}
                                 </span>
 
-                                <button className="btn-view-match">›</button>
+                                <button className="btn-remove-match" onClick={() => handleRemoveActiveMatch(match)}>Remove</button>
                             </div>
                         ))}
                     </div>

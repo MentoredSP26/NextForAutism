@@ -7,7 +7,6 @@ const LearningBox = ({week}) => {
       
       <div className='week-bar'>
         <h2><b>Week {week.week}</b></h2>
-        <a href="mailto:example@domain.com"><img src="/belll.png" alt = "bell icon" className='logo-sizing'></img></a>
       </div>
 
       <div>
