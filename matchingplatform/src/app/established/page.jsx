@@ -24,7 +24,7 @@ export default function EstablishedDashboard() {
                 <div className='materials-page'>
                     <div className="established-dashboard-header">
                         <div className='materials-header'>
-                            <h1>Weekly Learning Materials</h1>
+                            <h1>Weekly Program Materials</h1>
                         </div>
                         <p className='low-opacity-text'>Your curated learning path organized by week</p>
                     </div>

@@ -26,8 +26,8 @@ export default function AdminProfilesPage() {
             />
             <main className="admin-main-content">
                 <div className="admin-page-header">
-                    <h1>Profiles</h1>
-                    <p>Manage student and mentor matching information</p>
+                    <h1>Participant Profiles</h1>
+                    <p>Manage aspiring and established professional matching information</p>
                 </div>
                 <AdminUsersManager />
                 <AdminProfilesManager />

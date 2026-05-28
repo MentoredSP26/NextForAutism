@@ -17,8 +17,8 @@ function LoginFallback() {
     return (
         <div className="auth-page">
             <div className="auth-card">
-                <h1 className="auth-title">Log In</h1>
-                <p className="auth-subtitle">Loading...</p>
+                <h1 className="auth-title">NEXT Connects</h1>
+                <p className="auth-subtitle">Loading sign in...</p>
             </div>
         </div>
     );
@@ -63,8 +63,8 @@ function LoginForm() {
     return (
         <div className="auth-page">
             <div className="auth-card">
-                <h1 className="auth-title">Log In</h1>
-                <p className="auth-subtitle">Sign in to your Next For Autism account</p>
+                <h1 className="auth-title">NEXT Connects</h1>
+                <p className="auth-subtitle">Sign in to your NEXT For Autism account</p>
 
                 <form onSubmit={handleLogin} className="auth-form">
                     <div className="auth-field">

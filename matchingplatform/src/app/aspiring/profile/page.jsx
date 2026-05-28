@@ -15,7 +15,7 @@ export default function AspiringProfilePage() {
     return (
         <ProfileEditor
             expectedRole="aspiring"
-            title="Student Profile"
+            title="Aspiring Professional Profile"
             nav={
                 <NavBar
                     buttons={navButtons}
