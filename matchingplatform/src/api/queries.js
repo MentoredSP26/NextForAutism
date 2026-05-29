@@ -67,7 +67,19 @@ export async function getSuggestedMatches() {
         .order('compatibility_score', { ascending: false });
     if (error) throw error;
 
-    return data.filter(m => m.aspiring?.role === 'aspiring' && m.established?.role === 'established');
+    // Get all active aspiring IDs
+    const { data: activeMatches } = await supabase
+        .from('matches')
+        .select('aspiring_id')
+        .eq('status', 'active');
+    
+    const activeAspiringIds = new Set((activeMatches || []).map(m => m.aspiring_id));
+
+    return data.filter(m => 
+        m.aspiring?.role === 'aspiring' && 
+        m.established?.role === 'established' &&
+        !activeAspiringIds.has(m.aspiring_id)
+    );
 }
 
 export async function generateSuggestedMatches(adminId, options = {}) {
