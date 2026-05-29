@@ -83,9 +83,15 @@ export async function generateSuggestedMatches(adminId, options = {}) {
         existingMatches.map(match => `${match.aspiring_id}:${match.established_id}`)
     );
     const activeEstablishedCounts = getActiveEstablishedCounts(existingMatches);
+    const activeAspiringIds = new Set(
+    existingMatches
+        .filter(match => match.status === 'active')
+        .map(match => match.aspiring_id)
+    );
+
     const openAspiringIds = new Set(
         aspiring
-            .filter(person => !person.is_matched)
+            .filter(person => !person.is_matched && !activeAspiringIds.has(person.id))
             .map(person => person.id)
     );
 
