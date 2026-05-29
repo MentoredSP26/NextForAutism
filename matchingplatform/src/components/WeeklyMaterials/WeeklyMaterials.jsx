@@ -228,7 +228,9 @@ const weeks = [
 ]
 
 const WeeklyMaterials = ({ currentWeek }) => {
-    const weeksToShow = weeks.filter(w => w.week <= currentWeek);
+    const weeksToShow = currentWeek
+        ? weeks.filter(w => w.week <= currentWeek)
+        : weeks;
     if (weeksToShow.length === 0) return null;
 
     return (
