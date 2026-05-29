@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { createClient } from '../../api/createClient';
 import NavBar from '../../components/navbar/page';
+import WeeklyMaterials from '../../components/WeeklyMaterials/WeeklyMaterials';
 import './styles.css';
 
 const navButtons = [
@@ -12,6 +13,7 @@ const navButtons = [
 export default function AspiringPage() {
     const [user, setUser] = useState(null);
     const [profile, setProfile] = useState(null);
+    const [match, setMatch] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -27,6 +29,15 @@ export default function AspiringPage() {
                 .eq('id', user.id)
                 .single();
             setProfile(profileData);
+
+            const { data: matchData } = await supabase
+                .from('matches')
+                .select('current_week, total_weeks')
+                .eq('aspiring_id', user.id)
+                .eq('status', 'active')
+                .maybeSingle();
+            setMatch(matchData);
+            
             setLoading(false);
         }
         fetchData();
@@ -88,32 +99,42 @@ export default function AspiringPage() {
                     </div>
                 </div>
 
-                <div className="aspiring-section">
-                    <h2>Getting Started</h2>
-                    <div className="steps-list">
-                        <div className="step-item">
-                            <span className="step-num">1</span>
-                            <div>
-                                <p className="step-title">Complete your profile</p>
-                                <p className="step-desc">Add your university, major, and interests so we can find the best mentor for you.</p>
+                {profile?.is_matched && match ? (
+                    <div className="aspiring-section">
+                        <h2>Your Weekly Curriculum</h2>
+                        <p style={{ color: '#536077', marginBottom: '16px' }}>
+                            Week {match.current_week} of {match.total_weeks}
+                        </p>
+                        <WeeklyMaterials currentWeek={match.current_week} />
+                    </div>
+                ) : (
+                    <div className="aspiring-section">
+                        <h2>Getting Started</h2>
+                        <div className="steps-list">
+                            <div className="step-item">
+                                <span className="step-num">1</span>
+                                <div>
+                                    <p className="step-title">Complete your profile</p>
+                                    <p className="step-desc">Add your university, major, and interests so we can find the best mentor for you.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="step-item">
-                            <span className="step-num">2</span>
-                            <div>
-                                <p className="step-title">Wait for your match</p>
-                                <p className="step-desc">An admin will review your profile and match you with an established professional.</p>
+                            <div className="step-item">
+                                <span className="step-num">2</span>
+                                <div>
+                                    <p className="step-title">Wait for your match</p>
+                                    <p className="step-desc">An admin will review your profile and match you with an established professional.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="step-item">
-                            <span className="step-num">3</span>
-                            <div>
-                                <p className="step-title">Start your mentorship</p>
-                                <p className="step-desc">Once matched, you&apos;ll begin the weekly curriculum with your mentor.</p>
+                            <div className="step-item">
+                                <span className="step-num">3</span>
+                                <div>
+                                    <p className="step-title">Start your mentorship</p>
+                                    <p className="step-desc">Once matched, you&apos;ll begin the weekly curriculum with your mentor.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                )}
             </main>
         </div>
     );
