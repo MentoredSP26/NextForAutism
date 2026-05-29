@@ -66,7 +66,8 @@ export async function getSuggestedMatches() {
         .eq('status', 'suggested')
         .order('compatibility_score', { ascending: false });
     if (error) throw error;
-    return data;
+
+    return data.filter(m => m.aspiring?.role === 'aspiring' && m.established?.role === 'established');
 }
 
 export async function generateSuggestedMatches(adminId, options = {}) {
