@@ -225,6 +225,14 @@ export async function approveMatch(matchId, adminId) {
         .single();
     if (fetchError) throw fetchError;
 
+    // NEW: prevent aspiring from being matched twice
+    const { count: activeCount } = await supabase
+        .from('matches')
+        .select('id', { count: 'exact', head: true })
+        .eq('aspiring_id', match.aspiring_id)
+        .eq('status', 'active');
+    if (activeCount > 0) throw new Error('This aspiring professional is already actively matched.');
+
     const { error: updateError } = await supabase
         .from('matches')
         .update({ status: 'active', current_week: 1, approved_by: adminId })
@@ -296,6 +304,14 @@ export async function createManualMatch(aspiringId, establishedId, adminId) {
     if (existingPair?.status === 'active') {
         throw new Error('This pair is already actively matched.');
     }
+
+    // NEW: prevent aspiring from being matched twice
+    const { count: activeAspiringCount } = await supabase
+        .from('matches')
+        .select('id', { count: 'exact', head: true })
+        .eq('aspiring_id', aspiringId)
+        .eq('status', 'active');
+    if (activeAspiringCount > 0) throw new Error('This aspiring professional is already actively matched.');
 
     const activeEstablishedCounts = getActiveEstablishedCounts(existingMatches);
     const compatibility = calculateCompatibility(
