@@ -251,11 +251,19 @@ export async function approveMatch(matchId, adminId) {
         .eq('status', 'active');
     if (activeCount > 0) throw new Error('This aspiring professional is already actively matched.');
 
-    const { error: updateError } = await supabase
+   const { error: updateError } = await supabase
         .from('matches')
         .update({ status: 'active', current_week: 1, approved_by: adminId })
         .eq('id', matchId);
     if (updateError) throw updateError;
+
+    // NEW: reject all other suggested matches for this aspiring professional
+    await supabase
+        .from('matches')
+        .update({ status: 'rejected' })
+        .eq('aspiring_id', match.aspiring_id)
+        .eq('status', 'suggested')
+        .neq('id', matchId);
 
     // Mark both users as matched
     await supabase.from('profiles').update({ is_matched: true }).eq('id', match.aspiring_id);
