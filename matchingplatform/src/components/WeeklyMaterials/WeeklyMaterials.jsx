@@ -227,18 +227,19 @@ const weeks = [
     }
 ]
 
-const WeeklyMaterials = () => {
+const WeeklyMaterials = ({ currentWeek }) => {
+    const weeksToShow = weeks.filter(w => w.week <= currentWeek);
+    if (weeksToShow.length === 0) return null;
 
     return (
         <div className='materials-container'>
-            {weeks.map((week) => (
-                week.type == "learning" 
-                ? <LearningBox key={week.week} week={week}/>
-                : <DiscussionBox key={week.week} week={week}/>
-                
+            {weeksToShow.map((week) => (
+                week.type === "learning"
+                    ? <LearningBox key={week.week} week={week} />
+                    : <DiscussionBox key={week.week} week={week} />
             ))}
         </div>
-    )
+    );
 }
 export default WeeklyMaterials
 
